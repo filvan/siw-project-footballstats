@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.footballstats.model.Credentials;
-import it.uniroma3.siw.footballstats.model.User;
 import it.uniroma3.siw.footballstats.service.CredentialsService;
 
 @Component
