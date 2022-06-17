@@ -45,4 +45,5 @@ public class User {
 		this.cognome = cognome;
 	}
 
+	/* COMMENTO TEST */
 }
