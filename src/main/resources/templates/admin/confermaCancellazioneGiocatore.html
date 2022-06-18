@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Conferma cancellazione giocatore</title>
+</head>
+
+<body>
+	<div>
+		<h1>Cancella un giocatore</h1>
+		<div>
+			<strong th:text="${giocatore.nome}">Raffaello</strong>
+			<strong th:text="${giocatore.cognome}">Sanzio</strong>
+		</div>
+		<div>
+			<em th:text="${giocatore.ruolo}">Prova</em>
+			<em th:text="${giocatore.nazionalita}">Prova</em>
+			<em th:text="${giocatore.dataNascita}">Prova</em>
+		</div>
+		<div>
+			<strong>Confermi di voler cancellare questo giocatore?</strong>
+			<a href="admin/giocatori.html" th:href="@{'/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
+				th:text="Conferma">Conferma</a>
+		</div>
+	</div>
+	<footer>
+		<div>
+		</div>
+		<div>
+			<a th:href="@{/default}">Torna alla Home amministratore</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</footer>
+</body>
+
+</html>

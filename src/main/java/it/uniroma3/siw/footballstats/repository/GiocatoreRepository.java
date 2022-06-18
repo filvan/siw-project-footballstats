@@ -1,7 +1,5 @@
 package it.uniroma3.siw.footballstats.repository;
 
-import java.time.LocalDate;
-
 import org.springframework.data.repository.CrudRepository;
 
 import it.uniroma3.siw.footballstats.model.Giocatore;

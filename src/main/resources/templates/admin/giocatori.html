@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Giocatori</title>
+</head>
+
+<body>
+	<div>
+		<h1>Elenco giocatori</h1>
+		<table>
+			<tr th:each="giocatore : ${giocatori}">
+				<td>
+					<!-- <a href="giocatore.html" th:href="@{'/giocatore' + '/' + ${giocatore.id}}"
+						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</a> -->
+						<span th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</span>
+				</td>
+				<td>
+					<a href="confermaCancellazioneGiocatore.html"
+						th:href="@{'/toDeleteGiocatore' + '/' + ${giocatore.id}}" th:text="Cancella">Cancella</a>
+				</td>
+			</tr>
+		</table>
+		<a href="admin/giocatoreForm.html" th:href="@{/admin/giocatoreForm}">Inserisci un giocatore</a>
+	</div>
+	<footer>
+		<div>
+			<a href="/default">Torna alla home amministratore</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</footer>
+</body>
+
+</html>
