@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento Giocatore</title>
+</head>
+
+<body>
+	<h1>Inserisci un Nuovo Giocatore</h1>
+	
+	<form th:action="@{/admin/giocatore}" method="POST" th:object="${giocatore}">
+	
+		<div th:if="${#fields.hasGlobalErrors()}">
+    		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Messaggio Errore</p> 
+  		</div>
+  		
+		<table>
+			<tr>
+				<td>Nome del Giocatore: </td>
+				<td><input type="text" th:field="*{nome}" /></td>
+				<td th:if="${#fields.hasErrors('nome')}"
+					th:errors="*{nome}"
+					th:style="'color:red'"></td>
+			</tr>
+		
+			<tr>
+				<td>Cognome del Giocatore: </td>
+				<td><input type="text" th:field="*{cognome}" /></td>
+				<td th:if="${#fields.hasErrors('cognome')}"
+					th:errors="*{cognome}"
+					th:style="'color:red'"></td>
+			</tr>
+		
+			<tr>
+				<td>Nazionalità: </td>
+				<td><input type="text" th:field="*{nazionalita}" /></td>
+				<td th:if="${#fields.hasErrors('nazionalita')}"
+					th:errors="*{nazionalita}"
+					th:style="'color:red'"></td>
+			</tr>
+		
+			<tr>
+				<td>Data di Nascita: (formato: gg-mm-aaaa)</td>
+				<td><input type="text" th:field="*{dataNascita}" /></td>
+				<td th:if="${#fields.hasErrors('dataNascita')}"
+					th:errors="*{dataNascita}"
+					th:style="'color:red'"></td>
+			</tr>
+		
+			<tr>
+				<td>Ruolo: </td>
+				<td>
+					<select name="ruolo">
+						<option disabled=true>--Inserisci il Ruolo--</option>
+						<option>Portiere</option>
+						<option>Difensore</option>
+						<option>Centrocampista</option>
+						<option>Attaccante</option>
+					</select>
+				</td>
+			</tr>
+		
+			<tr>
+				<td><button type="submit">Inserisci</button>
+			</tr>
+		</table>
+	</form>
+	
+	<div>
+		<a th:href="@{/default}">Torna alla Home</a>
+	</div>
+
+
+</body>
+</html>

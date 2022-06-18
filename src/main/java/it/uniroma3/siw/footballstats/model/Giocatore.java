@@ -3,6 +3,7 @@ package it.uniroma3.siw.footballstats.model;
 import java.time.LocalDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Giocatore {
@@ -15,15 +16,15 @@ public class Giocatore {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String nome;
+	@NotBlank private String nome;
 	
-	private String cognome;
+	@NotBlank private String cognome;
 	
-	private String nazionalita;
+	@NotBlank private String nazionalita;
 	
 	private String ruolo;
 	
-	private LocalDate dataNascita; //Formato: aaaa-mm-gg
+	@NotBlank private String dataNascita; //Formato: gg-mm-aaaa
 	
 	@ManyToOne
 	private Squadra squadra;
@@ -50,7 +51,7 @@ public class Giocatore {
 	
 	public Giocatore() {}
 	
-	public Giocatore(String nome, String cognome, String nazionalita, String ruolo, LocalDate dataNascita,
+	public Giocatore(String nome, String cognome, String nazionalita, String ruolo, String dataNascita,
 			Squadra squadra) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -93,7 +94,7 @@ public class Giocatore {
 		this.ruolo = ruolo;
 	}
 
-	public void setDataNascita(LocalDate dataNascita) {
+	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 
@@ -154,7 +155,7 @@ public class Giocatore {
 		return ruolo;
 	}
 	
-	public LocalDate getDataNascita() {
+	public String getDataNascita() {
 		return dataNascita;
 	}
 	
