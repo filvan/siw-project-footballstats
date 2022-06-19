@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Dettagli Squadra User</title>
+</head>
+
+<body>
+
+	<h1>Dettagli Squadra</h1>
+
+	    <div>
+		<div>
+			<span>Nome: </span><span th:text="*{squadra.nome}">Nome</span>
+		</div>
+
+		<div>
+			<em>Sede: </em><em th:text="*{squadra.citta}">Prova</em>
+		</div>
+		   
+	</div>
+
+	<div>
+
+		<div>
+			<a th:href="@{/user/squadre}">Torna all'elenco delle Squadre</a>
+		</div>
+
+		<div>
+			<a th:href="@{/default}">Torna alla home utente</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</div>
+
+</body>
+
+</html>
