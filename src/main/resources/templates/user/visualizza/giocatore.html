@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Dettagli Giocatore User</title>
+</head>
+<body>
+
+    <h1>Dettagli Giocatore</h1>
+    	
+    <div>
+		<div>
+			<span>Nome: </span><span th:text="*{giocatore.nome}">Nome</span>
+		</div>
+		
+		<div>
+			<span>Cognome: </span><span th:text="*{giocatore.cognome}">Cognome</span>
+		</div>
+		
+		<div>
+			<span>Data di Nascita: </span><span th:thext="*{giocatore.dataNascita}">Ruolo</span>
+		</div>
+		
+		<div>
+			<span>Nazionalità: </span><span th:text="*{giocatore.nazionalita}">Nazionalita</span>
+		</div>
+		
+		<div>
+			<span>Ruolo: </span><span th:text="*{giocatore.ruolo}">Ruolo</span>
+		</div>
+		
+		<div>
+			<span>Squadra: </span>
+			<span th:if="*{giocatore.squadra}">
+				<span th:text="${giocatore.squadra.nome}" />
+			</span>
+			
+			<span th:unless="*{giocatore.squadra}">DA SPECIFICARE</span>
+		</div>
+		
+		<div>
+			<p>Dati sulla Stagione: </p>
+			<table>
+				<tr>
+					<td>Presenze Totali: </td>
+					<td th:text="*{giocatore.presenzeTotali}">Presenze Totali</td>
+				</tr>
+				
+				<tr>
+					<td>Minuti Giocati: </td>
+					<td th:text="*{giocatore.minutiGiocatiTotali}">Minuti Giocati Totali</td>
+				</tr>
+				
+				<tr th:if="*{giocatore.ruolo == 'Portiere'}">
+					<td>Porte Inviolate: </td>
+					<td th:text="*{giocatore.cleanSheetTotali}">Clean Sheet Totali</td>
+				</tr>
+				
+				<tr th:if="*{giocatore.ruolo != 'Portiere'}">
+					<td>Gol Segnati: </td>
+					<td th:text="*{giocatore.golSegnatiTotali}">Gol Segnati Totali</td>
+				</tr>
+				
+				<tr>
+					<td>Assist Forniti: </td>
+					<td th:text="*{giocatore.assistTotali}">Assist Totali</td>
+				</tr>
+				
+				<tr>
+					<td>Ammonizioni: </td>
+					<td th:text="*{giocatore.ammonizioniTotali}">Ammonizioni</td>
+				</tr>
+				
+				<tr>
+					<td>Espulsioni: </td>
+					<td th:text="*{giocatore.espulsioniTotali}">Espulsioni</td>
+				</tr>
+					
+			</table>
+		</div>
+    </div>
+	
+	<div>
+		
+		<div>
+			<a th:href="@{/user/giocatori}">Torna all'elenco dei Giocatori</a>
+		</div>
+		
+		<div>
+			<a th:href="@{/default}">Torna alla Home</a>
+		</div>		
+	</div>
+	
+</body>
+</html>

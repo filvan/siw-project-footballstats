@@ -12,9 +12,8 @@
 		<table>
 			<tr th:each="giocatore : ${giocatori}">
 				<td>
-					<!-- <a href="giocatore.html" th:href="@{'/giocatore' + '/' + ${giocatore.id}}"
-						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</a> -->
-						<span th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</span>
+					<a href="giocatore.html" th:href="@{'/user/giocatore' + '/' + ${giocatore.id}}"
+						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</a>
 				</td>
 			</tr>
 		</table>

@@ -68,6 +68,13 @@ public class GiocatoreController {
 		return this.getAdminGiocatori(model);
 	}
 	
+	@GetMapping("/admin/giocatore/{id}")
+	public String getGiocatoreAdmin(@PathVariable("id") Long id, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		model.addAttribute("giocatore", giocatore);
+		return "admin/visualizza/giocatore.html";
+	}
+	
 	
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
@@ -79,5 +86,12 @@ public class GiocatoreController {
 		List<Giocatore> giocatori = this.giocatoreService.findAll();
 		model.addAttribute("giocatori", giocatori);
 		return "user/elenchi/giocatori.html";
+	}
+	
+	@GetMapping("/user/giocatore/{id}")
+	public String getGiocatoreUser(@PathVariable("id") Long id, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		model.addAttribute("giocatore", giocatore);
+		return "user/visualizza/giocatore.html";
 	}
 }
