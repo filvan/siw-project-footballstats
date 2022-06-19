@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento Squadra</title>
+</head>
+
+<body>
+	<h1>Inserisci una Nuova Squadra</h1>
+
+	<form th:action="@{/admin/squadra}" method="POST" th:object="${squadra}">
+
+		<div th:if="${#fields.hasGlobalErrors()}">
+			  <p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Messaggio Errore</p>
+		</div>
+
+		<table>
+			<tr>
+				<td>Nome della Squadra: </td>
+				<td><input type="text" th:field="*{nome}" /></td>
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td>Sede della Squadra: </td>
+				<td><input type="text" th:field="*{citta}" /></td>
+				<td th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Inserisci</button>
+			</tr>
+		</table>
+	</form>
+
+	<div>
+		<a th:href="@{/default}">Torna alla home amministratore</a>
+	</div>
+	<div>
+		<a href="/">Torna alla pagina iniziale</a>
+	</div>
+
+</body>
+
+</html>
