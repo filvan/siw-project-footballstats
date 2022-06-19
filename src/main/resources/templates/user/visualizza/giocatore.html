@@ -51,7 +51,7 @@
 					<td th:text="*{giocatore.minutiGiocatiTotali}">Minuti Giocati Totali</td>
 				</tr>
 				
-				<tr th:if="*{giocatore.ruolo == 'Portiere'}">
+				<tr th:if="*{giocatore.ruolo == 'Portiere' || giocatore.ruolo == 'Difensore'}">
 					<td>Porte Inviolate: </td>
 					<td th:text="*{giocatore.cleanSheetTotali}">Clean Sheet Totali</td>
 				</tr>
@@ -61,7 +61,7 @@
 					<td th:text="*{giocatore.golSegnatiTotali}">Gol Segnati Totali</td>
 				</tr>
 				
-				<tr>
+				<tr th:if="*{giocatore.ruolo != 'Portiere'}">
 					<td>Assist Forniti: </td>
 					<td th:text="*{giocatore.assistTotali}">Assist Totali</td>
 				</tr>
@@ -87,8 +87,11 @@
 		</div>
 		
 		<div>
-			<a th:href="@{/default}">Torna alla Home</a>
-		</div>		
+			<a th:href="@{/default}">Torna alla home utente</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>	
 	</div>
 	
 </body>
