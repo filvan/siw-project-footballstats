@@ -46,12 +46,12 @@ public class Squadra {
 		this.id = id;
 	}
 	
-	public void setCitta(String citta) {
-		this.citta = citta;
-	}
-	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public void setCitta(String citta) {
+		this.citta = citta;
 	}
 
 	public void setGiocatori(List<Giocatore> giocatori) {

@@ -22,37 +22,44 @@ public class GiocatoreController {
 
 	@Autowired private GiocatoreService giocatoreService;
 	@Autowired private GiocatoreValidator giocatoreValidator;
-	
+
 	/* ********************* */
 	/* OPERAZIONI LATO ADMIN */
 	/* ********************* */
-	
+
 	@GetMapping("/admin/giocatoreForm")
 	public String toGiocatoreForm(Model model) {
 		model.addAttribute(new Giocatore());
 		return "/admin/form/giocatoreForm.html";
 	}
-	
+
 	@PostMapping("/admin/giocatore")
 	public String addGiocatore(@Valid @ModelAttribute ("giocatore") Giocatore giocatore, BindingResult bindingResult, Model model) {
 		this.giocatoreValidator.validate(giocatore, bindingResult);
-		
+
 		if(!bindingResult.hasErrors()) {
 			this.giocatoreService.save(giocatore);
 			return "/admin/addSuccesso/inserimentoGiocatore.html";
 		}
-		
+
 		return "/admin/form/giocatoreForm.html";
 	}
-	
+
+	@GetMapping("/admin/giocatore/{id}")
+	public String getGiocatoreAdmin(@PathVariable("id") Long id, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		model.addAttribute("giocatore", giocatore);
+		return "admin/visualizza/giocatore.html";
+	}
+
 	// richiede tutti i giocatori (non viene specificato un id particolare)
-		@GetMapping("/admin/giocatori")
-		public String getAdminGiocatori(Model model) {
-			List<Giocatore> giocatori = this.giocatoreService.findAll();
-			model.addAttribute("giocatori", giocatori);
-			return "admin/elenchi/giocatori.html";
-		}
-	
+	@GetMapping("/admin/giocatori")
+	public String getAdminGiocatori(Model model) {
+		List<Giocatore> giocatori = this.giocatoreService.findAll();
+		model.addAttribute("giocatori", giocatori);
+		return "admin/elenchi/giocatori.html";
+	}
+
 	@GetMapping("/admin/toDeleteGiocatore/{id}")
 	public String toDeleteGiocatoreById(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore =  this.giocatoreService.findById(id);
@@ -67,31 +74,24 @@ public class GiocatoreController {
 		model.addAttribute("giocatori", giocatori);
 		return this.getAdminGiocatori(model);
 	}
-	
-	@GetMapping("/admin/giocatore/{id}")
-	public String getGiocatoreAdmin(@PathVariable("id") Long id, Model model) {
-		Giocatore giocatore = this.giocatoreService.findById(id);
-		model.addAttribute("giocatore", giocatore);
-		return "admin/visualizza/giocatore.html";
-	}
-	
-	
+
+
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
-	
-	
-	@GetMapping("/user/giocatori")
-	public String getUserGiocatori(Model model) {
-		List<Giocatore> giocatori = this.giocatoreService.findAll();
-		model.addAttribute("giocatori", giocatori);
-		return "user/elenchi/giocatori.html";
-	}
-	
+
+
 	@GetMapping("/user/giocatore/{id}")
 	public String getGiocatoreUser(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		model.addAttribute("giocatore", giocatore);
 		return "user/visualizza/giocatore.html";
+	}
+
+	@GetMapping("/user/giocatori")
+	public String getUserGiocatori(Model model) {
+		List<Giocatore> giocatori = this.giocatoreService.findAll();
+		model.addAttribute("giocatori", giocatori);
+		return "user/elenchi/giocatori.html";
 	}
 }

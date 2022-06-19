@@ -24,7 +24,5 @@ public class GiocatoreValidator implements Validator {
 		
 		if(this.giocatoreService.alreadyExists(giocatore))
 			errors.reject("giocatore.duplicato");
-		
 	}
-
 }
