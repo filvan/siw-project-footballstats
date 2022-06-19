@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Squadre</title>
+</head>
+
+<body>
+	<div>
+		<h1>Elenco squadre:</h1>
+		<table>
+			<tr th:each="squadra : ${squadre}">
+				<td>
+					<a href="squadra.html" th:href="@{'/user/squadra' + '/' + ${squadra.id}}"
+						th:text="${squadra.nome}">Borgorosso FC</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<footer>
+		<div>
+			<a href="/default">Torna alla home utente</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</footer>
+</body>
