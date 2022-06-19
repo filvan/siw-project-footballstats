@@ -50,23 +50,14 @@ public class GiocatoreController {
 		public String getAdminGiocatori(Model model) {
 			List<Giocatore> giocatori = this.giocatoreService.findAll();
 			model.addAttribute("giocatori", giocatori);
-			return "admin/giocatori.html";
+			return "admin/elenchi/giocatori.html";
 		}
 	
-//	@GetMapping("/admin/toDeleteGiocatore/{id}")
-	//	public String deleteGiocatoreById(@PathVariable("id") Long id, Model model) {
-	//		Giocatore giocatore =  this.giocatoreService.findById(id);
-	//		this.giocatoreService.delete(giocatore);
-	//		List<Giocatore> giocatori = this.giocatoreService.findAll();
-	//		model.addAttribute("giocatori", giocatori);
-	//		return "admin/giocatori.html";
-	//	}
-
 	@GetMapping("/admin/toDeleteGiocatore/{id}")
 	public String toDeleteGiocatoreById(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore =  this.giocatoreService.findById(id);
 		model.addAttribute("giocatore", giocatore);
-		return "admin/confermaCancellazioneGiocatore.html";
+		return "admin/cancella/confermaCancellazioneGiocatore.html";
 	}
 
 	@GetMapping("/admin/confirmDeleteGiocatore/{id}")
@@ -87,6 +78,6 @@ public class GiocatoreController {
 	public String getUserGiocatori(Model model) {
 		List<Giocatore> giocatori = this.giocatoreService.findAll();
 		model.addAttribute("giocatori", giocatori);
-		return "user/giocatori.html";
+		return "user/elenchi/giocatori.html";
 	}
 }

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Conferma cancellazione giocatore</title>
+	<title>Conferma Cancellazione Giocatore</title>
 </head>
 
 <body>
@@ -20,18 +20,16 @@
 		</div>
 		<div>
 			<strong>Confermi di voler cancellare questo giocatore?</strong>
-			<a href="admin/giocatori.html" th:href="@{'/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
+			<a href="admin/giocatori.html" th:href="@{'/admin/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
 				th:text="Conferma">Conferma</a>
 		</div>
 	</div>
 	<footer>
 		<div>
+			<a th:href="@{/admin/giocatori}">Torna all'Elenco dei Giocatori</a>
 		</div>
 		<div>
 			<a th:href="@{/default}">Torna alla Home amministratore</a>
-		</div>
-		<div>
-			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</footer>
 </body>
