@@ -84,7 +84,7 @@
 	</div>
 
 	<div>
-		<div>
+		<div th:if="${giocatore.squadra == null}">
 			<a th:href="@{'/admin/assegnaSquadra/' + ${giocatore.id}}">Assegna ad una Squadra</a>
 		</div>
 		
