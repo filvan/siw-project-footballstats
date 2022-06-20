@@ -1,5 +1,6 @@
 package it.uniroma3.siw.footballstats.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.footballstats.controller.validator.SquadraValidator;
+import it.uniroma3.siw.footballstats.model.Giocatore;
 import it.uniroma3.siw.footballstats.model.Squadra;
+import it.uniroma3.siw.footballstats.service.GiocatoreService;
 import it.uniroma3.siw.footballstats.service.SquadraService;
 
 @Controller
@@ -22,6 +25,7 @@ public class SquadraController {
 
 	@Autowired private SquadraService squadraService;
 	@Autowired private SquadraValidator squadraValidator;
+	@Autowired private GiocatoreService giocatoreService;
 
 	/* ********************* */
 	/* OPERAZIONI LATO ADMIN */
@@ -49,6 +53,10 @@ public class SquadraController {
 	public String getSquadraAdmin(@PathVariable("id") Long id, Model model) {
 		Squadra squadra = this.squadraService.findById(id);
 		model.addAttribute("squadra", squadra);
+
+		List<Giocatore> elencoGiocatori = squadra.getGiocatori();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		
 		return "/admin/visualizza/squadra.html";
 	}
 
@@ -74,8 +82,16 @@ public class SquadraController {
 		model.addAttribute("squadre", squadre);
 		return this.getAdminSquadre(model);
 	}
-
-
+	
+	@GetMapping("/admin/rimuoviGiocatore/{idGiocatore}")
+	public String rimuoviGiocatore(@PathVariable("idGiocatore") Long id, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		giocatore.setSquadra(null);
+		this.giocatoreService.save(giocatore);
+		
+		return "/admin/rimuovi/rimuoviSquadraPerGiocatoreConSuccesso.html";
+	}
+	
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
@@ -85,6 +101,10 @@ public class SquadraController {
 	public String getSquadraUser(@PathVariable("id") Long id, Model model) {
 		Squadra squadra = this.squadraService.findById(id);
 		model.addAttribute("squadra", squadra);
+		
+		List<Giocatore> elencoGiocatori = squadra.getGiocatori();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		
 		return "/user/visualizza/squadra.html";
 	}
 

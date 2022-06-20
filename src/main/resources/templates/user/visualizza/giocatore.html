@@ -32,7 +32,7 @@
 		<div>
 			<span>Squadra: </span>
 			<span th:if="*{giocatore.squadra}">
-				<span th:text="${giocatore.squadra.nome}" />
+				<a th:href="@{'/user/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
 			</span>
 			
 			<span th:unless="*{giocatore.squadra}">DA SPECIFICARE</span>

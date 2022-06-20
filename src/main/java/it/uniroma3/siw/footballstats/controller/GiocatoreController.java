@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.footballstats.controller.validator.GiocatoreValidator;
 import it.uniroma3.siw.footballstats.model.Giocatore;
+import it.uniroma3.siw.footballstats.model.Squadra;
 import it.uniroma3.siw.footballstats.service.GiocatoreService;
+import it.uniroma3.siw.footballstats.service.SquadraService;
 
 @Controller
 public class GiocatoreController {
 
 	@Autowired private GiocatoreService giocatoreService;
 	@Autowired private GiocatoreValidator giocatoreValidator;
+	@Autowired private SquadraService squadraService;
 
 	/* ********************* */
 	/* OPERAZIONI LATO ADMIN */
@@ -75,7 +78,27 @@ public class GiocatoreController {
 		return this.getAdminGiocatori(model);
 	}
 
-
+	@GetMapping("/admin/assegnaSquadra/{idGiocatore}")
+	public String toAssegnaSquadra(@PathVariable("idGiocatore") Long id, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		model.addAttribute("giocatore", giocatore);
+		
+		List<Squadra> elencoSquadre = this.squadraService.findAll();
+		model.addAttribute("elencoSquadre", elencoSquadre);
+		model.addAttribute("squadra", new Squadra());
+		
+		return "/admin/assegna/assegnaSquadraPerGiocatore.html";
+	}
+	
+	@PostMapping("/admin/assegnazioneSquadra/{idGiocatore}")
+	public String assegnazioneSquadra(@PathVariable("idGiocatore") Long id, @ModelAttribute("squadra") Squadra squadra, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		giocatore.setSquadra(squadra);
+		this.giocatoreService.save(giocatore);
+		
+		return "/admin/assegna/assegnaSquadraPerGiocatoreConSuccesso.html";
+	}
+	
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
