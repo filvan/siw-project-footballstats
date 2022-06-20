@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Conferma Cancellazione Prestazione</title>
+</head>
+
+<body>
+	<div>
+		<h1>Cancella una prestazione</h1>
+
+		<div>
+			<strong>Confermi di voler cancellare questa Prestazione?</strong>
+			<a th:href="@{'/admin/rimozionePrestazione/' + ${prestazione.id}}"
+				th:text="Conferma">Conferma</a>
+		</div>
+	</div>
+	
+	<footer>
+
+		<div>
+			<a th:href="@{/default}">Torna alla home amministratore</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</footer>
+
+</body>
+
+</html>

@@ -2,6 +2,7 @@ package it.uniroma3.siw.footballstats.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -49,7 +50,7 @@ public class Giocatore {
 	
 	private int espulsioniTotali;
 	
-	@OneToMany(mappedBy = "giocatore")
+	@OneToMany(mappedBy = "giocatore", cascade = {CascadeType.REMOVE})
 	private List<Prestazione> prestazioni;
 	
 	/* *********** */
@@ -205,7 +206,7 @@ public class Giocatore {
 		return prestazioni;
 	}
 
-	public void aggiornaGiocatore(Prestazione prestazione) {
+	public void aggiornaGiocatoreIncrementi(Prestazione prestazione) {
 		this.setPresenzeTotali(presenzeTotali + 1);
 		this.setMinutiGiocatiTotali(this.getMinutiGiocatiTotali() + prestazione.getMinutiGiocati());
 		this.setGolSegnatiTotali(this.getGolSegnatiTotali() + prestazione.getGolSegnati());
@@ -213,5 +214,15 @@ public class Giocatore {
 		this.setAssistTotali(this.getAssistTotali() + prestazione.getAssist());
 		this.setAmmonizioniTotali(this.getAmmonizioniTotali() + prestazione.getAmmonizioni());
 		this.setEspulsioniTotali(this.getEspulsioniTotali() + prestazione.getEspulsione());
+	}
+	
+	public void aggiornaGiocatoreDecrementi(Prestazione prestazione) {
+		this.setPresenzeTotali(presenzeTotali - 1);
+		this.setMinutiGiocatiTotali(this.getMinutiGiocatiTotali() - prestazione.getMinutiGiocati());
+		this.setGolSegnatiTotali(this.getGolSegnatiTotali() - prestazione.getGolSegnati());
+		this.setCleanSheetTotali(this.getCleanSheetTotali() - prestazione.getPortaInviolata());
+		this.setAssistTotali(this.getAssistTotali() - prestazione.getAssist());
+		this.setAmmonizioniTotali(this.getAmmonizioniTotali() - prestazione.getAmmonizioni());
+		this.setEspulsioniTotali(this.getEspulsioniTotali() - prestazione.getEspulsione());
 	}
 }

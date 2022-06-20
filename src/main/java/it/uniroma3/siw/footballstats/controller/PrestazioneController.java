@@ -52,7 +52,7 @@ public class PrestazioneController {
 		this.prestazioneValidator.validate(prestazione, bindingResult);
 
 		if(!bindingResult.hasErrors()) {
-			giocatore.aggiornaGiocatore(prestazione);
+			giocatore.aggiornaGiocatoreIncrementi(prestazione);
 			this.giocatoreService.save(giocatore);
 			this.prestazioneService.save(prestazione);
 
@@ -79,6 +79,27 @@ public class PrestazioneController {
 		model.addAttribute("prestazione", prestazione);
 		
 		return "/admin/visualizza/prestazione.html";
+	}
+	
+	@GetMapping("/admin/toRimuoviPrestazione/{prestazioneId}")
+	public String toRimuoviPrestazione(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
+		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
+		model.addAttribute("prestazione", prestazione);
+		
+		return "/admin/cancella/confermaCancellazionePrestazione.html";
+	}
+	
+	@GetMapping("/admin/rimozionePrestazione/{prestazioneId}")
+	public String rimozionePrestazione(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
+		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
+		
+		Giocatore giocatore = prestazione.getGiocatore();
+		giocatore.aggiornaGiocatoreDecrementi(prestazione);
+		this.giocatoreService.save(giocatore);
+		
+		this.prestazioneService.delete(prestazione);
+		
+		return "/admin/cancella/confermaCancellazionePrestazioneConSuccesso.html";
 	}
 	
 	

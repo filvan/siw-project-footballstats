@@ -44,4 +44,9 @@ public class PrestazioneService {
 		return this.prestazioneRepository.findAllByGiocatoreIdOrderByDataAsc(giocatoreId);
 		
 	}
+
+	@Transactional
+	public void delete(Prestazione prestazione) {
+		this.prestazioneRepository.delete(prestazione);
+	}
 }

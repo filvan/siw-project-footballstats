@@ -15,6 +15,10 @@
 					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
 						th:text="${prestazione.data} + ', giocata contro ' + ${prestazione.squadraAvversaria.nome}">Prestazione</a>
 				</td>
+				
+				<td>
+					<a th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
+				</td>
 
 			</tr>
 		</table>
