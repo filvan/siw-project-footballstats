@@ -71,6 +71,12 @@ public class SquadraController {
 	@GetMapping("/admin/toDeleteSquadra/{id}")
 	public String toDeleteSquadraById(@PathVariable("id") Long id, Model model) {
 		Squadra squadra =  this.squadraService.findById(id);
+	
+		for(Giocatore g: squadra.getGiocatori()) {
+			g.setSquadra(null);
+			this.giocatoreService.save(g);
+		}
+			
 		model.addAttribute("squadra", squadra);
 		return "/admin/cancella/confermaCancellazioneSquadra.html";
 	}
