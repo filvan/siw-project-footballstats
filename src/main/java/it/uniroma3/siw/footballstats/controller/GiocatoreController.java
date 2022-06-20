@@ -50,7 +50,7 @@ public class GiocatoreController {
 
 	@GetMapping("/admin/giocatore/{id}")
 	public String getGiocatoreAdmin(@PathVariable("id") Long id, Model model) {
-		Giocatore giocatore = this.giocatoreService.findById(id);
+		Giocatore giocatore = this.giocatoreService.findById(id);		
 		model.addAttribute("giocatore", giocatore);
 		return "admin/visualizza/giocatore.html";
 	}
