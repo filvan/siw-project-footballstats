@@ -63,7 +63,7 @@
 					<td th:text="*{giocatore.golSegnatiTotali}">Gol Segnati Totali</td>
 				</tr>
 
-				<tr th:if="*{giocatore.ruolo != 'Portiere'}">
+				<tr>
 					<td>Assist Forniti: </td>
 					<td th:text="*{giocatore.assistTotali}">Assist Totali</td>
 				</tr>
@@ -86,6 +86,14 @@
 	<div>
 		<div th:if="${giocatore.squadra == null}">
 			<a th:href="@{'/admin/assegnaSquadra/' + ${giocatore.id}}">Assegna ad una Squadra</a>
+		</div>
+		
+		<div th:unless="${giocatore.squadra == null}">
+			<a th:href="@{'/admin/inserisciPrestazione/' + ${giocatore.id}}">Inserisci una partita giocata</a>
+		</div>
+		
+		<div>
+			<a th:href="@{'/admin/prestazioni/' + ${giocatore.id}}">Visualizza le partite giocate</a>
 		</div>
 		
 		<div>
