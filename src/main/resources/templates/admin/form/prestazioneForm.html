@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Inserimento Prestazione</title>
+</head>
+
+<body>
+	<h1>Inserisci una Nuova Prestazione</h1>
+
+	<form th:action="@{'/admin/inserimentoPrestazione/' + ${giocatore.id}}" method="POST" th:object="${prestazione}">
+
+		<div th:if="${#fields.hasGlobalErrors()}">
+			  <p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Messaggio Errore</p>
+		</div>
+
+		<table>
+			<tr>
+				<td>Data: </td>
+				<td><input type="text" th:field="*{data}" /></td>
+				<td th:if="${#fields.hasErrors('data')}" th:errors="*{data}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Squadra avversaria: </td>
+				<td><select name="squadraAvversaria">
+						<option disabled=true>--Elenco delle Squadre--</option>
+						<option th:each="s : ${squadreAvversarie}" th:text="${s.nome}" th:value="${s.id}" />
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Minuti giocati: </td>
+				<td><input type="text" th:field="*{minutiGiocati}" /></td>
+				<td th:if="${#fields.hasErrors('minutiGiocati')}" th:errors="*{minutiGiocati}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Gol segnati: </td>
+				<td><input type="text" th:field="*{golSegnati}" /></td>
+				<td th:if="${#fields.hasErrors('golSegnati')}" th:errors="*{golSegnati}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Assist: </td>
+				<td><input type="text" th:field="*{assist}" /></td>
+				<td th:if="${#fields.hasErrors('assist')}" th:errors="*{assist}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Porta inviolata: </td>
+				<td><input type="text" th:field="*{portaInviolata}" /></td>
+				<td th:if="${#fields.hasErrors('portaInviolata')}" th:errors="*{portaInviolata}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Ammonizioni: </td>
+				<td><input type="text" th:field="*{ammonizioni}" /></td>
+				<td th:if="${#fields.hasErrors('ammonizioni')}" th:errors="*{ammonizioni}" th:style="'color:red'"></td>
+			</tr>
+			<tr>
+				<td>Espulsione: </td>
+				<td><input type="text" th:field="*{espulsione}" /></td>
+				<td th:if="${#fields.hasErrors('espulsione')}" th:errors="*{espulsione}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Inserisci</button>
+			</tr>
+		</table>
+	</form>
+
+	<div>
+		<a th:href="@{/default}">Torna alla home amministratore</a>
+	</div>
+	<div>
+		<a href="/">Torna alla pagina iniziale</a>
+	</div>
+
+</body>
+
+</html>
