@@ -1,10 +1,13 @@
 package it.uniroma3.siw.footballstats.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -46,6 +49,8 @@ public class Giocatore {
 	
 	private int espulsioniTotali;
 	
+	@OneToMany(mappedBy = "giocatore")
+	private List<Prestazione> prestazioni;
 	
 	/* *********** */
 	/* COSTRUTTORI */
@@ -132,6 +137,9 @@ public class Giocatore {
 		this.espulsioniTotali = espulsioniTotali;
 	}
 	
+	public void setPrestazioni(List<Prestazione> prestazioni) {
+		this.prestazioni = prestazioni;
+	}
 	
 	/* ************* */
 	/* METODI GETTER */
@@ -191,5 +199,19 @@ public class Giocatore {
 	
 	public int getEspulsioniTotali() {
 		return espulsioniTotali;
+	}
+
+	public List<Prestazione> getPrestazioni() {
+		return prestazioni;
+	}
+
+	public void aggiornaGiocatore(Prestazione prestazione) {
+		this.setPresenzeTotali(presenzeTotali + 1);
+		this.setMinutiGiocatiTotali(this.getMinutiGiocatiTotali() + prestazione.getMinutiGiocati());
+		this.setGolSegnatiTotali(this.getGolSegnatiTotali() + prestazione.getGolSegnati());
+		this.setCleanSheetTotali(this.getCleanSheetTotali() + prestazione.getPortaInviolata());
+		this.setAssistTotali(this.getAssistTotali() + prestazione.getAssist());
+		this.setAmmonizioniTotali(this.getAmmonizioniTotali() + prestazione.getAmmonizioni());
+		this.setEspulsioniTotali(this.getEspulsioniTotali() + prestazione.getEspulsione());
 	}
 }
