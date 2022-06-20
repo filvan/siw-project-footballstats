@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Prestazione {
@@ -14,20 +16,34 @@ public class Prestazione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String data;
 	
+	@NotBlank
+	@Min(value = 1)
 	private int minutiGiocati;
 	
+	@NotBlank
+	@Min(value = 0)
 	private int golSegnati;
 	
+	@NotBlank
+	@Min(value = 0)
 	private int assist;
 	
+	@NotBlank
+	@Min(value = 0)
 	private int ammonizioni;
 	
+	@NotBlank
+	@Min(value = 0)
 	private int espulsione;
 	
+	@NotBlank
+	@Min(value = 0)
 	private int portaInviolata;
 	
+	@NotBlank
 	@OneToOne
 	private Squadra squadraAvversaria;
 	
