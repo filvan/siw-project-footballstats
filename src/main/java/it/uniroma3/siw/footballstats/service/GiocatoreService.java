@@ -50,4 +50,8 @@ public class GiocatoreService {
 		giocatoreRepository.delete(giocatore);
 	}
 
+	public List<Giocatore> findAllBySquadraIdOrderByRuoloDesc(Long id) {
+		return this.giocatoreRepository.findAllBySquadraIdOrderByRuoloDesc(id);
+	}
+
 }

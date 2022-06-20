@@ -54,7 +54,7 @@ public class SquadraController {
 		Squadra squadra = this.squadraService.findById(id);
 		model.addAttribute("squadra", squadra);
 
-		List<Giocatore> elencoGiocatori = squadra.getGiocatori();
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllBySquadraIdOrderByRuoloDesc(id);
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		
 		return "/admin/visualizza/squadra.html";
@@ -108,7 +108,7 @@ public class SquadraController {
 		Squadra squadra = this.squadraService.findById(id);
 		model.addAttribute("squadra", squadra);
 		
-		List<Giocatore> elencoGiocatori = squadra.getGiocatori();
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllBySquadraIdOrderByRuoloDesc(id);
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		
 		return "/user/visualizza/squadra.html";
