@@ -103,7 +103,6 @@ public class GiocatoreController {
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
 
-
 	@GetMapping("/user/giocatore/{id}")
 	public String getGiocatoreUser(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);

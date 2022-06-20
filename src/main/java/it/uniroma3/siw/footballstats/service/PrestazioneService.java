@@ -39,4 +39,9 @@ public class PrestazioneService {
 	public boolean alreadyExists(Prestazione prestazione) {
 		return this.prestazioneRepository.existsByGiocatoreAndDataAndSquadraAvversaria(prestazione.getGiocatore(), prestazione.getData(), prestazione.getSquadraAvversaria());
 	}
+
+	public List<Prestazione> findAllByGiocatoreOrderByDataAsc(Long giocatoreId) {
+		return this.prestazioneRepository.findAllByGiocatoreIdOrderByDataAsc(giocatoreId);
+		
+	}
 }

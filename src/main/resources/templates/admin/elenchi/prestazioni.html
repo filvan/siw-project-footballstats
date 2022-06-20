@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Elenco Prestazioni Admin</title>
+</head>
+
+<body>
+	<div>
+		<h1>Elenco prestazioni:</h1>
+		<table>
+			<tr th:each="prestazione : ${elencoPrestazioni}">
+				<td>
+					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
+						th:text="${prestazione.data} + ', giocata contro ' + ${prestazione.squadraAvversaria.nome}">Prestazione</a>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+	
+	<footer>
+		<div>
+			<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
+		</div>
+		<div>
+			<a href="/default">Torna alla home amministratore</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</footer>
+	
+</body>
+
+</html>

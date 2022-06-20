@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Dettagli Prestazione User</title>
+</head>
+
+<body>
+
+	<h1>Dettagli Prestazione</h1>
+
+	<div>
+		<table>
+			<tr>
+				<td>Data: </td>
+				<td th:text="*{prestazione.data}">Data</td>
+			</tr>
+
+			<tr>
+				<td>Squadra Avversaria: </td>
+				<td>
+					<a th:href="@{'/user/squadra/' + ${prestazione.squadraAvversaria.id}}" th:text="*{prestazione.squadraAvversaria.nome}" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>Minuti Giocati: </td>
+				<td th:text="*{prestazione.minutiGiocati}">Minuti Giocati </td>
+			</tr>
+
+			<tr>
+				<td>Porta Inviolata: </td>
+				<td th:if="*{prestazione.portaInviolata == 1}" th:text="Sì"></td>
+				<td th:unless="*{prestazione.portaInviolata == 1}" th:text="No"></td>
+			</tr>
+
+			<tr>
+				<td>Gol Segnati: </td>
+				<td th:text="*{prestazione.golSegnati}">Gol Segnati </td>
+			</tr>
+
+			<tr>
+				<td>Assist Forniti: </td>
+				<td th:text="*{prestazione.assist}">Assist </td>
+			</tr>
+
+			<tr>
+				<td>Ammonizioni: </td>
+				<td th:text="*{prestazione.ammonizioni}">Ammonizioni</td>
+			</tr>
+
+			<tr>
+				<td>Espulsione: </td>
+				<td th:if="*{prestazione.espulsione == 1}" th:text="Sì"></td>
+				<td th:unless="*{prestazione.espulsione == 1}" th:text="No"></td>
+			</tr>
+
+		</table>
+	</div>
+	   
+	<div>
+
+		<div>
+			<a th:href="@{/default}">Torna alla home amministratore</a>
+		</div>
+		<div>
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
+	</div>
+
+</body>
+
+</html>

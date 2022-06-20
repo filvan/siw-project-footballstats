@@ -29,7 +29,10 @@ public class PrestazioneController {
 	@Autowired private GiocatoreService giocatoreService;
 	@Autowired private SquadraService squadraService;
 	
-
+	/* ********************* */
+	/* OPERAZIONI LATO ADMIN */
+	/* ********************* */
+	
 	@GetMapping("/admin/inserisciPrestazione/{giocatoreId}")
 	public String toPrestazioneForm(@PathVariable("giocatoreId") Long giocatoreId, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
@@ -52,11 +55,54 @@ public class PrestazioneController {
 			giocatore.aggiornaGiocatore(prestazione);
 			this.giocatoreService.save(giocatore);
 			this.prestazioneService.save(prestazione);
-//			giocatore.getPrestazioni().add(prestazione);
-//			this.giocatoreService.save(giocatore);
+
 			return "/admin/addSuccesso/inserimentoPrestazione.html";
 		}
 
 		return "/admin/form/prestazioneForm.html";
 	}
+	
+	@GetMapping("/admin/prestazioni/{giocatoreId}")
+	public String getPrestazioniGiocatoreAdmin(@PathVariable ("giocatoreId") Long giocatoreId, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
+		model.addAttribute("giocatore", giocatore);
+		
+		List<Prestazione> elencoPrestazioni = this.prestazioneService.findAllByGiocatoreOrderByDataAsc(giocatore.getId());
+		model.addAttribute("elencoPrestazioni", elencoPrestazioni);
+		
+		return "/admin/elenchi/prestazioni.html";
+	}
+	
+	@GetMapping("/admin/prestazione/{prestazioneId}")
+	public String getPrestazioneAdmin(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
+		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
+		model.addAttribute("prestazione", prestazione);
+		
+		return "/admin/visualizza/prestazione.html";
+	}
+	
+	
+	/* ******************** */
+	/* OPERAZIONI LATO USER */
+	/* ******************** */
+	
+	@GetMapping("/user/prestazioni/{giocatoreId}")
+	public String getPrestazioniGiocatoreUser(@PathVariable ("giocatoreId") Long giocatoreId, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
+		model.addAttribute("giocatore", giocatore);
+		
+		List<Prestazione> elencoPrestazioni = this.prestazioneService.findAllByGiocatoreOrderByDataAsc(giocatore.getId());
+		model.addAttribute("elencoPrestazioni", elencoPrestazioni);
+		
+		return "/user/elenchi/prestazioni.html";
+	}
+	
+	@GetMapping("/user/prestazione/{prestazioneId}")
+	public String getPrestazioneUser(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
+		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
+		model.addAttribute("prestazione", prestazione);
+		
+		return "/user/visualizza/prestazione.html";
+	}
 }
+
