@@ -35,6 +35,9 @@ public class Giocatore {
 	@ManyToOne
 	private Squadra squadra;
 	
+	@OneToMany(mappedBy = "giocatore", cascade = {CascadeType.REMOVE})
+	private List<Prestazione> prestazioni;
+	
 	/* I seguenti attributi sono derivati e gestiti in modo materializzato */
 	private int presenzeTotali;
 	
@@ -49,9 +52,6 @@ public class Giocatore {
 	private int ammonizioniTotali;
 	
 	private int espulsioniTotali;
-	
-	@OneToMany(mappedBy = "giocatore", cascade = {CascadeType.REMOVE})
-	private List<Prestazione> prestazioni;
 	
 	/* *********** */
 	/* COSTRUTTORI */
@@ -206,8 +206,12 @@ public class Giocatore {
 		return prestazioni;
 	}
 
+	/* ****************** */
+	/* METODI DI SUPPORTO */
+	/* ****************** */
+	
 	public void aggiornaGiocatoreIncrementi(Prestazione prestazione) {
-		this.setPresenzeTotali(presenzeTotali + 1);
+		this.setPresenzeTotali(this.getPresenzeTotali() + 1);
 		this.setMinutiGiocatiTotali(this.getMinutiGiocatiTotali() + prestazione.getMinutiGiocati());
 		this.setGolSegnatiTotali(this.getGolSegnatiTotali() + prestazione.getGolSegnati());
 		this.setCleanSheetTotali(this.getCleanSheetTotali() + prestazione.getPortaInviolata());
@@ -217,7 +221,7 @@ public class Giocatore {
 	}
 	
 	public void aggiornaGiocatoreDecrementi(Prestazione prestazione) {
-		this.setPresenzeTotali(presenzeTotali - 1);
+		this.setPresenzeTotali(this.getPresenzeTotali() - 1);
 		this.setMinutiGiocatiTotali(this.getMinutiGiocatiTotali() - prestazione.getMinutiGiocati());
 		this.setGolSegnatiTotali(this.getGolSegnatiTotali() - prestazione.getGolSegnati());
 		this.setCleanSheetTotali(this.getCleanSheetTotali() - prestazione.getPortaInviolata());

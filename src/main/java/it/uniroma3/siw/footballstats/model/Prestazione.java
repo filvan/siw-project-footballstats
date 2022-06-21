@@ -50,6 +50,10 @@ public class Prestazione {
 	@ManyToOne
 	private Giocatore giocatore;
 	
+	/* *********** */
+	/* COSTRUTTORI */
+	/* *********** */
+	
 	public Prestazione() {
 		
 	}
