@@ -15,7 +15,7 @@ import it.uniroma3.siw.footballstats.repository.GiocatoreRepository;
 @Service
 public class GiocatoreService {
 
-	@Autowired GiocatoreRepository giocatoreRepository;
+	@Autowired private GiocatoreRepository giocatoreRepository;
 
 	@Transactional
 	public void save(@Valid Giocatore giocatore) {
@@ -52,6 +52,34 @@ public class GiocatoreService {
 
 	public List<Giocatore> findAllBySquadraIdOrderByRuoloDesc(Long id) {
 		return this.giocatoreRepository.findAllBySquadraIdOrderByRuoloDesc(id);
+	}
+
+	public List<Giocatore> findAllByOrderByPresenzeTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByPresenzeTotaliDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByMinutiGiocatiTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByMinutiGiocatiTotaliDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByGolSegnatiTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByGolSegnatiTotaliDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByAssistTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByAssistTotaliDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByCleanSheetTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByCleanSheetTotaliDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByAmmonizioniTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByAmmonizioniTotaliDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByEspulsioniTotaliDesc() {
+		return this.giocatoreRepository.findAllByOrderByEspulsioniTotaliDesc();
 	}
 
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Menu Classifiche</title> 
+</head>
+
+<body>
+	<h1>Classifiche dei Giocatori per Statistica</h1>
+
+	<table>
+		<tr>
+			<td><a th:href="@{/user/classifiche/presenze}">Classifica dei Giocatori per Presenze</a></td>
+		</tr>
+		
+		<tr>
+			<td><a th:href="@{/user/classifiche/minutiGiocati}">Classifica dei Giocatori per Minuti Giocati</a></td>
+		</tr>
+		
+		<tr>
+			<td><a th:href="@{/user/classifiche/golSegnati}">Classifica dei Giocatori per Gol Segnati</a></td>
+		</tr>
+		
+		<tr>
+			<td><a th:href="@{/user/classifiche/assist}">Classifica dei Giocatori per Assist Forniti</a></td>
+		</tr>
+		
+		<tr>
+			<td><a th:href="@{/user/classifiche/cleanSheet}">Classifica dei Giocatori per Porte Inviolate</a></td>
+		</tr>
+		
+		<tr>
+			<td><a th:href="@{/user/classifiche/ammonizioni}">Classifica dei Giocatori per Ammonizioni</a></td>
+		</tr>
+		
+		<tr>
+			<td><a th:href="@{/user/classifiche/espulsioni}">Classifica dei Giocatori per Espulsioni</a></td>
+		</tr>
+	</table>
+		
+	<div>
+		<a th:href="@{/default}">Torna alla Home</a>
+	</div>
+		
+	<div>
+		<a th:href="@{/logout}">Logout</a>
+	</div>
+</body>
+
+</html>

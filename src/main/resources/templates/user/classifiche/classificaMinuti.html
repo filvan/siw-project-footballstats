@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Classifica per Minuti Giocati</title> 
+</head>
+
+<body>
+	<h1>Classifica per Minuti Giocati</h1>
+	
+	<table>
+		<tr th:each="g, iStat: ${elencoGiocatori}">
+			<td th:text="${iStat.count}" />
+			
+			<td> 
+				<a th:href="@{'/user/giocatore/' + ${g.id}}" th:text="${g.nome} + ' ' + ${g.cognome}" />
+			</td>
+			
+			<td th:text="${g.ruolo}" />
+			
+			<td >
+				<a th:href="@{'/user/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
+			</td>
+			
+			<td th:text="'Numero Minuti Giocati: ' + ${g.minutiGiocatiTotali}" />
+			
+		</tr>
+	</table>
+	
+	
+
+	<div>
+		<a th:href="@{/user/classifiche}">Torna al Menù delle Classifiche</a>
+	</div>
+	
+	<div>
+		<a th:href="@{/default}">Torna alla Home</a>
+	</div>
+	
+	<div>
+		<a th:href="@{/logout}">Logout</a>
+	</div>
+</body>
+
+</html>

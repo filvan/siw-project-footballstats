@@ -116,4 +116,58 @@ public class GiocatoreController {
 		model.addAttribute("giocatori", giocatori);
 		return "user/elenchi/giocatori.html";
 	}
+	
+	@GetMapping("/user/classifiche")
+	public String toMenuClassifiche(Model model) {
+		return "/user/classifiche/menuClassifiche.html";
+	}
+	
+	@GetMapping("/user/classifiche/presenze")
+	public String getClassificaPresenze(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByPresenzeTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaPresenze.html";
+	}
+	
+	@GetMapping("/user/classifiche/minutiGiocati")
+	public String getClassificaMinutiGiocati(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByMinutiGiocatiTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaMinuti.html";
+	}
+	
+	@GetMapping("/user/classifiche/golSegnati")
+	public String getClassificaGol(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByGolSegnatiTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaGol.html";
+	}
+	
+	@GetMapping("/user/classifiche/assist")
+	public String getClassificaAssist(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByAssistTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaAssist.html";
+	}
+	
+	@GetMapping("/user/classifiche/cleanSheet")
+	public String getClassificaCleanSheet(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByCleanSheetTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaCleanSheet.html";
+	}
+	
+	@GetMapping("/user/classifiche/ammonizioni")
+	public String getClassificaAmmonizioni(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByAmmonizioniTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaAmmonizioni.html";
+	}
+	
+	@GetMapping("/user/classifiche/espulsioni")
+	public String getClassificaEspulsioni(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByEspulsioniTotaliDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		return "/user/classifiche/classificaEspulsioni.html";
+	}
 }
