@@ -6,7 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -19,31 +21,33 @@ public class Prestazione {
 	@NotBlank
 	private String data;
 	
-	@NotBlank
+	@NotNull
 	@Min(value = 1)
-	private int minutiGiocati;
+	private Integer minutiGiocati;
 	
-	@NotBlank
+	@NotNull
 	@Min(value = 0)
-	private int golSegnati;
+	private Integer golSegnati;
 	
-	@NotBlank
+	@NotNull
 	@Min(value = 0)
-	private int assist;
+	private Integer assist;
 	
-	@NotBlank
+	@NotNull
 	@Min(value = 0)
-	private int ammonizioni;
+	@Max(value = 2)
+	private Integer ammonizioni;
 	
-	@NotBlank
+	@NotNull
 	@Min(value = 0)
-	private int espulsione;
+	@Max(value = 1)
+	private Integer espulsione;
 	
-	@NotBlank
+	@NotNull
 	@Min(value = 0)
-	private int portaInviolata;
+	@Max(value = 1)
+	private Integer portaInviolata;
 	
-	@NotBlank
 	@OneToOne
 	private Squadra squadraAvversaria;
 	
@@ -55,11 +59,16 @@ public class Prestazione {
 	/* *********** */
 	
 	public Prestazione() {
-		
+		this.minutiGiocati = 0;
+		this.golSegnati = 0;
+		this.assist = 0;
+		this.ammonizioni = 0;
+		this.espulsione = 0;
+		this.portaInviolata = 0;
 	}
 	
-	public Prestazione(String data, int minutiGiocati, int golSegnati, int assist, int ammonizioni,
-			int espulsione, int portaInviolata) {
+	public Prestazione(String data, Integer minutiGiocati, Integer golSegnati, Integer assist, Integer ammonizioni,
+			Integer espulsione, Integer portaInviolata) {
 		this.data = data;
 		this.minutiGiocati = minutiGiocati;
 		this.golSegnati = golSegnati;
@@ -81,27 +90,27 @@ public class Prestazione {
 		return data;
 	}
 
-	public int getMinutiGiocati() {
+	public Integer getMinutiGiocati() {
 		return minutiGiocati;
 	}
 
-	public int getGolSegnati() {
+	public Integer getGolSegnati() {
 		return golSegnati;
 	}
 
-	public int getAssist() {
+	public Integer getAssist() {
 		return assist;
 	}
 
-	public int getAmmonizioni() {
+	public Integer getAmmonizioni() {
 		return ammonizioni;
 	}
 
-	public int getEspulsione() {
+	public Integer getEspulsione() {
 		return espulsione;
 	}
 
-	public int getPortaInviolata() {
+	public Integer getPortaInviolata() {
 		return portaInviolata;
 	}
 	
@@ -125,27 +134,27 @@ public class Prestazione {
 		this.data = data;
 	}
 
-	public void setMinutiGiocati(int minutiGiocati) {
+	public void setMinutiGiocati(Integer minutiGiocati) {
 		this.minutiGiocati = minutiGiocati;
 	}
 
-	public void setGolSegnati(int golSegnati) {
+	public void setGolSegnati(Integer golSegnati) {
 		this.golSegnati = golSegnati;
 	}
 
-	public void setAssist(int assist) {
+	public void setAssist(Integer assist) {
 		this.assist = assist;
 	}
 
-	public void setAmmonizioni(int ammonizioni) {
+	public void setAmmonizioni(Integer ammonizioni) {
 		this.ammonizioni = ammonizioni;
 	}
 
-	public void setEspulsione(int espulsione) {
+	public void setEspulsione(Integer espulsione) {
 		this.espulsione = espulsione;
 	}
 
-	public void setPortaInviolata(int portaInviolata) {
+	public void setPortaInviolata(Integer portaInviolata) {
 		this.portaInviolata = portaInviolata;
 	}
 

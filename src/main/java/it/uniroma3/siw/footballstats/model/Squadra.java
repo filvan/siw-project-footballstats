@@ -3,6 +3,7 @@ package it.uniroma3.siw.footballstats.model;
 import java.util.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Squadra {
@@ -15,6 +16,7 @@ public class Squadra {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String nome;
 	
 	private String citta;

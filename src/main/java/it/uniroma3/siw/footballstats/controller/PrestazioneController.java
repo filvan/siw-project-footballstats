@@ -58,7 +58,13 @@ public class PrestazioneController {
 
 			return "/admin/addSuccesso/inserimentoPrestazione.html";
 		}
-
+		
+		model.addAttribute("giocatore", giocatore);
+		
+		List<Squadra> squadreAvversarie = this.squadraService.findAll();
+		squadreAvversarie.remove(giocatore.getSquadra());
+		model.addAttribute("squadreAvversarie", squadreAvversarie);
+		
 		return "/admin/form/prestazioneForm.html";
 	}
 	

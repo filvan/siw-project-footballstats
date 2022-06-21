@@ -39,25 +39,33 @@ public class Giocatore {
 	private List<Prestazione> prestazioni;
 	
 	/* I seguenti attributi sono derivati e gestiti in modo materializzato */
-	private int presenzeTotali;
+	private Integer presenzeTotali;
 	
-	private int minutiGiocatiTotali;
+	private Integer minutiGiocatiTotali;
 	
-	private int golSegnatiTotali;
+	private Integer golSegnatiTotali;
 	
-	private int cleanSheetTotali;
+	private Integer cleanSheetTotali;
 	
-	private int assistTotali;
+	private Integer assistTotali;
 	
-	private int ammonizioniTotali;
+	private Integer ammonizioniTotali;
 	
-	private int espulsioniTotali;
+	private Integer espulsioniTotali;
 	
 	/* *********** */
 	/* COSTRUTTORI */
 	/* *********** */
 	
-	public Giocatore() {}
+	public Giocatore() {
+		this.presenzeTotali = 0;
+		this.minutiGiocatiTotali = 0;
+		this.golSegnatiTotali = 0;
+		this.cleanSheetTotali = 0;
+		this.assistTotali = 0;
+		this.ammonizioniTotali = 0;
+		this.espulsioniTotali = 0;
+	}
 	
 	public Giocatore(String nome, String cognome, String nazionalita, String ruolo, String dataNascita,
 			Squadra squadra) {
@@ -110,31 +118,31 @@ public class Giocatore {
 		this.squadra = squadra;
 	}
 
-	public void setPresenzeTotali(int presenzeTotali) {
+	public void setPresenzeTotali(Integer presenzeTotali) {
 		this.presenzeTotali = presenzeTotali;
 	}
 
-	public void setMinutiGiocatiTotali(int minutiGiocatiTotali) {
+	public void setMinutiGiocatiTotali(Integer minutiGiocatiTotali) {
 		this.minutiGiocatiTotali = minutiGiocatiTotali;
 	}
 
-	public void setGolSegnatiTotali(int golSegnatiTotali) {
+	public void setGolSegnatiTotali(Integer golSegnatiTotali) {
 		this.golSegnatiTotali = golSegnatiTotali;
 	}
 
-	public void setCleanSheetTotali(int cleanSheetTotali) {
+	public void setCleanSheetTotali(Integer cleanSheetTotali) {
 		this.cleanSheetTotali = cleanSheetTotali;
 	}
 
-	public void setAssistTotali(int assistTotali) {
+	public void setAssistTotali(Integer assistTotali) {
 		this.assistTotali = assistTotali;
 	}
 
-	public void setAmmonizioniTotali(int ammonizioniTotali) {
+	public void setAmmonizioniTotali(Integer ammonizioniTotali) {
 		this.ammonizioniTotali = ammonizioniTotali;
 	}
 
-	public void setEspulsioniTotali(int espulsioniTotali) {
+	public void setEspulsioniTotali(Integer espulsioniTotali) {
 		this.espulsioniTotali = espulsioniTotali;
 	}
 	
@@ -174,31 +182,31 @@ public class Giocatore {
 		return squadra;
 	}
 	
-	public int getPresenzeTotali() {
+	public Integer getPresenzeTotali() {
 		return presenzeTotali;
 	}
 	
-	public int getMinutiGiocatiTotali() {
+	public Integer getMinutiGiocatiTotali() {
 		return minutiGiocatiTotali;
 	}
 	
-	public int getGolSegnatiTotali() {
+	public Integer getGolSegnatiTotali() {
 		return golSegnatiTotali;
 	}
 	
-	public int getCleanSheetTotali() {
+	public Integer getCleanSheetTotali() {
 		return cleanSheetTotali;
 	}
 	
-	public int getAssistTotali() {
+	public Integer getAssistTotali() {
 		return assistTotali;
 	}
 	
-	public int getAmmonizioniTotali() {
+	public Integer getAmmonizioniTotali() {
 		return ammonizioniTotali;
 	}
 	
-	public int getEspulsioniTotali() {
+	public Integer getEspulsioniTotali() {
 		return espulsioniTotali;
 	}
 
