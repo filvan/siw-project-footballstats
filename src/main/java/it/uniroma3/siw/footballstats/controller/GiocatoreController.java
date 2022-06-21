@@ -170,4 +170,23 @@ public class GiocatoreController {
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaEspulsioni.html";
 	}
+	
+	@GetMapping("/user/toConfrontaGiocatori")
+	public String toConfrontaGiocatori(Model model) {
+		model.addAttribute("giocatore1", new Giocatore());
+		model.addAttribute("giocatore2", new Giocatore());
+		
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderBySquadraNomeAscRuoloDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		
+		return "/user/confronta/toConfrontaGiocatori.html";
+	}
+	
+	@GetMapping("/user/confrontaGiocatori")
+	public String confrontaGiocatori(@ModelAttribute ("giocatore1") Giocatore giocatore1, @ModelAttribute ("giocatore2") Giocatore giocatore2, Model model) {
+		model.addAttribute("giocatore1", giocatore1);
+		model.addAttribute("giocatore2", giocatore2);
+		
+		return "/user/confronta/confrontaGiocatori.html";
+	}
 }

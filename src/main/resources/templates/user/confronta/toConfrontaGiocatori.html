@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Selezione Giocatori da Confrontare</title>
+</head>
+
+<body>
+	<h1>Seleziona i due Giocatori</h1>
+
+	<form th:action="@{/user/confrontaGiocatori}" th:method="GET">
+		<table>
+			<tr>
+				<td>Seleziona il Primo Giocatore: </td>
+				<td>
+					<select name="giocatore1">
+						<option disabled=true>--Elenco dei Giocatori</option>
+						<option th:each="g : ${elencoGiocatori}"
+							th:text="${g.nome} + ' ' + ${g.cognome} + ', ' + ${g.ruolo} + ', ' + ${g.squadra.nome}"
+							th:value="${g.id}" />
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Seleziona il Secondo Giocatore: </td>
+				<td>
+					<select name="giocatore2">
+						<option disabled=true>--Elenco dei Giocatori</option>
+						<option th:each="g : ${elencoGiocatori}"
+							th:text="${g.nome} + ' ' + ${g.cognome} + ', ' + ${g.ruolo} + ', ' + ${g.squadra.nome}"
+							th:value="${g.id}" />
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Confronta</button></td>
+			</tr>
+		</table>
+	</form>
+
+	<div>
+		<a th:href="@{/default}">Torna alla Home</a>
+	</div>
+
+	<div>
+		<a th:href="@{/logout}">Logout</a>
+	</div>
+</body>
+
+</html>

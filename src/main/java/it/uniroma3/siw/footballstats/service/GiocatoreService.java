@@ -82,4 +82,8 @@ public class GiocatoreService {
 		return this.giocatoreRepository.findAllByOrderByEspulsioniTotaliDesc();
 	}
 
+	public List<Giocatore> findAllByOrderBySquadraNomeAscRuoloDesc() {
+		return this.giocatoreRepository.findAllByOrderBySquadraNomeAscRuoloDesc();
+	}
+
 }
