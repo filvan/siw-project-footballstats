@@ -17,9 +17,9 @@
 
 		<table>
 			<tr>
-				<td>Data: </td>
-				<td><input type="text" th:field="*{data}" /></td>
-				<td th:if="${#fields.hasErrors('data')}" th:errors="*{data}" th:style="'color:red'"></td>
+				<td>Data (formato: gg-mm-aaaa): </td>
+				<td><input type="text" th:field="*{dataInserita}" /></td>
+				<td th:if="${#fields.hasErrors('dataInserita')}" th:errors="*{dataInserita}" th:style="'color:red'"></td>
 			</tr>
 			<tr>
 				<td>Squadra avversaria: </td>

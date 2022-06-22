@@ -12,8 +12,9 @@
 		<table>
 			<tr th:each="prestazione : ${elencoPrestazioni}">
 				<td>
-					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
-						th:text="${prestazione.data} + ', giocata contro ' + ${prestazione.squadraAvversaria.nome}">Prestazione</a>
+					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}" th:text="'Partita del ' + ${prestazione.dataInserita}"/>
+					<span>, giocata contro </span>
+					<a th:href = "@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}" th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
 				</td>
 				
 				<td>

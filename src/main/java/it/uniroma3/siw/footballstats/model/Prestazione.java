@@ -19,6 +19,8 @@ public class Prestazione {
 	private Long id;
 	
 	@NotBlank
+	private String dataInserita;
+	
 	private String data;
 	
 	@NotNull
@@ -121,6 +123,10 @@ public class Prestazione {
 	public Giocatore getGiocatore() {
 		return giocatore;
 	}
+	
+	public String getDataInserita() {
+		return dataInserita;
+	}
 
 	/* ************* */
 	/* METODI SETTER */
@@ -164,5 +170,23 @@ public class Prestazione {
 
 	public void setGiocatore(Giocatore giocatore) {
 		this.giocatore = giocatore;
+	}
+
+	public void setDataInserita(String dataInserita) {
+		this.dataInserita = dataInserita;
+	}
+	
+	/* ****************** */
+	/* METODI DI SUPPORTO */
+	/* ****************** */
+	public void formattaData() {
+		String dataInserita = this.getDataInserita();
+		
+		String anno = dataInserita.substring(6, 10);
+		String mese = dataInserita.substring(2, 6);
+		String giorno = dataInserita.substring(0, 2);
+		
+		String data = anno + mese + giorno;
+		this.setData(data);
 	}
 }

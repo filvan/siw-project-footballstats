@@ -49,6 +49,8 @@ public class PrestazioneController {
 	public String addPrestazione(@PathVariable("giocatoreId") Long giocatoreId, @Valid @ModelAttribute ("prestazione") Prestazione prestazione, BindingResult bindingResult, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
 		prestazione.setGiocatore(giocatore);
+		prestazione.formattaData();
+		
 		this.prestazioneValidator.validate(prestazione, bindingResult);
 
 		if(!bindingResult.hasErrors()) {
