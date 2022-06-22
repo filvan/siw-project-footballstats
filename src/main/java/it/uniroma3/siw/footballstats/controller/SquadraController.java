@@ -62,7 +62,7 @@ public class SquadraController {
 	// richiede tutti i squadre (non viene specificato un id particolare)
 	@GetMapping("/admin/squadre")
 	public String getAdminSquadre(Model model) {
-		List<Squadra> squadre = this.squadraService.findAll();
+		List<Squadra> squadre = this.squadraService.findAllByOrderByNomeAsc();
 		model.addAttribute("squadre", squadre);
 		return "/admin/elenchi/squadre.html";
 	}
@@ -115,7 +115,7 @@ public class SquadraController {
 
 	@GetMapping("/user/squadre")
 	public String getUserSquadre(Model model) {
-		List<Squadra> squadre = this.squadraService.findAll();
+		List<Squadra> squadre = this.squadraService.findAllByOrderByNomeAsc();
 		model.addAttribute("squadre", squadre);
 		return "/user/elenchi/squadre.html";
 	}

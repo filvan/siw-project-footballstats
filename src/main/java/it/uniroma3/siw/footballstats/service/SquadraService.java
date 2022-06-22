@@ -50,4 +50,8 @@ public class SquadraService {
 		squadraRepository.delete(squadra);
 	}
 
+	public List<Squadra> findAllByOrderByNomeAsc() {
+		return this.squadraRepository.findAllByOrderByNomeAsc();
+	}
+
 }

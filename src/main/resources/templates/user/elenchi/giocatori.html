@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Giocatori</title>
+	<title>Elenco Giocatori User</title>
 </head>
 
 <body>
@@ -14,6 +14,14 @@
 				<td>
 					<a href="giocatore.html" th:href="@{'/user/giocatore' + '/' + ${giocatore.id}}"
 						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</a>
+				</td>
+				
+				<td>
+					<span th:text="${giocatore.ruolo}" />
+				</td>
+				
+				<td>
+					<a th:href="@{'/user/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
 				</td>
 			</tr>
 		</table>

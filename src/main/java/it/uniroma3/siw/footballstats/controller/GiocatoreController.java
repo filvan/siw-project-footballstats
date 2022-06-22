@@ -58,7 +58,7 @@ public class GiocatoreController {
 	// richiede tutti i giocatori (non viene specificato un id particolare)
 	@GetMapping("/admin/giocatori")
 	public String getAdminGiocatori(Model model) {
-		List<Giocatore> giocatori = this.giocatoreService.findAll();
+		List<Giocatore> giocatori = this.giocatoreService.findAllByOrderBySquadraNomeAscRuoloDesc();
 		model.addAttribute("giocatori", giocatori);
 		return "admin/elenchi/giocatori.html";
 	}
@@ -112,7 +112,7 @@ public class GiocatoreController {
 
 	@GetMapping("/user/giocatori")
 	public String getUserGiocatori(Model model) {
-		List<Giocatore> giocatori = this.giocatoreService.findAll();
+		List<Giocatore> giocatori = this.giocatoreService.findAllByOrderBySquadraNomeAscRuoloDesc();
 		model.addAttribute("giocatori", giocatori);
 		return "user/elenchi/giocatori.html";
 	}
