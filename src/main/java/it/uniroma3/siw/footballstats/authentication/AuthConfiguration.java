@@ -1,19 +1,22 @@
 package it.uniroma3.siw.footballstats.authentication;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import static it.uniroma3.siw.footballstats.model.Credentials.ADMIN_ROLE;
 
 import javax.sql.DataSource;
 
-import static it.uniroma3.siw.footballstats.model.Credentials.ADMIN_ROLE;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import it.uniroma3.siw.footballstats.service.CustomOAuth2UserService;
+import it.uniroma3.siw.footballstats.service.OAuth2LoginSuccessHandler;
 
 
 /**
@@ -25,6 +28,13 @@ import static it.uniroma3.siw.footballstats.model.Credentials.ADMIN_ROLE;
 @EnableWebSecurity
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+    private CustomOAuth2UserService userService;
+	
+	@Autowired
+	private OAuth2LoginSuccessHandler oauth2LoginSuccessHandler;
+	
+	
     /**
      * The datasource is automatically injected into the AuthConfiguration (using its getters and setters)
      * and it is used to access the DB to get the Credentials to perform authentication and authorization
@@ -40,6 +50,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
         http
                 // authorization paragraph: qui definiamo chi può accedere a cosa
                 .authorizeRequests()
+                .antMatchers("/oauth2/**").permitAll()
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
                 .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
@@ -58,6 +69,14 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 // se il login ha successo, si viene rediretti al path /default
                 .defaultSuccessUrl("/default")
+                
+                .and()
+                .oauth2Login()
+                .defaultSuccessUrl("/default", true)
+                    .loginPage("/login")
+                    .userInfoEndpoint()
+                        .userService(userService)
+                        .and()
 
                 // logout paragraph: qui definiamo il logout
                 .and().logout()
