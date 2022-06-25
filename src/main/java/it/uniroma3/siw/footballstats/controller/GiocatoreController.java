@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,10 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.footballstats.controller.validator.GiocatoreValidator;
+import it.uniroma3.siw.footballstats.model.Credentials;
 import it.uniroma3.siw.footballstats.model.Giocatore;
 import it.uniroma3.siw.footballstats.model.Squadra;
+import it.uniroma3.siw.footballstats.model.User;
+import it.uniroma3.siw.footballstats.service.CredentialsService;
 import it.uniroma3.siw.footballstats.service.GiocatoreService;
 import it.uniroma3.siw.footballstats.service.SquadraService;
+import it.uniroma3.siw.footballstats.service.UserService;
 
 @Controller
 public class GiocatoreController {
@@ -25,7 +31,8 @@ public class GiocatoreController {
 	@Autowired private GiocatoreService giocatoreService;
 	@Autowired private GiocatoreValidator giocatoreValidator;
 	@Autowired private SquadraService squadraService;
-
+	@Autowired private UserService userService;
+		
 	/* ********************* */
 	/* OPERAZIONI LATO ADMIN */
 	/* ********************* */
@@ -99,6 +106,14 @@ public class GiocatoreController {
 		return "/admin/assegna/assegnaSquadraPerGiocatoreConSuccesso.html";
 	}
 	
+	@GetMapping("/admin/giocatoriPreferiti")
+	public String getClassificaPreferenze(Model model) {
+		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByNumeroPreferenzeDesc();
+		model.addAttribute("elencoGiocatori", elencoGiocatori);
+		
+		return "/admin/elenchi/giocatoriPreferiti.html";	
+	}
+	
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
@@ -107,6 +122,16 @@ public class GiocatoreController {
 	public String getGiocatoreUser(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		model.addAttribute("giocatore", giocatore);
+		
+		User user = AuthenticationController.user;
+		model.addAttribute("user", user);
+		
+		boolean traIPreferiti = false;
+		if (user.getGiocatoriPreferiti().contains(giocatore))
+			traIPreferiti = true;
+		model.addAttribute("condizione", traIPreferiti);
+		
+
 		return "user/visualizza/giocatore.html";
 	}
 
@@ -188,5 +213,46 @@ public class GiocatoreController {
 		model.addAttribute("giocatore2", giocatore2);
 		
 		return "/user/confronta/confrontaGiocatori.html";
+	}
+	
+	@GetMapping("/user/giocatoriPreferiti")
+	public String getGiocatoriPreferiti(Model model) {
+		
+		User user = AuthenticationController.user;
+		model.addAttribute("user", user);
+		
+		List<Giocatore> giocatoriPreferiti = user.getGiocatoriPreferiti();
+		model.addAttribute("giocatoriPreferiti", giocatoriPreferiti);
+		
+		return "/user/elenchi/giocatoriPreferiti.html";
+	}
+	
+	@GetMapping("/user/addGiocatorePreferito/{idGiocatore}")
+	public String addGiocatorePreferito(@PathVariable ("idGiocatore") Long idGiocatore, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(idGiocatore);
+		giocatore.setNumeroPreferenze(giocatore.getNumeroPreferenze() + 1);
+		this.giocatoreService.save(giocatore);
+		
+		User user = AuthenticationController.user;
+		user.getGiocatoriPreferiti().add(giocatore);
+		this.userService.update(user);
+		
+		return this.getGiocatoreUser(giocatore.getId(), model);		
+	}
+	
+	@GetMapping("/user/rimuoviGiocatorePreferito/{idGiocatore}")
+	public String rimuoviGiocatorePreferito(@PathVariable ("idGiocatore") Long idGiocatore, Model model) {
+		Giocatore giocatore = this.giocatoreService.findById(idGiocatore);
+		if (giocatore.getNumeroPreferenze() > 0)
+			giocatore.setNumeroPreferenze(giocatore.getNumeroPreferenze() - 1);
+		this.giocatoreService.save(giocatore);
+		
+		User user = AuthenticationController.user;
+		user.getGiocatoriPreferiti().remove(giocatore);
+		this.userService.update(user);
+		
+		model.addAttribute("giocatoriPreferiti", user.getGiocatoriPreferiti());
+		return "/user/elenchi/giocatoriPreferiti.html";
+		
 	}
 }

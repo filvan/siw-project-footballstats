@@ -36,4 +36,7 @@ public interface GiocatoreRepository extends CrudRepository<Giocatore, Long> {
 
 	public List<Giocatore> findAllByOrderBySquadraNomeAscRuoloDesc();
 
+	@Query("SELECT g FROM Giocatore g WHERE g.numeroPreferenze > 0 ORDER BY g.numeroPreferenze DESC")
+	public List<Giocatore> findAllByOrderByNumeroPreferenzeDesc();
+
 }

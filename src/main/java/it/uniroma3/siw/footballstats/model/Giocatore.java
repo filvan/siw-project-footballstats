@@ -53,6 +53,8 @@ public class Giocatore {
 	
 	private Integer espulsioniTotali;
 	
+	private int numeroPreferenze;
+	
 	/* *********** */
 	/* COSTRUTTORI */
 	/* *********** */
@@ -65,6 +67,7 @@ public class Giocatore {
 		this.assistTotali = 0;
 		this.ammonizioniTotali = 0;
 		this.espulsioniTotali = 0;
+		this.numeroPreferenze = 0;
 	}
 	
 	public Giocatore(String nome, String cognome, String nazionalita, String ruolo, String dataNascita,
@@ -83,6 +86,7 @@ public class Giocatore {
 		this.assistTotali = 0;
 		this.ammonizioniTotali = 0;
 		this.espulsioniTotali = 0;
+		this.numeroPreferenze = 0;
 	}
 
 	
@@ -150,6 +154,10 @@ public class Giocatore {
 		this.prestazioni = prestazioni;
 	}
 	
+	public void setNumeroPreferenze(int numeroPreferenze) {
+		this.numeroPreferenze = numeroPreferenze;
+	}
+	
 	/* ************* */
 	/* METODI GETTER */
 	/* ************* */
@@ -213,6 +221,10 @@ public class Giocatore {
 	public List<Prestazione> getPrestazioni() {
 		return prestazioni;
 	}
+	
+	public int getNumeroPreferenze() {
+		return numeroPreferenze;
+	}
 
 	/* ****************** */
 	/* METODI DI SUPPORTO */
@@ -237,4 +249,45 @@ public class Giocatore {
 		this.setAmmonizioniTotali(this.getAmmonizioniTotali() - prestazione.getAmmonizioni());
 		this.setEspulsioniTotali(this.getEspulsioniTotali() - prestazione.getEspulsione());
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Giocatore)) {
+			return false;
+		}
+		Giocatore other = (Giocatore) obj;
+		if (cognome == null) {
+			if (other.cognome != null) {
+				return false;
+			}
+		} else if (!cognome.equals(other.cognome)) {
+			return false;
+		}
+		if (dataNascita == null) {
+			if (other.dataNascita != null) {
+				return false;
+			}
+		} else if (!dataNascita.equals(other.dataNascita)) {
+			return false;
+		}
+		if (nazionalita == null) {
+			if (other.nazionalita != null) {
+				return false;
+			}
+		} else if (!nazionalita.equals(other.nazionalita)) {
+			return false;
+		}
+		if (nome == null) {
+			if (other.nome != null) {
+				return false;
+			}
+		} else if (!nome.equals(other.nome)) {
+			return false;
+		}
+		return true;
+	}
+
 }

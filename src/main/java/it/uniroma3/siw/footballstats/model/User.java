@@ -1,9 +1,13 @@
 package it.uniroma3.siw.footballstats.model;
 
+import java.util.*;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -20,6 +24,13 @@ public class User {
 	
 	@NotBlank
 	private String cognome;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Giocatore> giocatoriPreferiti;
+	
+	public User() {
+		this.giocatoriPreferiti = new ArrayList<>();
+	}
 	
 	public Long getId() {
 		return id;
@@ -45,5 +56,12 @@ public class User {
 		this.cognome = cognome;
 	}
 
-	/* COMMENTO TEST */
+	public List<Giocatore> getGiocatoriPreferiti() {
+		return giocatoriPreferiti;
+	}
+
+	public void setGiocatoriPreferiti(List<Giocatore> giocatoriPreferiti) {
+		this.giocatoriPreferiti = giocatoriPreferiti;
+	}
+
 }

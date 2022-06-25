@@ -3,14 +3,14 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Elenco Giocatori User</title>
+	<title>Elenco Giocatori Preferiti User</title>
 </head>
 
 <body>
 	<div>
-		<h1>Elenco giocatori:</h1>
+		<h1>Elenco giocatori preferiti: </h1>
 		<table>
-			<tr th:each="giocatore : ${giocatori}">
+			<tr th:each="giocatore : ${giocatoriPreferiti}">
 				<td>
 					<a href="giocatore.html" th:href="@{'/user/giocatore' + '/' + ${giocatore.id}}"
 						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</a>
@@ -22,6 +22,10 @@
 				
 				<td th:if="${giocatore.squadra} != null">
 					<a th:href="@{'/user/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
+				</td>
+				
+				<td>
+					<a th:href="@{'/user/rimuoviGiocatorePreferito/' + ${giocatore.id}}">Rimuovi</a>
 				</td>
 			</tr>
 		</table>

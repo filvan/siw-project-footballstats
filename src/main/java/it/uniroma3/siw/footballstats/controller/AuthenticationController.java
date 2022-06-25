@@ -23,6 +23,8 @@ public class AuthenticationController {
 	@Autowired private CredentialsService credentialsService;
 	@Autowired private CredentialsValidator credentialsValidator;
 	
+	public static User user;
+	
 	@GetMapping("/register")
 	public String toPaginaRegistrazione(Model model) {
 		model.addAttribute("user", new User());
@@ -57,11 +59,18 @@ public class AuthenticationController {
 		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
+    	user = credentials.getUser();
     	
-    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE))
-            return "admin/home.html";
-        if (credentials.getRole().equals(Credentials.DEFAULT_ROLE))
+    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    		model.addAttribute("user", user);
+    		return "admin/home.html";
+    	}
+
+        if (credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
+        	model.addAttribute("user", user);
         	return "user/home.html";
+        }
+
         else
         	return "loginForm.html";
 	}

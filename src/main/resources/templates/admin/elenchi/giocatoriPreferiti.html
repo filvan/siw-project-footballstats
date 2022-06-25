@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Classifica per Preferenze</title> 
+</head>
+
+<body>
+	<h1>I Giocatori preferiti della Community</h1>
+	
+	<table>
+		<tr th:each="g, iStat: ${elencoGiocatori}">
+			<td th:text="${iStat.count}" />
+			
+			<td> 
+				<a th:href="@{'/admin/giocatore/' + ${g.id}}" th:text="${g.nome} + ' ' + ${g.cognome}" />
+			</td>
+			
+			<td th:text="${g.ruolo}" />
+			
+			<td th:if="${g.squadra} != null">
+				<a th:href="@{'/admin/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
+			</td>
+			
+			<td th:text="'Numero Preferenze: ' + ${g.numeroPreferenze}" />
+			
+		</tr>
+	</table>
+	
+		
+	<div>
+		<a th:href="@{/default}">Torna alla Home</a>
+	</div>
+	
+	<div>
+		<a th:href="@{/logout}">Logout</a>
+	</div>
+</body>
+
+</html>

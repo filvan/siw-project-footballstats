@@ -3,8 +3,6 @@ package it.uniroma3.siw.footballstats.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +16,7 @@ public class GiocatoreService {
 	@Autowired private GiocatoreRepository giocatoreRepository;
 
 	@Transactional
-	public void save(@Valid Giocatore giocatore) {
+	public void save(Giocatore giocatore) {
 		this.giocatoreRepository.save(giocatore);
 	}
 
@@ -84,6 +82,10 @@ public class GiocatoreService {
 
 	public List<Giocatore> findAllByOrderBySquadraNomeAscRuoloDesc() {
 		return this.giocatoreRepository.findAllByOrderBySquadraNomeAscRuoloDesc();
+	}
+
+	public List<Giocatore> findAllByOrderByNumeroPreferenzeDesc() {
+		return this.giocatoreRepository.findAllByOrderByNumeroPreferenzeDesc();
 	}
 
 }

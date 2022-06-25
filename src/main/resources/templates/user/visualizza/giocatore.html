@@ -7,7 +7,7 @@
 <body>
 
     <h1>Dettagli Giocatore</h1>
-    	
+        	
     <div>
 		<div>
 			<span>Nome: </span><span th:text="*{giocatore.nome}">Nome</span>
@@ -81,6 +81,14 @@
     </div>
 	
 	<div>
+		<div th:if="${condizione == false}">
+			<a th:href="@{'/user/addGiocatorePreferito/' + ${giocatore.id}}">Aggiungi ai Giocatori Preferiti</a>
+		</div>
+		
+		<div th:unless="${condizione == false}">
+			<span>Questo Giocatore è tra i tuoi </span>
+			<a th:href="@{/user/giocatoriPreferiti}" th:text="preferiti" />
+		</div>
 		
 		<div>
 			<a th:href="@{'/user/prestazioni/' + ${giocatore.id}}">Visualizza le partite giocate</a>
