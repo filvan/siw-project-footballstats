@@ -12,16 +12,19 @@ import it.uniroma3.siw.footballstats.repository.CredentialsRepository;
 @Service
 public class CredentialsService {
 
-	@Autowired 
-	protected CredentialsRepository credentialsRepository;
-	
-	@Autowired
-	protected PasswordEncoder passwordEncoder;
+	@Autowired protected CredentialsRepository credentialsRepository;
+	@Autowired protected PasswordEncoder passwordEncoder;
+	@Autowired private UserService userService;
 	
 	@Transactional
 	public void save(Credentials credentials) {
-		credentials.setRole(Credentials.DEFAULT_ROLE);
-//		credentials.setRole(Credentials.ADMIN_ROLE);
+		
+		if (this.userService.findAll().size() == 0 && credentials.getUsername().equals("admin"))
+			credentials.setRole(Credentials.ADMIN_ROLE);
+		
+		else
+			credentials.setRole(Credentials.DEFAULT_ROLE);
+		
 		credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
 		this.credentialsRepository.save(credentials);
 	}
@@ -30,7 +33,6 @@ public class CredentialsService {
 		return this.credentialsRepository.existsByUsername(credentials.getUsername());
 	}
 	
-	@Transactional
 	public Credentials getCredentials(String username) {
 		return this.credentialsRepository.findByUsername(username).get();
 	}
