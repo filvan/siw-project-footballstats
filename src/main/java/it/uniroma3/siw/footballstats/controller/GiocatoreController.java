@@ -97,7 +97,7 @@ public class GiocatoreController {
 	public String assegnazioneSquadra(@PathVariable("idGiocatore") Long id, @ModelAttribute("squadra") Squadra squadra, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		giocatore.setSquadra(squadra);
-		this.giocatoreService.save(giocatore);
+		this.giocatoreService.update(giocatore);
 		
 		return "/admin/assegna/assegnaSquadraPerGiocatoreConSuccesso.html";
 	}
@@ -227,7 +227,7 @@ public class GiocatoreController {
 	public String addGiocatorePreferito(@PathVariable ("idGiocatore") Long idGiocatore, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(idGiocatore);
 		giocatore.setNumeroPreferenze(giocatore.getNumeroPreferenze() + 1);
-		this.giocatoreService.save(giocatore);
+		this.giocatoreService.update(giocatore);
 		
 		User user = AuthenticationController.user;
 		user.getGiocatoriPreferiti().add(giocatore);
@@ -241,7 +241,7 @@ public class GiocatoreController {
 		Giocatore giocatore = this.giocatoreService.findById(idGiocatore);
 		if (giocatore.getNumeroPreferenze() > 0)
 			giocatore.setNumeroPreferenze(giocatore.getNumeroPreferenze() - 1);
-		this.giocatoreService.save(giocatore);
+		this.giocatoreService.update(giocatore);
 		
 		User user = AuthenticationController.user;
 		user.getGiocatoriPreferiti().remove(giocatore);

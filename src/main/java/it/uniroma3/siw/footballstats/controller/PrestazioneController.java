@@ -55,7 +55,7 @@ public class PrestazioneController {
 
 		if(!bindingResult.hasErrors()) {
 			giocatore.aggiornaGiocatoreIncrementi(prestazione);
-			this.giocatoreService.save(giocatore);
+			this.giocatoreService.update(giocatore);
 			this.prestazioneService.save(prestazione);
 
 			return "/admin/addSuccesso/inserimentoPrestazione.html";
@@ -103,7 +103,7 @@ public class PrestazioneController {
 		
 		Giocatore giocatore = prestazione.getGiocatore();
 		giocatore.aggiornaGiocatoreDecrementi(prestazione);
-		this.giocatoreService.save(giocatore);
+		this.giocatoreService.update(giocatore);
 		
 		this.prestazioneService.delete(prestazione);
 		

@@ -18,16 +18,19 @@ public class PrestazioneService {
 	@Autowired PrestazioneRepository prestazioneRepository;
 
 	@Transactional
-	public void save(@Valid Prestazione prestazione) {
+	public void save(Prestazione prestazione) {
 		this.prestazioneRepository.save(prestazione);
 	}
-
+	
 	@Transactional
+	public void delete(Prestazione prestazione) {
+		this.prestazioneRepository.delete(prestazione);
+	}
+
 	public List<Prestazione> findAll() {
 		return (List<Prestazione>) prestazioneRepository.findAll();
 	}
 
-	@Transactional
 	public Prestazione findById(Long id) {
 		Optional<Prestazione> optional = prestazioneRepository.findById(id);
 		if (optional.isPresent())
@@ -42,11 +45,5 @@ public class PrestazioneService {
 
 	public List<Prestazione> findAllByGiocatoreOrderByDataAsc(Long giocatoreId) {
 		return this.prestazioneRepository.findAllByGiocatoreIdOrderByDataAsc(giocatoreId);
-		
-	}
-
-	@Transactional
-	public void delete(Prestazione prestazione) {
-		this.prestazioneRepository.delete(prestazione);
 	}
 }

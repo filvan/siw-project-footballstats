@@ -92,7 +92,7 @@ public class SquadraController {
 	public String rimuoviGiocatore(@PathVariable("idGiocatore") Long id, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		giocatore.setSquadra(null);
-		this.giocatoreService.save(giocatore);
+		this.giocatoreService.update(giocatore);
 		
 		return "/admin/rimuovi/rimuoviSquadraPerGiocatoreConSuccesso.html";
 	}

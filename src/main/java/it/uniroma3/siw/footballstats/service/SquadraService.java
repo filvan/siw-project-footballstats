@@ -15,19 +15,27 @@ import it.uniroma3.siw.footballstats.repository.SquadraRepository;
 @Service
 public class SquadraService {
 
-	@Autowired SquadraRepository squadraRepository;
+	@Autowired private SquadraRepository squadraRepository;
 
 	@Transactional
-	public void save(@Valid Squadra squadra) {
+	public void save(Squadra squadra) {
 		this.squadraRepository.save(squadra);
+	}
+	
+	@Transactional
+	public void deleteById(Long id) {
+		squadraRepository.deleteById(id);
 	}
 
 	@Transactional
+	public void delete(Squadra squadra) {
+		squadraRepository.delete(squadra);
+	}
+
 	public List<Squadra> findAll() {
 		return (List<Squadra>) squadraRepository.findAll();
 	}
 
-	@Transactional
 	public Squadra findById(Long id) {
 		Optional<Squadra> optional = squadraRepository.findById(id);
 		if (optional.isPresent())
@@ -38,16 +46,6 @@ public class SquadraService {
 
 	public boolean alreadyExists(Squadra squadra) {
 		return this.squadraRepository.existsByNomeAndCitta(squadra.getNome(), squadra.getCitta());
-	}
-
-	@Transactional
-	public void deleteById(Long id) {
-		squadraRepository.deleteById(id);
-	}
-
-	@Transactional
-	public void delete(Squadra squadra) {
-		squadraRepository.delete(squadra);
 	}
 
 	public List<Squadra> findAllByOrderByNomeAsc() {

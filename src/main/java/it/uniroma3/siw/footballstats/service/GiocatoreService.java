@@ -19,13 +19,26 @@ public class GiocatoreService {
 	public void save(Giocatore giocatore) {
 		this.giocatoreRepository.save(giocatore);
 	}
+	
+	@Transactional
+	public void update(Giocatore giocatore) {
+		this.giocatoreRepository.save(giocatore);
+	}
+	
+	@Transactional
+	public void deleteById(Long id) {
+		giocatoreRepository.deleteById(id);
+	}
 
 	@Transactional
+	public void delete(Giocatore giocatore) {
+		giocatoreRepository.delete(giocatore);
+	}
+
 	public List<Giocatore> findAll() {
 		return (List<Giocatore>) giocatoreRepository.findAll();
 	}
 
-	@Transactional
 	public Giocatore findById(Long id) {
 		Optional<Giocatore> optional = giocatoreRepository.findById(id);
 		if (optional.isPresent())
@@ -36,16 +49,6 @@ public class GiocatoreService {
 
 	public boolean alreadyExists(Giocatore giocatore) {
 		return this.giocatoreRepository.existsByNomeAndCognomeAndNazionalitaAndDataNascita(giocatore.getNome(), giocatore.getCognome(), giocatore.getNazionalita(), giocatore.getDataNascita());
-	}
-
-	@Transactional
-	public void deleteById(Long id) {
-		giocatoreRepository.deleteById(id);
-	}
-
-	@Transactional
-	public void delete(Giocatore giocatore) {
-		giocatoreRepository.delete(giocatore);
 	}
 
 	public List<Giocatore> findAllBySquadraIdOrderByRuoloDesc(Long id) {
