@@ -9,6 +9,14 @@
 	<h1>I Giocatori preferiti della Community</h1>
 	
 	<table>
+		<tr>
+			<td>Posizione</td>
+			<td>Giocatore</td>
+			<td>Ruolo</td>
+			<td>Squadra</td>
+			<td>Numero Preferenze</td>
+		</tr>
+		
 		<tr th:each="g, iStat: ${elencoGiocatori}">
 			<td th:text="${iStat.count}" />
 			
@@ -22,7 +30,7 @@
 				<a th:href="@{'/admin/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
 			</td>
 			
-			<td th:text="'Numero Preferenze: ' + ${g.numeroPreferenze}" />
+			<td th:text="${g.numeroPreferenze}" />
 			
 		</tr>
 	</table>

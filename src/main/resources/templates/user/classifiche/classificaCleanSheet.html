@@ -9,6 +9,14 @@
 	<h1>Classifica per Porte Inviolate</h1>
 	
 	<table>
+		<tr>
+			<td>Posizione</td>
+			<td>Giocatore</td>
+			<td>Ruolo</td>
+			<td>Squadra</td>
+			<td>Numero Porte Inviolate</td>
+		</tr>
+		
 		<tr th:each="g, iStat: ${elencoGiocatori}">
 			<td th:text="${iStat.count}" />
 			
@@ -18,12 +26,11 @@
 			
 			<td th:text="${g.ruolo}" />
 			
-			<td >
+			<td>
 				<a th:href="@{'/user/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
 			</td>
 			
-			<td th:text="'Numero Porte Inviolate: ' + ${g.cleanSheetTotali}" />
-			
+			<td th:text="${g.cleanSheetTotali}" />
 		</tr>
 	</table>
 	
