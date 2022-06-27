@@ -23,21 +23,21 @@ import it.uniroma3.siw.footballstats.service.SquadraService;
 
 @Controller
 public class PrestazioneController {
-	
+
 	@Autowired private PrestazioneService prestazioneService;
 	@Autowired private PrestazioneValidator prestazioneValidator;
 	@Autowired private GiocatoreService giocatoreService;
 	@Autowired private SquadraService squadraService;
-	
+
 	/* ********************* */
 	/* OPERAZIONI LATO ADMIN */
 	/* ********************* */
-	
+
 	@GetMapping("/admin/inserisciPrestazione/{giocatoreId}")
 	public String toPrestazioneForm(@PathVariable("giocatoreId") Long giocatoreId, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
 		model.addAttribute("giocatore", giocatore);
-		
+
 		List<Squadra> squadreAvversarie = this.squadraService.findAll();
 		squadreAvversarie.remove(giocatore.getSquadra());
 		model.addAttribute("squadreAvversarie", squadreAvversarie);
@@ -50,7 +50,7 @@ public class PrestazioneController {
 		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
 		prestazione.setGiocatore(giocatore);
 		prestazione.formattaData();
-		
+
 		this.prestazioneValidator.validate(prestazione, bindingResult);
 
 		if(!bindingResult.hasErrors()) {
@@ -60,77 +60,98 @@ public class PrestazioneController {
 
 			return "/admin/addSuccesso/inserimentoPrestazione.html";
 		}
-		
+
 		model.addAttribute("giocatore", giocatore);
-		
+
 		List<Squadra> squadreAvversarie = this.squadraService.findAll();
 		squadreAvversarie.remove(giocatore.getSquadra());
 		model.addAttribute("squadreAvversarie", squadreAvversarie);
-		
+
 		return "/admin/form/prestazioneForm.html";
 	}
-	
+
 	@GetMapping("/admin/prestazioni/{giocatoreId}")
 	public String getPrestazioniGiocatoreAdmin(@PathVariable ("giocatoreId") Long giocatoreId, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
 		model.addAttribute("giocatore", giocatore);
-		
+
 		List<Prestazione> elencoPrestazioni = this.prestazioneService.findAllByGiocatoreOrderByDataAsc(giocatore.getId());
 		model.addAttribute("elencoPrestazioni", elencoPrestazioni);
-		
+
 		return "/admin/elenchi/prestazioni.html";
 	}
-	
+
 	@GetMapping("/admin/prestazione/{prestazioneId}")
 	public String getPrestazioneAdmin(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
 		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
 		model.addAttribute("prestazione", prestazione);
-		
+
 		return "/admin/visualizza/prestazione.html";
 	}
-	
+
 	@GetMapping("/admin/toRimuoviPrestazione/{prestazioneId}")
 	public String toRimuoviPrestazione(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
 		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
 		model.addAttribute("prestazione", prestazione);
-		
+
 		return "/admin/cancella/confermaCancellazionePrestazione.html";
 	}
-	
+
 	@GetMapping("/admin/rimozionePrestazione/{prestazioneId}")
 	public String rimozionePrestazione(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
 		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
-		
+
 		Giocatore giocatore = prestazione.getGiocatore();
 		giocatore.aggiornaGiocatoreDecrementi(prestazione);
 		this.giocatoreService.update(giocatore);
-		
+
 		this.prestazioneService.delete(prestazione);
-		
+
 		return "/admin/cancella/confermaCancellazionePrestazioneConSuccesso.html";
 	}
-	
-	
+
+	@GetMapping("/admin/modifyPrestazione/{id}")
+	public String modifyPrestazione(@PathVariable("id") Long id, Model model) {
+		Prestazione prestazione =  this.prestazioneService.findById(id);
+		model.addAttribute("prestazione", prestazione);
+		Giocatore giocatore = prestazione.getGiocatore();
+		model.addAttribute("giocatore", giocatore);
+		List<Squadra> squadreAvversarie = this.squadraService.findAll();
+		squadreAvversarie.remove(prestazione.getGiocatore().getSquadra());
+		model.addAttribute("squadreAvversarie", squadreAvversarie);
+		return "admin/form/modificaPrestazioneForm.html";
+	}
+
+	@PostMapping("/admin/confirmModifyPrestazione/{id}")
+	public String confirmModifyPrestazione(@PathVariable("id") Long id, Model model) {
+		Prestazione prestazione =  this.prestazioneService.findById(id);
+		this.prestazioneService.update(prestazione.getId(), prestazione.getData(),
+				prestazione.getSquadraAvversaria(), prestazione.getMinutiGiocati(),
+				prestazione.getGolSegnati(), prestazione.getAssist(),prestazione.getPortaInviolata(),
+				prestazione.getAmmonizioni(), prestazione.getEspulsione());
+		return this.getPrestazioniGiocatoreAdmin(prestazione.getGiocatore().getId(), model);
+	}
+
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
-	
+
 	@GetMapping("/user/prestazioni/{giocatoreId}")
 	public String getPrestazioniGiocatoreUser(@PathVariable ("giocatoreId") Long giocatoreId, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(giocatoreId);
 		model.addAttribute("giocatore", giocatore);
-		
+
 		List<Prestazione> elencoPrestazioni = this.prestazioneService.findAllByGiocatoreOrderByDataAsc(giocatore.getId());
 		model.addAttribute("elencoPrestazioni", elencoPrestazioni);
-		
+
 		return "/user/elenchi/prestazioni.html";
 	}
-	
+
 	@GetMapping("/user/prestazione/{prestazioneId}")
 	public String getPrestazioneUser(@PathVariable ("prestazioneId") Long prestazioneId, Model model) {
 		Prestazione prestazione = this.prestazioneService.findById(prestazioneId);
 		model.addAttribute("prestazione", prestazione);
-		
+
 		return "/user/visualizza/prestazione.html";
 	}
 }

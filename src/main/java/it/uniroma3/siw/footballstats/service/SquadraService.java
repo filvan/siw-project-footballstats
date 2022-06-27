@@ -3,8 +3,6 @@ package it.uniroma3.siw.footballstats.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +18,11 @@ public class SquadraService {
 	@Transactional
 	public void save(Squadra squadra) {
 		this.squadraRepository.save(squadra);
+	}
+	
+	@Transactional
+	public void update(Long id, String nome, String citta) {
+		this.squadraRepository.updateNomeAndCittaById(id, nome, citta);
 	}
 	
 	@Transactional
@@ -51,5 +54,4 @@ public class SquadraService {
 	public List<Squadra> findAllByOrderByNomeAsc() {
 		return this.squadraRepository.findAllByOrderByNomeAsc();
 	}
-
 }

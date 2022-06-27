@@ -2,8 +2,10 @@ package it.uniroma3.siw.footballstats.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import it.uniroma3.siw.footballstats.model.Giocatore;
 
@@ -39,4 +41,8 @@ public interface GiocatoreRepository extends CrudRepository<Giocatore, Long> {
 	@Query("SELECT g FROM Giocatore g WHERE g.numeroPreferenze > 0 ORDER BY g.numeroPreferenze DESC")
 	public List<Giocatore> findAllByOrderByNumeroPreferenzeDesc();
 
+	@Modifying
+	@Query("update Giocatore g set g.nome = :nome, g.cognome = :cognome, g.dataNascita = :dataNascita, g.ruolo = :ruolo where g.id = :id")
+	public void updateNomeAndCognomeAndDataNascitaAndRuoloById(@Param ("id") Long id, @Param("nome") String nome,
+			@Param("cognome") String cognome, @Param("dataNascita") String dataNascita, @Param("ruolo") String ruolo);
 }
