@@ -11,7 +11,7 @@
 	<h1>Dettagli Squadra</h1>
 
 	<div>
-	
+
 		<div>
 			<span>Nome: </span><span th:text="*{squadra.nome}">Nome</span>
 		</div>
@@ -21,27 +21,28 @@
 		</div>
 		   
 	</div>
-	
+
 	<div>
 		Elenco dei Giocatori in Rosa:
-		
+
 		<table>
 			<tr th:each="giocatore : ${elencoGiocatori}">
 				<td>
-					<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}" th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Nome Cognome</a>
+					<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}"
+						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Nome Cognome</a>
 				</td>
-				
+
 				<td>
 					<span th:text="${giocatore.ruolo}" />
 				</td>
-				
+
 				<td>
 					<a th:href="@{'/admin/rimuoviGiocatore/' + ${giocatore.id}}">Rimuovi</a>
 				</td>
-				
-				
+
+
 			</tr>
-			
+
 		</table>
 	</div>
 
@@ -54,12 +55,19 @@
 		<div>
 			<a th:href="@{/default}">Torna alla home amministratore</a>
 		</div>
-		
+
 		<div>
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
-		
+
 	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
 
 </body>
 

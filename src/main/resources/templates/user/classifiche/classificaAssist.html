@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8" />
-	<title>Classifica per Assist</title> 
+	<title>Classifica per Assist</title>
 </head>
 
 <body>
 	<h1>Classifica per Assist</h1>
-	
+
 	<table>
 		<tr>
 			<td>Posizione</td>
@@ -16,37 +17,44 @@
 			<td>Squadra</td>
 			<td>Numero Assist</td>
 		</tr>
-		
+
 		<tr th:each="g, iStat: ${elencoGiocatori}">
 			<td th:text="${iStat.count}" />
-			
-			<td> 
+
+			<td>
 				<a th:href="@{'/user/giocatore/' + ${g.id}}" th:text="${g.nome} + ' ' + ${g.cognome}" />
 			</td>
-			
+
 			<td th:text="${g.ruolo}" />
-			
+
 			<td>
 				<a th:href="@{'/user/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
 			</td>
-			
+
 			<td th:text="${g.assistTotali}" />
 		</tr>
 	</table>
-	
-	
+
+
 
 	<div>
 		<a th:href="@{/user/classifiche}">Torna al Menù delle Classifiche</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/default}">Torna alla Home</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/logout}">Logout</a>
 	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
 </body>
 
 </html>

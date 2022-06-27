@@ -15,15 +15,15 @@
 					<a href="giocatore.html" th:href="@{'/admin/giocatore' + '/' + ${giocatore.id}}"
 						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Paolo Rossi</a>
 				</td>
-				
+
 				<td>
 					<span th:text="${giocatore.ruolo}" />
 				</td>
-				
+
 				<td th:if="${giocatore.squadra != null}">
 					<a th:href="@{'/admin/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
 				</td>
-				
+
 				<td>
 					<a href="confermaCancellazioneGiocatore.html"
 						th:href="@{'/admin/toDeleteGiocatore' + '/' + ${giocatore.id}}" th:text="Cancella">Cancella</a>
@@ -32,15 +32,22 @@
 		</table>
 		<a href="admin/giocatoreForm.html" th:href="@{/admin/giocatoreForm}">Inserisci un giocatore</a>
 	</div>
-	<footer>
+	<div>
 		<div>
 			<a href="/default">Torna alla home amministratore</a>
 		</div>
 		<div>
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
-	</footer>
+	</div>
 	
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
+
 </body>
 
 </html>

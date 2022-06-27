@@ -20,22 +20,23 @@
 		</div>
 		   
 	</div>
-	
+
 	<div>
 		Elenco dei Giocatori in Rosa:
-		
+
 		<table>
 			<tr th:each="giocatore : ${elencoGiocatori}">
 				<td>
-					<a th:href="@{'/user/giocatore/' + ${giocatore.id}}" th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Nome Cognome</a>
+					<a th:href="@{'/user/giocatore/' + ${giocatore.id}}"
+						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Nome Cognome</a>
 				</td>
-				
+
 				<td>
 					<span th:text="${giocatore.ruolo}" />
 				</td>
-					
+
 			</tr>
-			
+
 		</table>
 	</div>
 
@@ -52,6 +53,13 @@
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
 
 </body>
 

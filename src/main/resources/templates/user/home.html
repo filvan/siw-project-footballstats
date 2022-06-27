@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8" />
-	<title>Home Utente</title> 
+	<title>Home Utente</title>
 </head>
 
 <body>
 	<h1>Home Utente</h1>
-	
+
 	<div>
 		<a th:href="@{/user/giocatori}">Elenco giocatori</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/user/squadre}">Elenco squadre</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/user/classifiche}">Classifiche dei Giocatori per Statistica</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/user/toConfrontaGiocatori}">Scegli e Confronta due Giocatori</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/user/giocatoriPreferiti}">I tuoi giocatori preferiti</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/logout}">Logout</a>
 	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
 </body>
 
 </html>

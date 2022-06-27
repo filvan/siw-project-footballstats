@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
- 	<meta charset="UTF-8" />
+	<meta charset="UTF-8" />
 	<title>>Giocatore rimosso con Successo</title>
 </head>
+
 <body>
 
-    <div>
-    	<h1>Il Giocatore è stato rimosso con Successo!</h1>
-    </div>
-    	
-    <div>
-    	
-    	<div>
-    		<a th:href="@{/admin/squadre}">Vai all'Elenco delle Squadre</a>
-    	</div>
-    	
-    	<div>
+	<div>
+		<h1>Il Giocatore è stato rimosso con Successo!</h1>
+	</div>
+
+	<div>
+
+		<div>
+			<a th:href="@{/admin/squadre}">Vai all'Elenco delle Squadre</a>
+		</div>
+
+		<div>
 			<a th:href="@{/default}">Torna alla Home</a>
-   		</div>
-    </div>
-    
+		</div>
+	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
+
 </body>
+
 </html>

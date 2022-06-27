@@ -12,11 +12,13 @@
 		<table>
 			<tr th:each="prestazione : ${elencoPrestazioni}">
 				<td>
-					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}" th:text="'Partita del ' + ${prestazione.dataInserita}"/>
+					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
+						th:text="'Partita del ' + ${prestazione.dataInserita}" />
 					<span>, giocata contro </span>
-					<a th:href = "@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}" th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
+					<a th:href="@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}"
+						th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
 				</td>
-				
+
 				<td>
 					<a th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
 				</td>
@@ -24,8 +26,8 @@
 			</tr>
 		</table>
 	</div>
-	
-	<footer>
+
+	<div>
 		<div>
 			<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
 		</div>
@@ -35,8 +37,15 @@
 		<div>
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
-	</footer>
+	</div>
 	
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
+
 </body>
 
 </html>

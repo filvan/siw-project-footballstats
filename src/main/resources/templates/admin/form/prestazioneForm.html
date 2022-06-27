@@ -19,7 +19,8 @@
 			<tr>
 				<td>Data (formato: gg-mm-aaaa): </td>
 				<td><input type="text" th:field="*{dataInserita}" /></td>
-				<td th:if="${#fields.hasErrors('dataInserita')}" th:errors="*{dataInserita}" th:style="'color:red'"></td>
+				<td th:if="${#fields.hasErrors('dataInserita')}" th:errors="*{dataInserita}" th:style="'color:red'">
+				</td>
 			</tr>
 			<tr>
 				<td>Squadra avversaria: </td>
@@ -32,7 +33,8 @@
 			<tr>
 				<td>Minuti giocati: </td>
 				<td><input type="text" th:field="*{minutiGiocati}" /></td>
-				<td th:if="${#fields.hasErrors('minutiGiocati')}" th:errors="*{minutiGiocati}" th:style="'color:red'"></td>
+				<td th:if="${#fields.hasErrors('minutiGiocati')}" th:errors="*{minutiGiocati}" th:style="'color:red'">
+				</td>
 			</tr>
 			<tr>
 				<td>Gol segnati: </td>
@@ -47,7 +49,8 @@
 			<tr>
 				<td>Porta inviolata: </td>
 				<td><input type="text" th:field="*{portaInviolata}" /></td>
-				<td th:if="${#fields.hasErrors('portaInviolata')}" th:errors="*{portaInviolata}" th:style="'color:red'"></td>
+				<td th:if="${#fields.hasErrors('portaInviolata')}" th:errors="*{portaInviolata}" th:style="'color:red'">
+				</td>
 			</tr>
 			<tr>
 				<td>Ammonizioni: </td>
@@ -72,6 +75,13 @@
 	<div>
 		<a href="/">Torna alla pagina iniziale</a>
 	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
 
 </body>
 
