@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Squadre</title>
+	<link rel="stylesheet" href="/squadra.css">
 </head>
 
 <body>
@@ -17,8 +18,10 @@
 				</td>
 
 				<td>
-					<a href="confermaCancellazioneSquadra.html"
-						th:href="@{'/admin/toDeleteSquadra' + '/' + ${squadra.id}}" th:text="Cancella">Cancella</a>
+					<div class="button">
+						<a class="button" href="confermaCancellazioneSquadra.html"
+							th:href="@{'/admin/toDeleteSquadra' + '/' + ${squadra.id}}" th:text="Cancella">Cancella</a>
+					</div>
 				</td>
 			</tr>
 		</table>
@@ -32,7 +35,7 @@
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</footer>
-	
+
 </body>
 
 </html>

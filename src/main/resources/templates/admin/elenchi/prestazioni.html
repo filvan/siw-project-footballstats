@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Elenco Prestazioni Admin</title>
+	<link rel="stylesheet" href="/prestazione.css">
 </head>
 
 <body>
@@ -12,19 +13,23 @@
 		<table>
 			<tr th:each="prestazione : ${elencoPrestazioni}">
 				<td>
-					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}" th:text="'Partita del ' + ${prestazione.dataInserita}"/>
+					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
+						th:text="'Partita del ' + ${prestazione.dataInserita}" />
 					<span>, giocata contro </span>
-					<a th:href = "@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}" th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
+					<a th:href="@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}"
+						th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
 				</td>
-				
+
 				<td>
-					<a th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
+					<div class="button">
+						<a class="button" th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
+					</div>
 				</td>
 
 			</tr>
 		</table>
 	</div>
-	
+
 	<footer>
 		<div>
 			<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
@@ -36,7 +41,7 @@
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</footer>
-	
+
 </body>
 
 </html>
