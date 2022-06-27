@@ -4,18 +4,23 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Classifica per Presenze</title>
+	<link rel="stylesheet" href="/pagineDiServizio.css" />
 </head>
 
 <body>
 	<h1>Classifica per Presenze</h1>
 
 	<table>
-		<tr>
-			<td>Posizione</td>
-			<td>Giocatore</td>
-			<td>Ruolo</td>
-			<td>Squadra</td>
-			<td>Numero Presenze</td>
+		<tr th:if="${elencoGiocatori.size > 0}">
+			<td><strong>Posizione</strong></td>
+			<td><strong>Giocatore</strong></td>
+			<td><strong>Ruolo</strong></td>
+			<td><strong>Squadra</strong></td>
+			<td><strong>Numero Presenze</strong></td>
+		</tr>
+		
+		<tr th:unless="${elencoGiocatori.size > 0}">
+			<strong><span>NESSUN GIOCATORE DA MOSTRARE</span></strong>
 		</tr>
 
 		<tr th:each="g, iStat: ${elencoGiocatori}">
@@ -36,23 +41,26 @@
 	</table>
 
 
+	<div id="riferimenti">
+		<div class="link">
+			<a th:href="@{/user/classifiche}">Torna al Menù delle Classifiche</a>
+		</div>
 
-	<div>
-		<a th:href="@{/user/classifiche}">Torna al Menù delle Classifiche</a>
-	</div>
+		<div class="link">
+			<a th:href="@{/default}">Torna alla Home</a>
+		</div>
 
-	<div>
-		<a th:href="@{/default}">Torna alla Home</a>
-	</div>
-
-	<div>
-		<a th:href="@{/logout}">Logout</a>
+		<div id="link">
+			<a th:href="@{/logout}">Logout</a>
+		</div>
 	</div>
 
 	<footer>
 		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762</div>
-		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>
+			<span>Riccardo De Cesaris - Matricola: 547762, </span>
+			<span>Filippo Vannutelli - Matricola: 550745</span>
+		</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>
 </body>

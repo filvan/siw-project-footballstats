@@ -25,6 +25,14 @@
 		Elenco dei Giocatori in Rosa:
 
 		<table>
+			<tr th:if="${elencoGiocatori.size > 0}">
+				<td><strong>Nome e Cognome</strong></td>
+				<td><strong>Ruolo</strong></td>
+			</tr>
+
+			<tr th:unless="${elencoGiocatori.size > 0}">
+				<td><strong>NESSUN GIOCATORE IN ROSA</strong></td>
+			</tr>
 			<tr th:each="giocatore : ${elencoGiocatori}">
 				<td>
 					<a th:href="@{'/user/giocatore/' + ${giocatore.id}}"

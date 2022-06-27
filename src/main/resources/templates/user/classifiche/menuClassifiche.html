@@ -4,53 +4,56 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Menu Classifiche</title>
+	<link rel="stylesheet" href="/pagineDiServizio.css" />
 </head>
 
 <body>
 	<h1>Classifiche dei Giocatori per Statistica</h1>
+	<div id="riferimenti">
 
-	<table>
-		<tr>
-			<td><a th:href="@{/user/classifiche/presenze}">Classifica dei Giocatori per Presenze</a></td>
-		</tr>
+		<div class="link">
+			<a th:href="@{/user/classifiche/presenze}">Classifica dei Giocatori per Presenze</a>
+		</div>
 
-		<tr>
-			<td><a th:href="@{/user/classifiche/minutiGiocati}">Classifica dei Giocatori per Minuti Giocati</a></td>
-		</tr>
+		<div class="link">
+			<a th:href="@{/user/classifiche/minutiGiocati}">Classifica dei Giocatori per Minuti Giocati</a>
+		</div>
 
-		<tr>
-			<td><a th:href="@{/user/classifiche/golSegnati}">Classifica dei Giocatori per Gol Segnati</a></td>
-		</tr>
+		<div class="link">
+			<a th:href="@{/user/classifiche/golSegnati}">Classifica dei Giocatori per Gol Segnati</a>
+		</div>
 
-		<tr>
-			<td><a th:href="@{/user/classifiche/assist}">Classifica dei Giocatori per Assist Forniti</a></td>
-		</tr>
+		<div class="link">
+			<a th:href="@{/user/classifiche/assist}">Classifica dei Giocatori per Assist Forniti</a>
+		</div>
 
-		<tr>
-			<td><a th:href="@{/user/classifiche/cleanSheet}">Classifica dei Giocatori per Porte Inviolate</a></td>
-		</tr>
+		<div class="link">
+			<a th:href="@{/user/classifiche/cleanSheet}">Classifica dei Giocatori per Porte Inviolate</a>
+		</div>
 
-		<tr>
-			<td><a th:href="@{/user/classifiche/ammonizioni}">Classifica dei Giocatori per Ammonizioni</a></td>
-		</tr>
+		<div class="link">
+			<a th:href="@{/user/classifiche/ammonizioni}">Classifica dei Giocatori per Ammonizioni</a>
+		</div>
 
-		<tr>
-			<td><a th:href="@{/user/classifiche/espulsioni}">Classifica dei Giocatori per Espulsioni</a></td>
-		</tr>
-	</table>
+		<div class="link">
+			<a th:href="@{/user/classifiche/espulsioni}">Classifica dei Giocatori per Espulsioni</a>
+		</div>
 
-	<div>
-		<a th:href="@{/default}">Torna alla Home</a>
-	</div>
+		<div class="link">
+			<a th:href="@{/default}">Torna alla Home</a>
+		</div>
 
-	<div>
-		<a th:href="@{/logout}">Logout</a>
+		<div id="link">
+			<a th:href="@{/logout}">Logout</a>
+		</div>
 	</div>
 
 	<footer>
 		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762</div>
-		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>
+			<span>Riccardo De Cesaris - Matricola: 547762, </span>
+			<span>Filippo Vannutelli - Matricola: 550745</span>
+		</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>
 </body>
