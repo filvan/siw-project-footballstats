@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8" />
-	<title>Classifica per Preferenze</title> 
+	<title>Classifica per Preferenze</title>
 </head>
 
 <body>
 	<h1>I Giocatori preferiti della Community</h1>
-	
+
 	<table>
 		<tr>
 			<td>Posizione</td>
@@ -16,33 +17,40 @@
 			<td>Squadra</td>
 			<td>Numero Preferenze</td>
 		</tr>
-		
+
 		<tr th:each="g, iStat: ${elencoGiocatori}">
 			<td th:text="${iStat.count}" />
-			
-			<td> 
+
+			<td>
 				<a th:href="@{'/admin/giocatore/' + ${g.id}}" th:text="${g.nome} + ' ' + ${g.cognome}" />
 			</td>
-			
+
 			<td th:text="${g.ruolo}" />
-			
+
 			<td th:if="${g.squadra} != null">
 				<a th:href="@{'/admin/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
 			</td>
-			
+
 			<td th:text="${g.numeroPreferenze}" />
-			
+
 		</tr>
 	</table>
-	
-		
+
+
 	<div>
 		<a th:href="@{/default}">Torna alla Home</a>
 	</div>
-	
+
 	<div>
 		<a th:href="@{/logout}">Logout</a>
 	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
 </body>
 
 </html>
