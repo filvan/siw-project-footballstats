@@ -4,36 +4,44 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Home Admin</title>
+	<link rel="stylesheet" href="/pagineDiServizio.css" />
 </head>
 
 <body>
 	<h1>Home Admin</h1>
 
-	<div>
-		<a th:href="@{/admin/giocatoreForm}">Inserisci un nuovo Giocatore</a>
-	</div>
-	<div>
-		<a th:href="@{/admin/giocatori}">Elenco giocatori</a>
-	</div>
-	<div>
-		<a th:href="@{/admin/squadraForm}">Inserisci una nuova Squadra</a>
-	</div>
-	<div>
-		<a th:href="@{/admin/squadre}">Elenco squadre</a>
-	</div>
+	<div id="riferimenti">
+		<div class="link">
+			<a th:href="@{/admin/giocatoreForm}">Inserisci un nuovo Giocatore</a>
+		</div>
+		
+		<div class="link">
+			<a th:href="@{/admin/giocatori}">Elenco giocatori</a>
+		</div>
+		
+		<div class="link">
+			<a th:href="@{/admin/squadraForm}">Inserisci una nuova Squadra</a>
+		</div>
+		
+		<div class="link">
+			<a th:href="@{/admin/squadre}">Elenco squadre</a>
+		</div>
 
-	<div>
-		<a th:href="@{/admin/giocatoriPreferiti}">Elenco dei Giocatori preferiti dalla Community</a>
-	</div>
+		<div class="link">
+			<a th:href="@{/admin/giocatoriPreferiti}">Elenco dei Giocatori preferiti dalla Community</a>
+		</div>
 
-	<div>
-		<a th:href="@{/logout}">Logout</a>
+		<div id="link">
+			<a th:href="@{/logout}">Logout</a>
+		</div>
 	</div>
 
 	<footer>
 		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762</div>
-		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>
+			<span>Riccardo De Cesaris - Matricola: 547762, </span>
+			<span>Filippo Vannutelli - Matricola: 550745</span>
+		</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>
 </body>

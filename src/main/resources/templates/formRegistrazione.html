@@ -3,12 +3,11 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Registrazione Nuovo Utente</title>
+	<link rel="stylesheet" href="/loginRegister.css" />
 </head>
 
 <body>
-	<div id="intestazione">
-    	<h1>Pagina di Registrazione</h1>
-	</div>
+    <h1>Pagina di Registrazione</h1>
     	
     <div id="form">
     	<form th:action="@{/register}" method="POST">
@@ -52,14 +51,16 @@
     	</form>
 	</div>
 	
-	<div id="tornaHome">
+	<div id="link">
 		<a th:href="@{/index}">Torna alla pagina iniziale</a>
 	</div>
 	
 	<footer>
 		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762</div>
-		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>
+			<span>Riccardo De Cesaris - Matricola: 547762, </span>
+			<span>Filippo Vannutelli - Matricola: 550745</span>
+		</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>
 

@@ -1,3 +1,32 @@
+h1 {
+	text-align: center;
+	border-bottom: solid 3px black;
+	padding-bottom: 18px;
+}
+
+footer {
+	margin-top: 100px;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
+table {
+	margin-top: -6px;
+	margin-bottom: 28px;
+}
+
+td {
+	border-bottom: solid 1px black;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+td.link {
+	border-bottom: none;
+}
+
 div.button {
 	font-size: inherit;
 	padding-top: -10px;
@@ -19,4 +48,29 @@ a.button {
 	color: black;
     background-color: lightgrey;
     text-decoration: inherit;
+}
+
+#riferimenti {
+	margin-top: -12px;
+}
+
+div.link {
+	margin-bottom: 3px;
+}
+
+#link {
+	margin-top: 15px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited, a:active {
+	color: black;
+}
+
+a:hover {
+	color: black;
+	background-color: #DEB887;
 }
