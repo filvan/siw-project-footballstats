@@ -10,11 +10,18 @@
 	<div>
 		<h1>Elenco prestazioni:</h1>
 		<table>
+			<tr>
+				<td><strong>Partita: </strong></td>
+				<td><strong>Giocata contro: </strong></td>
+			</tr>
+			
 			<tr th:each="prestazione : ${elencoPrestazioni}">
 				<td>
 					<a th:href="@{'/user/prestazione' + '/' + ${prestazione.id}}"
-						th:text="'Partita del ' + ${prestazione.dataInserita}" />
-					<span>, giocata contro </span>
+						th:text="${prestazione.dataInserita}" />
+				</td>
+				
+				<td>
 					<a th:href="@{'/user/squadra/' + ${prestazione.squadraAvversaria.id}}"
 						th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
 				</td>
