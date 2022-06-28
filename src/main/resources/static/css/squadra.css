@@ -102,3 +102,10 @@ div.link {
 #link {
 	margin-top: 15px;
 }
+
+td.elementoForm {
+	border-bottom: none;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 0px;
+}
