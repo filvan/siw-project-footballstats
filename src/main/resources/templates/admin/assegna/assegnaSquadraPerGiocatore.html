@@ -4,17 +4,16 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Assegna Squadra ad un Giocatore</title>
+	<link rel="stylesheet" href="/css/giocatore.css">
 </head>
 
 <body>
-	<div>
-		<h1>Assegna la Squadra al Giocatore</h1>
-	</div>
+	<h1>Assegna la Squadra al Giocatore</h1>
 
 	<form th:action="@{'/admin/assegnazioneSquadra/' + ${giocatore.id}}" th:method="POST" th:object="${squadra}">
 
 		<div>
-			<div><strong><span>Seleziona una Squadra :</span></strong></div>
+			<div><strong><span>Seleziona una Squadra</span></strong></div>
 			<select name="squadra">
 				<option disabled=true>--Elenco delle Squadre--</option>
 				<option th:each="s : ${elencoSquadre}" th:text="${s.nome}" th:value="${s.id}" />
@@ -27,12 +26,12 @@
 
 	</form>
 
-	<div>
-		<div>
+	<div if="riferimenti">
+		<div class="link">
 			<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla Pagina del Giocatore</a>
 		</div>
 
-		<div>
+		<div id="link">
 			<a th:href="@{/default}">Torna alla Home</a>
 		</div>
 

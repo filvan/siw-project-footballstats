@@ -107,3 +107,10 @@ div.link {
 p {
 	text-align: center;
 }
+
+td.elementoForm {
+	border-bottom: none;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 0px;
+}

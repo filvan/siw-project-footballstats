@@ -1,6 +1,10 @@
+body {
+	color: #27408B;
+}
+
 footer {
 	margin-top: 20%;
-	background-color: black;
+	background-color: #27408B;
 	color: white;
 	text-align: center;
 }

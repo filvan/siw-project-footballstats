@@ -8,31 +8,30 @@
 </head>
 
 <body>
+	<h1>Cancella un giocatore</h1>
 	<div>
-		<h1>Cancella un giocatore</h1>
-		<div>
-			<strong th:text="${giocatore.nome}">Raffaello</strong>
-			<strong th:text="${giocatore.cognome}">Sanzio</strong>
-		</div>
-		<div>
-			<em th:text="${giocatore.ruolo}">Prova</em>
-			<em th:text="${giocatore.nazionalita}">Prova</em>
-			<em th:text="${giocatore.dataNascita}">Prova</em>
-		</div>
-		<div>
-			<strong>Confermi di voler cancellare questo giocatore?</strong>
-			<a href="admin/giocatori.html" th:href="@{'/admin/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
-				th:text="Conferma">Conferma</a>
-		</div>
+		<strong th:text="${giocatore.nome}">Raffaello</strong>
+		<strong th:text="${giocatore.cognome}">Sanzio</strong>
 	</div>
 	<div>
-		<div>
+		<em th:text="${giocatore.ruolo}">Prova</em>
+		<em th:text="${giocatore.nazionalita}">Prova</em>
+		<em th:text="${giocatore.dataNascita}">Prova</em>
+	</div>
+	<div>
+		<strong>Confermi di voler cancellare questo giocatore?</strong>
+		<a href="admin/giocatori.html" th:href="@{'/admin/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
+			th:text="Conferma">Conferma</a>
+	</div>
+	
+	<div id="riferimenti">
+		<div class="link">
 			<a th:href="@{/admin/giocatori}">Torna all'elenco dei Giocatori</a>
 		</div>
-		<div>
+		<div class="link">
 			<a th:href="@{/default}">Torna alla home amministratore</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>

@@ -18,32 +18,36 @@
 
 		<table>
 			<tr>
-				<td>Nome del Giocatore: </td>
-				<td><input type="text" th:field="*{nome}" /></td>
-				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+				<td class="elementoForm">Nome del Giocatore: </td>
+				<td class="elementoForm"><input type="text" th:field="*{nome}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
+					th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td>Cognome del Giocatore: </td>
-				<td><input type="text" th:field="*{cognome}" /></td>
-				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" th:style="'color:red'"></td>
+				<td class="elementoForm">Cognome del Giocatore: </td>
+				<td class="elementoForm"><input type="text" th:field="*{cognome}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"
+					th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td>Nazionalità: </td>
-				<td><input type="text" th:field="*{nazionalita}" /></td>
-				<td th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}" th:style="'color:red'"></td>
+				<td class="elementoForm">Nazionalità: </td>
+				<td class="elementoForm"><input type="text" th:field="*{nazionalita}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"
+					th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td>Data di Nascita: (formato: gg-mm-aaaa)</td>
-				<td><input type="text" th:field="*{dataNascita}" /></td>
-				<td th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}" th:style="'color:red'"></td>
+				<td class="elementoForm">Data di Nascita: (formato: gg-mm-aaaa)</td>
+				<td class="elementoForm"><input type="text" th:field="*{dataNascita}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"
+					th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td>Ruolo: </td>
-				<td>
+				<td class="elementoForm">Ruolo: </td>
+				<td class="elementoForm">
 					<select name="ruolo">
 						<option disabled=true>--Inserisci il Ruolo--</option>
 						<option>Portiere</option>
@@ -55,16 +59,18 @@
 			</tr>
 
 			<tr>
-				<td><button type="submit">Conferma</button>
+				<td class="elementoForm"><button type="submit">Conferma</button>
 			</tr>
 		</table>
 	</form>
-
-	<div>
-		<a th:href="@{/default}">Torna alla home amministratore</a>
-	</div>
-	<div>
-		<a href="/">Torna alla pagina iniziale</a>
+	
+	<div id="riferimenti">
+		<div class="link">
+			<a th:href="@{/default}">Torna alla home amministratore</a>
+		</div>
+		<div id="link">
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
 	</div>
 
 	<footer>

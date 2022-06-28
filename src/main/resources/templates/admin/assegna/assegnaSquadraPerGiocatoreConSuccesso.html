@@ -4,21 +4,20 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Giocatore assegnato con Successo</title>
+	<link rel="stylesheet" href="/css/giocatore.css">
 </head>
 
 <body>
 
-	<div>
-		<h1>Il Giocatore selezionato è stato assegnato con Successo!</h1>
-	</div>
+	<h1>Il Giocatore selezionato è stato assegnato con Successo!</h1>
 
-	<div>
+	<div id="riferimenti">
 
-		<div>
+		<div class="link">
 			<a th:href="@{/admin/giocatori}">Vai all'Elenco dei Giocatori</a>
 		</div>
 
-		<div>
+		<div id="link">
 			<a th:href="@{/default}">Torna alla Home</a>
 		</div>
 	</div>
