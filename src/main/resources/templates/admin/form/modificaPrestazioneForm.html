@@ -9,27 +9,33 @@
 <body>
 	<h1>Modifica la Prestazione</h1>
 
-	<form th:action="@{'/admin/confirmModifyPrestazione'+ '/' + ${giocatore.id}}" method="POST" th:object="${prestazione}">
+	<form th:action="@{'/admin/confirmModifyPrestazione'+ '/' + ${prestazione.id}}" method="POST"
+		th:object="${prestazione}">
 
 		<div th:if="${#fields.hasGlobalErrors()}">
 			  <p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Messaggio Errore</p>
 		</div>
 
 		<table>
-			<!-- <tr>
+			<tr style="display: none;">
+				<td>Giocatore: </td>
+				<td><input type="text" th:field="*{giocatore}" /></td>
+				<td th:if="${#fields.hasErrors('giocatore')}" th:errors="*{giocatore}" th:style="'color:red'"></td>
+			</tr>
+			<tr style="display: none;">
 				<td>Data (formato: gg-mm-aaaa): </td>
 				<td><input type="text" th:field="*{dataInserita}" /></td>
 				<td th:if="${#fields.hasErrors('dataInserita')}" th:errors="*{dataInserita}" th:style="'color:red'">
 				</td>
-			</tr> -->
-			<!-- <tr>
+			</tr>
+			<tr>
 				<td>Squadra avversaria: </td>
 				<td><select name="squadraAvversaria">
 						<option disabled=true>--Elenco delle Squadre--</option>
 						<option th:each="s : ${squadreAvversarie}" th:text="${s.nome}" th:value="${s.id}"></option>
 					</select>
 				</td>
-			</tr> -->
+			</tr>
 			<tr>
 				<td>Minuti giocati: </td>
 				<td><input type="text" th:field="*{minutiGiocati}" /></td>

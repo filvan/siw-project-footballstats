@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siw.footballstats.model.Giocatore;
 import it.uniroma3.siw.footballstats.model.Prestazione;
+import it.uniroma3.siw.footballstats.model.Squadra;
 import it.uniroma3.siw.footballstats.repository.PrestazioneRepository;
 
 @Service
@@ -21,9 +23,9 @@ public class PrestazioneService {
 	}
 	
 	@Transactional
-	public void update(Long id, Integer minutiGiocati, Integer golSegnati, Integer assist, Integer portaInviolata,
+	public void update(Giocatore giocatore, String data, Squadra squadra, Long id, Integer minutiGiocati, Integer golSegnati, Integer assist, Integer portaInviolata,
 			Integer ammonizioni, Integer espulsione) {
-		this.prestazioneRepository.updateDataAndSquadraAvversariaIdAndMinutiGiocatiAndGolSegnatiAndAssistAndPortaInviolataAndAmmonizioniAndEspulsioneById(minutiGiocati, golSegnati, assist, portaInviolata, ammonizioni, espulsione, id);
+		this.prestazioneRepository.updateMinutiGiocatiAndGolSegnatiAndAssistAndPortaInviolataAndAmmonizioniAndEspulsioneById(giocatore, data, squadra, minutiGiocati, golSegnati, assist, portaInviolata, ammonizioni, espulsione, id);
 	}
 	
 	@Transactional

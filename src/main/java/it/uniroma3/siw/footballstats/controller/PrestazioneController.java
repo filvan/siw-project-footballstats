@@ -124,12 +124,17 @@ public class PrestazioneController {
 
 	@PostMapping("/admin/confirmModifyPrestazione/{id}")
 	public String confirmModifyPrestazione(@PathVariable("id") Long id, @ModelAttribute Prestazione prestazione, Model model) {
-		Giocatore giocatore =  this.giocatoreService.findById(id);
+		Giocatore giocatore = prestazione.getGiocatore();
+		giocatore.aggiornaGiocatoreDecrementi(this.prestazioneService.findById(prestazione.getId()));
 		prestazione.setGiocatore(giocatore);
-		this.prestazioneService.update(prestazione.getId(), prestazione.getMinutiGiocati(),
+		this.prestazioneService.update(giocatore, prestazione.getDataInserita(), prestazione.getSquadraAvversaria(), prestazione.getId(), prestazione.getMinutiGiocati(),
 				prestazione.getGolSegnati(), prestazione.getAssist(),prestazione.getPortaInviolata(),
 				prestazione.getAmmonizioni(), prestazione.getEspulsione());
-		return this.getPrestazioniGiocatoreAdmin(prestazione.getGiocatore().getId(), model);
+		giocatore.aggiornaGiocatoreIncrementi(prestazione);
+		this.giocatoreService.save(giocatore);
+		prestazione.formattaData();
+		this.prestazioneService.save(prestazione);
+		return this.getPrestazioniGiocatoreAdmin(giocatore.getId(), model);
 	}
 
 	/* ******************** */

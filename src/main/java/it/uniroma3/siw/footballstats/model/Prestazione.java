@@ -54,7 +54,7 @@ public class Prestazione {
 	@OneToOne
 	private Squadra squadraAvversaria;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Giocatore giocatore;
 	
 	/* *********** */
