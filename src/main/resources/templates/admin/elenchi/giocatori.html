@@ -8,15 +8,15 @@
 </head>
 
 <body>
-	<div>
-		<h1>Elenco giocatori</h1>
+	<h1>Elenco giocatori</h1>
+	<div id="container">
 		<table>
 			<tr th:if="${giocatori.size > 0}">
 				<td><strong>Nome e Cognome</strong></td>
 				<td><strong>Ruolo</strong></td>
 				<td><strong>Squadra</strong></td>
 			</tr>
-			
+
 			<tr th:each="giocatore : ${giocatori}">
 				<td>
 					<a href="giocatore.html" th:href="@{'/admin/giocatore' + '/' + ${giocatore.id}}"
@@ -31,32 +31,36 @@
 				</td>
 				<td th:unless="${giocatore.squadra != null}">
 				</td>
-				<td>
+				<td class="button">
 					<div class="button">
 						<a class="button" href="confermaCancellazioneGiocatore.html"
 							th:href="@{'/admin/toDeleteGiocatore' + '/' + ${giocatore.id}}"
 							th:text="Cancella">Cancella</a>
 					</div>
 				</td>
-				<td>
+				<td class="button">
 					<div class="button">
 						<a class="button" href="modificaGiocatoreForm.html"
-							th:href="@{'/admin/modifyGiocatore' + '/' + ${giocatore.id}}" th:text="Modifica">Modifica</a>
+							th:href="@{'/admin/modifyGiocatore' + '/' + ${giocatore.id}}"
+							th:text="Modifica">Modifica</a>
 					</div>
 				</td>
 			</tr>
 		</table>
-		<a href="admin/giocatoreForm.html" th:href="@{/admin/giocatoreForm}">Inserisci un giocatore</a>
 	</div>
-	<div>
-		<div>
+
+	<div id="riferimenti">
+		<div class="link">
+			<a href="admin/giocatoreForm.html" th:href="@{/admin/giocatoreForm}">Inserisci un giocatore</a>
+		</div>
+		<div class="link">
 			<a href="/default">Torna alla home amministratore</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
-	
+
 	<footer>
 		<div>Realizzato da: </div>
 		<div>Riccardo De Cesaris - Matricola: 547762</div>

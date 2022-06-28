@@ -11,38 +11,46 @@
 
 	<h1>Dettagli Giocatore</h1>
 
-	    <div>
-		<div>
-			<span>Nome: </span><span th:text="*{giocatore.nome}">Nome</span>
+	<div id="datiGiocatore">
+		<div id="image">
+			<img src="/images/Figurina Calciatore.png" />
 		</div>
 
-		<div>
-			<span>Cognome: </span><span th:text="*{giocatore.cognome}">Cognome</span>
+		<div class="dati">
+			<div>
+				<span th:text="*{giocatore.nome}">Nome</span>
+			</div>
+
+			<div>
+				<strong><span th:text="*{giocatore.cognome}">Cognome</span></strong>
+			</div>
+
+			<div>
+				<span th:text="*{giocatore.dataNascita}">Ruolo</span>
+			</div>
+
+			<div>
+				<span th:text="*{giocatore.nazionalita}">Nazionalita</span>
+			</div>
+
+			<div>
+				<span th:text="*{giocatore.ruolo}">Ruolo</span>
+			</div>
+
+			<div>
+				<span th:if="*{giocatore.squadra}">
+					<a th:href="@{'/admin/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
+				</span>
+
+				<span th:unless="*{giocatore.squadra}">DA SPECIFICARE</span>
+			</div>
 		</div>
+	</div>
 
-		<div>
-			<span>Data di Nascita: </span><span th:text="*{giocatore.dataNascita}">Ruolo</span>
-		</div>
+	<p><strong>Dati sulla Stagione</strong></p>
+	<div id="datiStagione">
+		<div class="dati">
 
-		<div>
-			<span>Nazionalità: </span><span th:text="*{giocatore.nazionalita}">Nazionalita</span>
-		</div>
-
-		<div>
-			<span>Ruolo: </span><span th:text="*{giocatore.ruolo}">Ruolo</span>
-		</div>
-
-		<div>
-			<span>Squadra: </span>
-			<span th:if="*{giocatore.squadra}">
-				<a th:href="@{'/user/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
-			</span>
-
-			<span th:unless="*{giocatore.squadra}">DA SPECIFICARE</span>
-		</div>
-
-		<div>
-			<p>Dati sulla Stagione: </p>
 			<table>
 				<tr>
 					<td>Presenze Totali: </td>
@@ -84,28 +92,28 @@
 		   
 	</div>
 
-	<div>
-		<div th:if="${condizione == false}">
+	<div id="riferimenti">
+		<div class="link" th:if="${condizione == false}">
 			<a th:href="@{'/user/addGiocatorePreferito/' + ${giocatore.id}}">Aggiungi ai Giocatori Preferiti</a>
 		</div>
 
-		<div th:unless="${condizione == false}">
+		<div class="link" th:unless="${condizione == false}">
 			<span>Questo Giocatore è tra i tuoi </span>
-			<a th:href="@{/user/giocatoriPreferiti}" th:text="preferiti" />
+			<a th:href="@{/user/giocatoriPreferiti}" th:text="PREFERITI" />
 		</div>
 
-		<div>
+		<div class="link">
 			<a th:href="@{'/user/prestazioni/' + ${giocatore.id}}">Visualizza le partite giocate</a>
 		</div>
 
-		<div>
+		<div class="link">
 			<a th:href="@{/user/giocatori}">Torna all'elenco dei Giocatori</a>
 		</div>
 
-		<div>
+		<div class="link">
 			<a th:href="@{/default}">Torna alla home utente</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
