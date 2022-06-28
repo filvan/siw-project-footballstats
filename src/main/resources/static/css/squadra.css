@@ -68,8 +68,9 @@ a:link, a:visited, a:active {
 }
 
 a:hover {
-	color: black;
+	color: #0000FF;
 	background-color: #DEB887;
+	text-decoration: underline;
 }
 
 #image {

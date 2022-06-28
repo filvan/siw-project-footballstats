@@ -18,27 +18,28 @@
 
 		<table>
 			<tr>
-				<td>Nome della Squadra: </td>
-				<td><input type="text" th:field="*{nome}" /></td>
-				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+				<td class="elementoForm">Nome della Squadra: </td>
+				<td class="elementoForm"><input type="text" th:field="*{nome}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td>Sede della Squadra: </td>
-				<td><input type="text" th:field="*{citta}" /></td>
-				<td th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}" th:style="'color:red'"></td>
+				<td class="elementoForm">Sede della Squadra: </td>
+				<td class="elementoForm"><input type="text" th:field="*{citta}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('citta')}" th:errors="*{citta}" th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td><button type="submit">Conferma</button>
+				<td class="elementoForm"><button type="submit">Conferma</button>
 			</tr>
 		</table>
 	</form>
 
-	<div>
+	<div id="riferimenti">
+	<div class="link">
 		<a th:href="@{/default}">Torna alla home amministratore</a>
 	</div>
-	<div>
+	<div id="link">
 		<a href="/">Torna alla pagina iniziale</a>
 	</div>
 

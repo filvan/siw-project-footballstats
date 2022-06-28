@@ -8,7 +8,6 @@
 </head>
 
 <body>
-	<div>
 		<h1>Cancella una squadra</h1>
 		<div>
 			<strong th:text="${squadra.nome}">Borgorosso FC</strong>
@@ -21,15 +20,14 @@
 			<a href="admin/squadre.html" th:href="@{'/admin/confirmDeleteSquadra'+ '/' + ${squadra.id}}"
 				th:text="Conferma">Conferma</a>
 		</div>
-	</div>
-	<div>
-		<div>
+	<div id="riferimenti">
+		<div class="link">
 			<a th:href="@{/admin/squadre}">Torna all'elenco delle Squadre</a>
 		</div>
-		<div>
+		<div class="link">
 			<a th:href="@{/default}">Torna alla home amministratore</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
