@@ -5,7 +5,7 @@ h1 {
 }
 
 footer {
-	margin-top: 100px;
+	margin-top: 33%;
 	background-color: black;
 	color: white;
 	text-align: center;
@@ -37,6 +37,11 @@ div.button {
 	border-radius: 3px;
     background-color: lightgrey;
     text-decoration: inherit;
+}
+
+div.button a:hover {
+	color: black;
+	background-color: inherit;
 }
 
 a.button {

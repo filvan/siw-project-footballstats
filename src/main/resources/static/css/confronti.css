@@ -11,9 +11,13 @@ footer {
 	text-align: center;
 }
 
-#form {
+table {
 	margin-top: -6px;
 	margin-bottom: 28px;
+}
+
+#riferimenti {
+	margin-top: -12px;
 }
 
 div.link {
@@ -22,6 +26,13 @@ div.link {
 
 #link {
 	margin-top: 15px;
+}
+
+#container {
+	margin-top: -10px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 a {
@@ -35,8 +46,4 @@ a:link, a:visited, a:active {
 a:hover {
 	color: black;
 	background-color: #DEB887;
-}
-
-#submit {
-	margin-top: 26px;
 }

@@ -4,10 +4,11 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Selezione Giocatori da Confrontare</title>
+	<link rel="stylesheet" href="/css/confronti.css" />
 </head>
 
 <body>
-	<h1>Seleziona i due Giocatori</h1>
+	<h1>Seleziona i due Giocatori da confrontare</h1>
 
 	<form th:action="@{/user/confrontaGiocatori}" th:method="GET">
 		<table>
@@ -17,7 +18,7 @@
 					<select name="giocatore1">
 						<option disabled=true>--Elenco dei Giocatori</option>
 						<option th:each="g : ${elencoGiocatori}"
-							th:text="${g.nome} + ' ' + ${g.cognome} + ', ' + ${g.ruolo} + ', ' + ${g.squadra.nome}"
+							th:text="${g.nome} + ' ' + ${g.cognome} + ', ' + ${g.ruolo}"
 							th:value="${g.id}" />
 					</select>
 				</td>
@@ -29,7 +30,7 @@
 					<select name="giocatore2">
 						<option disabled=true>--Elenco dei Giocatori</option>
 						<option th:each="g : ${elencoGiocatori}"
-							th:text="${g.nome} + ' ' + ${g.cognome} + ', ' + ${g.ruolo} + ', ' + ${g.squadra.nome}"
+							th:text="${g.nome} + ' ' + ${g.cognome} + ', ' + ${g.ruolo}"
 							th:value="${g.id}" />
 					</select>
 				</td>

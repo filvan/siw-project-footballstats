@@ -1,3 +1,10 @@
+footer {
+	margin-top: 27%;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+
 div.button {
 	font-size: inherit;
 	padding-top: -10px;
@@ -10,6 +17,11 @@ div.button {
     text-decoration: inherit;
 }
 
+div.button a:hover {
+	color: black;
+	background-color: inherit;
+}
+
 a.button {
 	font-size: inherit;
 	padding-top: -10px;
@@ -19,4 +31,17 @@ a.button {
 	color: black;
     background-color: lightgrey;
     text-decoration: inherit;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited, a:active {
+	color: black;
+}
+
+a:hover {
+	color: black;
+	background-color: #DEB887;
 }

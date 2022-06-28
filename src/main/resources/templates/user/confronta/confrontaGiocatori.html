@@ -4,173 +4,179 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Confronto tra Giocatori</title>
+	<link rel="stylesheet" href="/css/confronti.css" />
 </head>
 
 <body>
 
 	<h1>Confronto tra i due Giocatori</h1>
+	<div id="container">
+		<div class="item">
+			<h2>Primo Giocatore</h2>
 
-	<h2>Primo Giocatore</h2>
+			<div>
+				<div>
+					<span>Nome: </span><span th:text="*{giocatore1.nome}">Nome</span>
+				</div>
 
-	<div>
-		<div>
-			<span>Nome: </span><span th:text="*{giocatore1.nome}">Nome</span>
+				<div>
+					<span>Cognome: </span><span th:text="*{giocatore1.cognome}">Cognome</span>
+				</div>
+
+				<div>
+					<span>Data di Nascita: </span><span th:text="*{giocatore1.dataNascita}">Ruolo</span>
+				</div>
+
+				<div>
+					<span>Nazionalità: </span><span th:text="*{giocatore1.nazionalita}">Nazionalita</span>
+				</div>
+
+				<div>
+					<span>Ruolo: </span><span th:text="*{giocatore1.ruolo}">Ruolo</span>
+				</div>
+
+				<div>
+					<span>Squadra: </span>
+					<span th:if="*{giocatore1.squadra}">
+						<a th:href="@{'/user/squadra/' + ${giocatore1.squadra.id}}"
+							th:text="${giocatore1.squadra.nome}" />
+					</span>
+
+					<span th:unless="*{giocatore1.squadra}">DA SPECIFICARE</span>
+				</div>
+
+				<div>
+					<p>Dati sulla Stagione: </p>
+					<table>
+						<tr>
+							<td>Presenze Totali: </td>
+							<td th:text="*{giocatore1.presenzeTotali}">Presenze Totali</td>
+						</tr>
+
+						<tr>
+							<td>Minuti Giocati: </td>
+							<td th:text="*{giocatore1.minutiGiocatiTotali}">Minuti Giocati Totali</td>
+						</tr>
+
+						<tr th:if="*{giocatore1.ruolo == 'Portiere' || giocatore1.ruolo == 'Difensore'}">
+							<td>Porte Inviolate: </td>
+							<td th:text="*{giocatore1.cleanSheetTotali}">Clean Sheet Totali</td>
+						</tr>
+
+						<tr th:if="*{giocatore1.ruolo != 'Portiere'}">
+							<td>Gol Segnati: </td>
+							<td th:text="*{giocatore1.golSegnatiTotali}">Gol Segnati Totali</td>
+						</tr>
+
+						<tr th:if="*{giocatore1.ruolo != 'Portiere'}">
+							<td>Assist Forniti: </td>
+							<td th:text="*{giocatore1.assistTotali}">Assist Totali</td>
+						</tr>
+
+						<tr>
+							<td>Ammonizioni: </td>
+							<td th:text="*{giocatore1.ammonizioniTotali}">Ammonizioni</td>
+						</tr>
+
+						<tr>
+							<td>Espulsioni: </td>
+							<td th:text="*{giocatore1.espulsioniTotali}">Espulsioni</td>
+						</tr>
+
+					</table>
+				</div>
+				   
+			</div>
 		</div>
+		<div class="item">
+			<h2>Secondo Giocatore</h2>
 
-		<div>
-			<span>Cognome: </span><span th:text="*{giocatore1.cognome}">Cognome</span>
+			<div>
+				<div>
+					<span>Nome: </span><span th:text="*{giocatore2.nome}">Nome</span>
+				</div>
+
+				<div>
+					<span>Cognome: </span><span th:text="*{giocatore2.cognome}">Cognome</span>
+				</div>
+
+				<div>
+					<span>Data di Nascita: </span><span th:text="*{giocatore2.dataNascita}">Ruolo</span>
+				</div>
+
+				<div>
+					<span>Nazionalità: </span><span th:text="*{giocatore2.nazionalita}">Nazionalita</span>
+				</div>
+
+				<div>
+					<span>Ruolo: </span><span th:text="*{giocatore2.ruolo}">Ruolo</span>
+				</div>
+
+				<div>
+					<span>Squadra: </span>
+					<span th:if="*{giocatore2.squadra}">
+						<a th:href="@{'/user/squadra/' + ${giocatore2.squadra.id}}"
+							th:text="${giocatore2.squadra.nome}" />
+					</span>
+
+					<span th:unless="*{giocatore2.squadra}">DA SPECIFICARE</span>
+				</div>
+
+				<div>
+					<p>Dati sulla Stagione: </p>
+					<table>
+						<tr>
+							<td>Presenze Totali: </td>
+							<td th:text="*{giocatore2.presenzeTotali}">Presenze Totali</td>
+						</tr>
+
+						<tr>
+							<td>Minuti Giocati: </td>
+							<td th:text="*{giocatore2.minutiGiocatiTotali}">Minuti Giocati Totali</td>
+						</tr>
+
+						<tr th:if="*{giocatore2.ruolo == 'Portiere' || giocatore2.ruolo == 'Difensore'}">
+							<td>Porte Inviolate: </td>
+							<td th:text="*{giocatore2.cleanSheetTotali}">Clean Sheet Totali</td>
+						</tr>
+
+						<tr th:if="*{giocatore2.ruolo != 'Portiere'}">
+							<td>Gol Segnati: </td>
+							<td th:text="*{giocatore2.golSegnatiTotali}">Gol Segnati Totali</td>
+						</tr>
+
+						<tr th:if="*{giocatore2.ruolo != 'Portiere'}">
+							<td>Assist Forniti: </td>
+							<td th:text="*{giocatore2.assistTotali}">Assist Totali</td>
+						</tr>
+
+						<tr>
+							<td>Ammonizioni: </td>
+							<td th:text="*{giocatore2.ammonizioniTotali}">Ammonizioni</td>
+						</tr>
+
+						<tr>
+							<td>Espulsioni: </td>
+							<td th:text="*{giocatore2.espulsioniTotali}">Espulsioni</td>
+						</tr>
+
+					</table>
+				</div>
+				   
+			</div>
 		</div>
-
-		<div>
-			<span>Data di Nascita: </span><span th:text="*{giocatore1.dataNascita}">Ruolo</span>
-		</div>
-
-		<div>
-			<span>Nazionalità: </span><span th:text="*{giocatore1.nazionalita}">Nazionalita</span>
-		</div>
-
-		<div>
-			<span>Ruolo: </span><span th:text="*{giocatore1.ruolo}">Ruolo</span>
-		</div>
-
-		<div>
-			<span>Squadra: </span>
-			<span th:if="*{giocatore1.squadra}">
-				<a th:href="@{'/user/squadra/' + ${giocatore1.squadra.id}}" th:text="${giocatore1.squadra.nome}" />
-			</span>
-
-			<span th:unless="*{giocatore1.squadra}">DA SPECIFICARE</span>
-		</div>
-
-		<div>
-			<p>Dati sulla Stagione: </p>
-			<table>
-				<tr>
-					<td>Presenze Totali: </td>
-					<td th:text="*{giocatore1.presenzeTotali}">Presenze Totali</td>
-				</tr>
-
-				<tr>
-					<td>Minuti Giocati: </td>
-					<td th:text="*{giocatore1.minutiGiocatiTotali}">Minuti Giocati Totali</td>
-				</tr>
-
-				<tr th:if="*{giocatore1.ruolo == 'Portiere' || giocatore1.ruolo == 'Difensore'}">
-					<td>Porte Inviolate: </td>
-					<td th:text="*{giocatore1.cleanSheetTotali}">Clean Sheet Totali</td>
-				</tr>
-
-				<tr th:if="*{giocatore1.ruolo != 'Portiere'}">
-					<td>Gol Segnati: </td>
-					<td th:text="*{giocatore1.golSegnatiTotali}">Gol Segnati Totali</td>
-				</tr>
-
-				<tr th:if="*{giocatore1.ruolo != 'Portiere'}">
-					<td>Assist Forniti: </td>
-					<td th:text="*{giocatore1.assistTotali}">Assist Totali</td>
-				</tr>
-
-				<tr>
-					<td>Ammonizioni: </td>
-					<td th:text="*{giocatore1.ammonizioniTotali}">Ammonizioni</td>
-				</tr>
-
-				<tr>
-					<td>Espulsioni: </td>
-					<td th:text="*{giocatore1.espulsioniTotali}">Espulsioni</td>
-				</tr>
-
-			</table>
-		</div>
-		   
 	</div>
+	<div id="riferimenti">
 
-	<h2>Secondo Giocatore</h2>
-
-	<div>
-		<div>
-			<span>Nome: </span><span th:text="*{giocatore2.nome}">Nome</span>
-		</div>
-
-		<div>
-			<span>Cognome: </span><span th:text="*{giocatore2.cognome}">Cognome</span>
-		</div>
-
-		<div>
-			<span>Data di Nascita: </span><span th:text="*{giocatore2.dataNascita}">Ruolo</span>
-		</div>
-
-		<div>
-			<span>Nazionalità: </span><span th:text="*{giocatore2.nazionalita}">Nazionalita</span>
-		</div>
-
-		<div>
-			<span>Ruolo: </span><span th:text="*{giocatore2.ruolo}">Ruolo</span>
-		</div>
-
-		<div>
-			<span>Squadra: </span>
-			<span th:if="*{giocatore2.squadra}">
-				<a th:href="@{'/user/squadra/' + ${giocatore2.squadra.id}}" th:text="${giocatore2.squadra.nome}" />
-			</span>
-
-			<span th:unless="*{giocatore2.squadra}">DA SPECIFICARE</span>
-		</div>
-
-		<div>
-			<p>Dati sulla Stagione: </p>
-			<table>
-				<tr>
-					<td>Presenze Totali: </td>
-					<td th:text="*{giocatore2.presenzeTotali}">Presenze Totali</td>
-				</tr>
-
-				<tr>
-					<td>Minuti Giocati: </td>
-					<td th:text="*{giocatore2.minutiGiocatiTotali}">Minuti Giocati Totali</td>
-				</tr>
-
-				<tr th:if="*{giocatore2.ruolo == 'Portiere' || giocatore2.ruolo == 'Difensore'}">
-					<td>Porte Inviolate: </td>
-					<td th:text="*{giocatore2.cleanSheetTotali}">Clean Sheet Totali</td>
-				</tr>
-
-				<tr th:if="*{giocatore2.ruolo != 'Portiere'}">
-					<td>Gol Segnati: </td>
-					<td th:text="*{giocatore2.golSegnatiTotali}">Gol Segnati Totali</td>
-				</tr>
-
-				<tr th:if="*{giocatore2.ruolo != 'Portiere'}">
-					<td>Assist Forniti: </td>
-					<td th:text="*{giocatore2.assistTotali}">Assist Totali</td>
-				</tr>
-
-				<tr>
-					<td>Ammonizioni: </td>
-					<td th:text="*{giocatore2.ammonizioniTotali}">Ammonizioni</td>
-				</tr>
-
-				<tr>
-					<td>Espulsioni: </td>
-					<td th:text="*{giocatore2.espulsioniTotali}">Espulsioni</td>
-				</tr>
-
-			</table>
-		</div>
-		   
-	</div>
-
-	<div>
-
-		<div>
+		<div class="link">
 			<a th:href="@{/user/toConfrontaGiocatori}">Esegui un nuovo Confronto</a>
 		</div>
 
-		<div>
+		<div class="link">
 			<a th:href="@{/default}">Torna alla home utente</a>
 		</div>
 
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
@@ -181,7 +187,6 @@
 		<div>Filippo Vannutelli - Matricola: 550745</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>
-
 </body>
 
 </html>
