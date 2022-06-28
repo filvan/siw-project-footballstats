@@ -26,6 +26,11 @@ public class GiocatoreService {
 	}
 	
 	@Transactional
+	public void update(Long id, String nome, String cognome, String dataNascita, String ruolo) {
+		this.giocatoreRepository.updateNomeAndCognomeAndDataNascitaAndRuoloById(id, nome, cognome, dataNascita, ruolo);
+	}
+	
+	@Transactional
 	public void deleteById(Long id) {
 		giocatoreRepository.deleteById(id);
 	}

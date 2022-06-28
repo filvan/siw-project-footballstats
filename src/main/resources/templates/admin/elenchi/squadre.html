@@ -16,11 +16,16 @@
 					<a href="squadra.html" th:href="@{'/admin/squadra' + '/' + ${squadra.id}}"
 						th:text="${squadra.nome}">Borgorosso FC</a>
 				</td>
-
 				<td>
 					<div class="button">
 						<a class="button" href="confermaCancellazioneSquadra.html"
 							th:href="@{'/admin/toDeleteSquadra' + '/' + ${squadra.id}}" th:text="Cancella">Cancella</a>
+					</div>
+				</td>
+				<td>
+					<div class="button">
+						<a class="button" href="modificaSquadraForm.html"
+							th:href="@{'/admin/modifySquadra' + '/' + ${squadra.id}}" th:text="Modifica">Modifica</a>
 					</div>
 				</td>
 			</tr>

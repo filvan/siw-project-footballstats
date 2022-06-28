@@ -25,13 +25,18 @@
 					<a th:href="@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}"
 						th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
 				</td>
-
 				<td>
 					<div class="button">
 						<a class="button" th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
 					</div>
 				</td>
-
+				<td>
+					<div class="button">
+						<a class="button" href="modificaPrestazioneForm.html"
+							th:href="@{'/admin/modifyPrestazione' + '/' + ${prestazione.id}}"
+							th:text="Modifica">Modifica</a>
+					</div>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -47,7 +52,7 @@
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
-	
+
 	<footer>
 		<div>Realizzato da: </div>
 		<div>Riccardo De Cesaris - Matricola: 547762</div>

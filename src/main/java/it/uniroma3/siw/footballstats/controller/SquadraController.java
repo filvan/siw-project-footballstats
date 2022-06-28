@@ -97,6 +97,20 @@ public class SquadraController {
 		return "/admin/rimuovi/rimuoviSquadraPerGiocatoreConSuccesso.html";
 	}
 	
+	@GetMapping("/admin/modifySquadra/{id}")
+	public String modifySquadra(@PathVariable("id") Long id, Model model) {
+		Squadra squadra =  this.squadraService.findById(id);
+		model.addAttribute("squadra", squadra);
+		return "admin/form/modificaSquadraForm.html";
+	}
+	
+	@PostMapping("/admin/confirmModifySquadra/{id}")
+	public String confirmModifySquadra(@Valid @ModelAttribute("squadra") Squadra squadra, Model model, BindingResult bindingResult) {
+			this.squadraService.update(squadra.getId(), squadra.getNome(), squadra.getCitta());
+			model.addAttribute("squadre", this.squadraService.findAll());
+			return "admin/elenchi/squadre.html";
+	}
+	
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */

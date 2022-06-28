@@ -3,13 +3,12 @@ package it.uniroma3.siw.footballstats.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.footballstats.model.Prestazione;
+import it.uniroma3.siw.footballstats.model.Squadra;
 import it.uniroma3.siw.footballstats.repository.PrestazioneRepository;
 
 @Service
@@ -20,6 +19,13 @@ public class PrestazioneService {
 	@Transactional
 	public void save(Prestazione prestazione) {
 		this.prestazioneRepository.save(prestazione);
+	}
+	
+	@Transactional
+	public void update(Long id, String data, Squadra squadraAvversaria, Integer minutiGiocati, Integer golSegnati, Integer assist, Integer portaInviolata,
+			Integer ammonizioni, Integer espulsione) {
+		this.prestazioneRepository.updateDataAndSquadraAvversariaIdAndMinutiGiocatiAndGolSegnatiAndAssistAndPortaInviolataAndAmmonizioniAndEspulsioneById(id,
+				data, squadraAvversaria, minutiGiocati, golSegnati, assist, portaInviolata, ammonizioni, espulsione);
 	}
 	
 	@Transactional

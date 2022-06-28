@@ -110,6 +110,20 @@ public class GiocatoreController {
 		return "/admin/elenchi/giocatoriPreferiti.html";	
 	}
 	
+	@GetMapping("/admin/modifyGiocatore/{id}")
+	public String modifyGiocatore(@PathVariable("id") Long id, Model model) {
+		Giocatore giocatore =  this.giocatoreService.findById(id);
+		model.addAttribute("giocatore", giocatore);
+		return "admin/form/modificaGiocatoreForm.html";
+	}
+	
+	@PostMapping("/admin/confirmModifyGiocatore/{id}")
+	public String confirmModifyGiocatore(@Valid @ModelAttribute("giocatore") Giocatore giocatore, Model model, BindingResult bindingResult) {
+			this.giocatoreService.update(giocatore.getId(), giocatore.getNome(), giocatore.getCognome(), giocatore.getDataNascita(), giocatore.getRuolo());
+			model.addAttribute("giocatori", this.giocatoreService.findAll());
+			return "admin/elenchi/giocatori.html";
+	}
+	
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */

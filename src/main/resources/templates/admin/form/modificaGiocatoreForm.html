@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Modifica Giocatore</title>
+	<link rel="stylesheet" href="/giocatore.css">
+</head>
+
+<body>
+	<h1>Modifica il Giocatore</h1>
+
+	<form th:action="@{'/admin/confirmModifyGiocatore'+ '/' + ${giocatore.id}}" method="POST" th:object="${giocatore}">
+
+		<div th:if="${#fields.hasGlobalErrors()}">
+			  <p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Messaggio Errore</p>
+		</div>
+
+		<table>
+			<tr>
+				<td>Nome del Giocatore: </td>
+				<td><input type="text" th:field="*{nome}" /></td>
+				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td>Cognome del Giocatore: </td>
+				<td><input type="text" th:field="*{cognome}" /></td>
+				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td>Nazionalità: </td>
+				<td><input type="text" th:field="*{nazionalita}" /></td>
+				<td th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td>Data di Nascita: (formato: gg-mm-aaaa)</td>
+				<td><input type="text" th:field="*{dataNascita}" /></td>
+				<td th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}" th:style="'color:red'"></td>
+			</tr>
+
+			<tr>
+				<td>Ruolo: </td>
+				<td>
+					<select name="ruolo">
+						<option disabled=true>--Inserisci il Ruolo--</option>
+						<option>Portiere</option>
+						<option>Difensore</option>
+						<option>Centrocampista</option>
+						<option>Attaccante</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td><button type="submit">Conferma</button>
+			</tr>
+		</table>
+	</form>
+
+	<div>
+		<a th:href="@{/default}">Torna alla home amministratore</a>
+	</div>
+	<div>
+		<a href="/">Torna alla pagina iniziale</a>
+	</div>
+
+	<footer>
+		<div>Realizzato da: </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
+		<div>Filippo Vannutelli - Matricola: 550745</div>
+		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+	</footer>
+
+</body>
+
+</html>
