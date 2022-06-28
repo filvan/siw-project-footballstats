@@ -68,8 +68,9 @@ a:link, a:visited, a:active {
 }
 
 a:hover {
-	color: black;
+	color: #0000FF;
 	background-color: #DEB887;
+	text-decoration: underline;
 }
 
 #image {
@@ -101,4 +102,11 @@ div.link {
 
 #link {
 	margin-top: 15px;
+}
+
+td.elementoForm {
+	border-bottom: none;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 0px;
 }
