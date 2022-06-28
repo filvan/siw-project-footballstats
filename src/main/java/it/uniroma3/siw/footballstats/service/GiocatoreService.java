@@ -26,8 +26,8 @@ public class GiocatoreService {
 	}
 	
 	@Transactional
-	public void update(Long id, String nome, String cognome, String dataNascita, String ruolo) {
-		this.giocatoreRepository.updateNomeAndCognomeAndDataNascitaAndRuoloById(id, nome, cognome, dataNascita, ruolo);
+	public void update(Long id, String nome, String cognome, String nazionalita, String dataNascita, String ruolo) {
+		this.giocatoreRepository.updateNomeAndCognomeAndDataNascitaAndRuoloById(id, nome, cognome, nazionalita, dataNascita, ruolo);
 	}
 	
 	@Transactional

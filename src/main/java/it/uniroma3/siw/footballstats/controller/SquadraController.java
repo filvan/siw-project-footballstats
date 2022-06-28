@@ -106,9 +106,13 @@ public class SquadraController {
 	
 	@PostMapping("/admin/confirmModifySquadra/{id}")
 	public String confirmModifySquadra(@Valid @ModelAttribute("squadra") Squadra squadra, Model model, BindingResult bindingResult) {
+		this.squadraValidator.validate(squadra, bindingResult);
+		if (!bindingResult.hasErrors()) {
 			this.squadraService.update(squadra.getId(), squadra.getNome(), squadra.getCitta());
 			model.addAttribute("squadre", this.squadraService.findAll());
 			return "admin/elenchi/squadre.html";
+		}
+		return "admin/form/modificaSquadraForm.html";
 	}
 	
 	/* ******************** */

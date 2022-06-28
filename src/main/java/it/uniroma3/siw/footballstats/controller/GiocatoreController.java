@@ -28,7 +28,7 @@ public class GiocatoreController {
 	@Autowired private GiocatoreValidator giocatoreValidator;
 	@Autowired private SquadraService squadraService;
 	@Autowired private UserService userService;
-		
+
 	/* ********************* */
 	/* OPERAZIONI LATO ADMIN */
 	/* ********************* */
@@ -85,45 +85,49 @@ public class GiocatoreController {
 	public String toAssegnaSquadra(@PathVariable("idGiocatore") Long id, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		model.addAttribute("giocatore", giocatore);
-		
+
 		List<Squadra> elencoSquadre = this.squadraService.findAll();
 		model.addAttribute("elencoSquadre", elencoSquadre);
 		model.addAttribute("squadra", new Squadra());
-		
+
 		return "/admin/assegna/assegnaSquadraPerGiocatore.html";
 	}
-	
+
 	@PostMapping("/admin/assegnazioneSquadra/{idGiocatore}")
 	public String assegnazioneSquadra(@PathVariable("idGiocatore") Long id, @ModelAttribute("squadra") Squadra squadra, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		giocatore.setSquadra(squadra);
 		this.giocatoreService.update(giocatore);
-		
+
 		return "/admin/assegna/assegnaSquadraPerGiocatoreConSuccesso.html";
 	}
-	
+
 	@GetMapping("/admin/giocatoriPreferiti")
 	public String getClassificaPreferenze(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByNumeroPreferenzeDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
-		
+
 		return "/admin/elenchi/giocatoriPreferiti.html";	
 	}
-	
+
 	@GetMapping("/admin/modifyGiocatore/{id}")
 	public String modifyGiocatore(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore =  this.giocatoreService.findById(id);
 		model.addAttribute("giocatore", giocatore);
 		return "admin/form/modificaGiocatoreForm.html";
 	}
-	
+
 	@PostMapping("/admin/confirmModifyGiocatore/{id}")
 	public String confirmModifyGiocatore(@Valid @ModelAttribute("giocatore") Giocatore giocatore, Model model, BindingResult bindingResult) {
-			this.giocatoreService.update(giocatore.getId(), giocatore.getNome(), giocatore.getCognome(), giocatore.getDataNascita(), giocatore.getRuolo());
+		this.giocatoreValidator.validate(giocatore, bindingResult);
+		if (!bindingResult.hasErrors()) {
+			this.giocatoreService.update(giocatore.getId(), giocatore.getNome(), giocatore.getCognome(), giocatore.getNazionalita(), giocatore.getDataNascita(), giocatore.getRuolo());
 			model.addAttribute("giocatori", this.giocatoreService.findAll());
 			return "admin/elenchi/giocatori.html";
+		}
+		return "/admin/form/modificaGiocatoreForm.html";
 	}
-	
+
 	/* ******************** */
 	/* OPERAZIONI LATO USER */
 	/* ******************** */
@@ -132,15 +136,15 @@ public class GiocatoreController {
 	public String getGiocatoreUser(@PathVariable("id") Long id, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(id);
 		model.addAttribute("giocatore", giocatore);
-		
+
 		User user = AuthenticationController.user;
 		model.addAttribute("user", user);
-		
+
 		boolean traIPreferiti = false;
 		if (user.getGiocatoriPreferiti().contains(giocatore))
 			traIPreferiti = true;
 		model.addAttribute("condizione", traIPreferiti);
-		
+
 
 		return "user/visualizza/giocatore.html";
 	}
@@ -151,118 +155,118 @@ public class GiocatoreController {
 		model.addAttribute("giocatori", giocatori);
 		return "user/elenchi/giocatori.html";
 	}
-	
+
 	@GetMapping("/user/classifiche")
 	public String toMenuClassifiche(Model model) {
 		return "/user/classifiche/menuClassifiche.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/presenze")
 	public String getClassificaPresenze(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByPresenzeTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaPresenze.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/minutiGiocati")
 	public String getClassificaMinutiGiocati(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByMinutiGiocatiTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaMinuti.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/golSegnati")
 	public String getClassificaGol(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByGolSegnatiTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaGol.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/assist")
 	public String getClassificaAssist(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByAssistTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaAssist.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/cleanSheet")
 	public String getClassificaCleanSheet(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByCleanSheetTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaCleanSheet.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/ammonizioni")
 	public String getClassificaAmmonizioni(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByAmmonizioniTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaAmmonizioni.html";
 	}
-	
+
 	@GetMapping("/user/classifiche/espulsioni")
 	public String getClassificaEspulsioni(Model model) {
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderByEspulsioniTotaliDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
 		return "/user/classifiche/classificaEspulsioni.html";
 	}
-	
+
 	@GetMapping("/user/toConfrontaGiocatori")
 	public String toConfrontaGiocatori(Model model) {
 		model.addAttribute("giocatore1", new Giocatore());
 		model.addAttribute("giocatore2", new Giocatore());
-		
+
 		List<Giocatore> elencoGiocatori = this.giocatoreService.findAllByOrderBySquadraNomeAscRuoloDesc();
 		model.addAttribute("elencoGiocatori", elencoGiocatori);
-		
+
 		return "/user/confronta/toConfrontaGiocatori.html";
 	}
-	
+
 	@GetMapping("/user/confrontaGiocatori")
 	public String confrontaGiocatori(@ModelAttribute ("giocatore1") Giocatore giocatore1, @ModelAttribute ("giocatore2") Giocatore giocatore2, Model model) {
 		model.addAttribute("giocatore1", giocatore1);
 		model.addAttribute("giocatore2", giocatore2);
-		
+
 		return "/user/confronta/confrontaGiocatori.html";
 	}
-	
+
 	@GetMapping("/user/giocatoriPreferiti")
 	public String getGiocatoriPreferiti(Model model) {
-		
+
 		User user = AuthenticationController.user;
 		model.addAttribute("user", user);
-		
+
 		List<Giocatore> giocatoriPreferiti = user.getGiocatoriPreferiti();
 		model.addAttribute("giocatoriPreferiti", giocatoriPreferiti);
-		
+
 		return "/user/elenchi/giocatoriPreferiti.html";
 	}
-	
+
 	@GetMapping("/user/addGiocatorePreferito/{idGiocatore}")
 	public String addGiocatorePreferito(@PathVariable ("idGiocatore") Long idGiocatore, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(idGiocatore);
 		giocatore.setNumeroPreferenze(giocatore.getNumeroPreferenze() + 1);
 		this.giocatoreService.update(giocatore);
-		
+
 		User user = AuthenticationController.user;
 		user.getGiocatoriPreferiti().add(giocatore);
 		this.userService.update(user);
-		
+
 		return this.getGiocatoreUser(giocatore.getId(), model);		
 	}
-	
+
 	@GetMapping("/user/rimuoviGiocatorePreferito/{idGiocatore}")
 	public String rimuoviGiocatorePreferito(@PathVariable ("idGiocatore") Long idGiocatore, Model model) {
 		Giocatore giocatore = this.giocatoreService.findById(idGiocatore);
 		if (giocatore.getNumeroPreferenze() > 0)
 			giocatore.setNumeroPreferenze(giocatore.getNumeroPreferenze() - 1);
 		this.giocatoreService.update(giocatore);
-		
+
 		User user = AuthenticationController.user;
 		user.getGiocatoriPreferiti().remove(giocatore);
 		this.userService.update(user);
-		
+
 		model.addAttribute("giocatoriPreferiti", user.getGiocatoriPreferiti());
 		return "/user/elenchi/giocatoriPreferiti.html";
-		
+
 	}
 }
