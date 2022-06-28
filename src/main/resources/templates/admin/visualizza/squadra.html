@@ -11,65 +11,66 @@
 
 	<h1>Dettagli Squadra</h1>
 
-	<div>
+	<div id="datiSquadra">
+		<div id="image">
+			<img src="/images/Squadra in formazione.png" />
+		</div>
+		<div class="dati">
 
-		<div>
-			<span>Nome: </span><span th:text="*{squadra.nome}">Nome</span>
+			<div>
+				<strong th:text="*{squadra.nome}">Nome</strong>
+			</div>
+
+			<div>
+				<em th:text="*{squadra.citta}">Prova</em>
+			</div>
+			   
 		</div>
 
-		<div>
-			<em>Sede: </em><em th:text="*{squadra.citta}">Prova</em>
-		</div>
-		   
-	</div>
-
-	<div>
 		Elenco dei Giocatori in Rosa:
+		<div id="datiGiocatori">
+			<table>
+				<tr th:if="${elencoGiocatori.size > 0}">
+					<td><strong>Nome e Cognome</strong></td>
+					<td><strong>Ruolo</strong></td>
+				</tr>
 
-		<table>
-			<tr th:if="${elencoGiocatori.size > 0}">
-				<td><strong>Nome e Cognome</strong></td>
-				<td><strong>Ruolo</strong></td>
-			</tr>
-			
-			<tr th:unless="${elencoGiocatori.size > 0}">
-				<td><strong>NESSUN GIOCATORE IN ROSA</strong></td>
-			</tr>
-			
-			<tr th:each="giocatore : ${elencoGiocatori}">
-				<td>
-					<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}"
-						th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Nome Cognome</a>
-				</td>
+				<tr th:unless="${elencoGiocatori.size > 0}">
+					<td><strong>NESSUN GIOCATORE IN ROSA</strong></td>
+				</tr>
 
-				<td>
-					<span th:text="${giocatore.ruolo}" />
-				</td>
+				<tr th:each="giocatore : ${elencoGiocatori}">
+					<td>
+						<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}"
+							th:text="${giocatore.nome} + ' ' + ${giocatore.cognome}">Nome Cognome</a>
+					</td>
 
-				<td>
-					<a th:href="@{'/admin/rimuoviGiocatore/' + ${giocatore.id}}">Rimuovi</a>
-				</td>
+					<td>
+						<span th:text="${giocatore.ruolo}" />
+					</td>
+
+					<td class="button">
+						<div class="button">
+							<a class="button" th:href="@{'/admin/rimuoviGiocatore/' + ${giocatore.id}}">Rimuovi</a>
+						</div>
+					</td>
 
 
-			</tr>
+				</tr>
 
-		</table>
+			</table>
+		</div>
 	</div>
-
-	<div>
-
+	<div id="riferimenti">
 		<div>
 			<a th:href="@{/admin/squadre}">Torna all'elenco delle Squadre</a>
 		</div>
-
 		<div>
 			<a th:href="@{/default}">Torna alla home amministratore</a>
 		</div>
-
 		<div>
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
-
 	</div>
 
 	<footer>

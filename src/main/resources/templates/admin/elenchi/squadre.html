@@ -8,21 +8,24 @@
 </head>
 
 <body>
-	<div>
-		<h1>Elenco squadre:</h1>
+	<h1>Elenco squadre:</h1>
+	<div id="container">
 		<table>
+			<tr th:if="${squadre.size > 0}">
+				<td><strong>Nome</strong></td>
+			</tr>
 			<tr th:each="squadra : ${squadre}">
 				<td>
 					<a href="squadra.html" th:href="@{'/admin/squadra' + '/' + ${squadra.id}}"
 						th:text="${squadra.nome}">Borgorosso FC</a>
 				</td>
-				<td>
+				<td class="button">
 					<div class="button">
 						<a class="button" href="confermaCancellazioneSquadra.html"
 							th:href="@{'/admin/toDeleteSquadra' + '/' + ${squadra.id}}" th:text="Cancella">Cancella</a>
 					</div>
 				</td>
-				<td>
+				<td class="button">
 					<div class="button">
 						<a class="button" href="modificaSquadraForm.html"
 							th:href="@{'/admin/modifySquadra' + '/' + ${squadra.id}}" th:text="Modifica">Modifica</a>
@@ -30,13 +33,15 @@
 				</td>
 			</tr>
 		</table>
-		<a href="admin/squadraForm.html" th:href="@{/admin/squadraForm}">Inserisci una squadra</a>
 	</div>
-	<div>
-		<div>
+	<div id="riferimenti">
+		<div class="link">
+			<a href="admin/squadraForm.html" th:href="@{/admin/squadraForm}">Inserisci una squadra</a>
+		</div>
+		<div class="link">
 			<a href="/default">Torna alla home amministratore</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>

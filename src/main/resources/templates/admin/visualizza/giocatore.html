@@ -16,7 +16,7 @@
 			<img src="/images/Figurina Calciatore.png" />
 		</div>
 
-		<div class="dati">
+		<div>
 			<div>
 				<span th:text="*{giocatore.nome}">Nome</span>
 			</div>
@@ -46,47 +46,47 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<p><strong>Dati sulla Stagione</strong></p>
 	<div id="datiStagione">
-		<div class="dati">
-		<table>
-			<tr>
-				<td>Presenze Totali: </td>
-				<td th:text="*{giocatore.presenzeTotali}">Presenze Totali</td>
-			</tr>
+		<div>
+			<table>
+				<tr>
+					<td>Presenze Totali: </td>
+					<td th:text="*{giocatore.presenzeTotali}">Presenze Totali</td>
+				</tr>
 
-			<tr>
-				<td>Minuti Giocati: </td>
-				<td th:text="*{giocatore.minutiGiocatiTotali}">Minuti Giocati Totali</td>
-			</tr>
+				<tr>
+					<td>Minuti Giocati: </td>
+					<td th:text="*{giocatore.minutiGiocatiTotali}">Minuti Giocati Totali</td>
+				</tr>
 
-			<tr th:if="*{giocatore.ruolo == 'Portiere' || giocatore.ruolo == 'Difensore'}">
-				<td>Porte Inviolate: </td>
-				<td th:text="*{giocatore.cleanSheetTotali}">Clean Sheet Totali</td>
-			</tr>
+				<tr th:if="*{giocatore.ruolo == 'Portiere' || giocatore.ruolo == 'Difensore'}">
+					<td>Porte Inviolate: </td>
+					<td th:text="*{giocatore.cleanSheetTotali}">Clean Sheet Totali</td>
+				</tr>
 
-			<tr th:if="*{giocatore.ruolo != 'Portiere'}">
-				<td>Gol Segnati: </td>
-				<td th:text="*{giocatore.golSegnatiTotali}">Gol Segnati Totali</td>
-			</tr>
+				<tr th:if="*{giocatore.ruolo != 'Portiere'}">
+					<td>Gol Segnati: </td>
+					<td th:text="*{giocatore.golSegnatiTotali}">Gol Segnati Totali</td>
+				</tr>
 
-			<tr>
-				<td>Assist Forniti: </td>
-				<td th:text="*{giocatore.assistTotali}">Assist Totali</td>
-			</tr>
+				<tr>
+					<td>Assist Forniti: </td>
+					<td th:text="*{giocatore.assistTotali}">Assist Totali</td>
+				</tr>
 
-			<tr>
-				<td>Ammonizioni: </td>
-				<td th:text="*{giocatore.ammonizioniTotali}">Ammonizioni</td>
-			</tr>
+				<tr>
+					<td>Ammonizioni: </td>
+					<td th:text="*{giocatore.ammonizioniTotali}">Ammonizioni</td>
+				</tr>
 
-			<tr>
-				<td>Espulsioni: </td>
-				<td th:text="*{giocatore.espulsioniTotali}">Espulsioni</td>
-			</tr>
+				<tr>
+					<td>Espulsioni: </td>
+					<td th:text="*{giocatore.espulsioniTotali}">Espulsioni</td>
+				</tr>
 
-		</table>
+			</table>
 		</div>
 	</div>
 	   
@@ -96,19 +96,15 @@
 		<div class="link" th:if="${giocatore.squadra == null}">
 			<a th:href="@{'/admin/assegnaSquadra/' + ${giocatore.id}}">Assegna ad una Squadra</a>
 		</div>
-
 		<div class="link" th:unless="${giocatore.squadra == null}">
 			<a th:href="@{'/admin/inserisciPrestazione/' + ${giocatore.id}}">Inserisci una partita giocata</a>
 		</div>
-
 		<div class="link">
 			<a th:href="@{'/admin/prestazioni/' + ${giocatore.id}}">Visualizza le partite giocate</a>
 		</div>
-
 		<div class="link">
 			<a th:href="@{/admin/giocatori}">Torna all'elenco dei Giocatori</a>
 		</div>
-
 		<div class="link">
 			<a th:href="@{/default}">Torna alla home amministratore</a>
 		</div>
