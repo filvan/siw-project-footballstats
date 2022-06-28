@@ -11,6 +11,12 @@
 	<div>
 		<h1>Elenco giocatori</h1>
 		<table>
+			<tr th:if="${giocatori.size > 0}">
+				<td><strong>Nome e Cognome</strong></td>
+				<td><strong>Ruolo</strong></td>
+				<td><strong>Squadra</strong></td>
+			</tr>
+			
 			<tr th:each="giocatore : ${giocatori}">
 				<td>
 					<a href="giocatore.html" th:href="@{'/admin/giocatore' + '/' + ${giocatore.id}}"

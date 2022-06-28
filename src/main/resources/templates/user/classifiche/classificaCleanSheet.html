@@ -9,7 +9,7 @@
 
 <body>
 	<h1>Classifica per Porte Inviolate</h1>
-
+	<div id="container">
 	<table>
 		<tr th:if="${elencoGiocatori.size > 0}">
 			<td><strong>Posizione</strong></td>
@@ -17,10 +17,6 @@
 			<td><strong>Ruolo</strong></td>
 			<td><strong>Squadra</strong></td>
 			<td><strong>Numero Porte Inviolate</strong></td>
-		</tr>
-		
-		<tr th:unless="${elencoGiocatori.size > 0}">
-			<strong><span>NESSUN GIOCATORE DA MOSTRARE</span></strong>
 		</tr>
 
 		<tr th:each="g, iStat: ${elencoGiocatori}">
@@ -41,6 +37,7 @@
 			<td th:text="${g.cleanSheetTotali}" />
 		</tr>
 	</table>
+	</div>
 
 
 	<div id="riferimenti">
@@ -59,7 +56,7 @@
 
 	<footer>
 		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762, </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
 		<div>Filippo Vannutelli - Matricola: 550745</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>

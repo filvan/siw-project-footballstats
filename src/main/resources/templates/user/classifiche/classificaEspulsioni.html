@@ -9,57 +9,54 @@
 
 <body>
 	<h1>Classifica per Espulsioni</h1>
+	<div id="container">
+		<table>
+			<tr th:if="${elencoGiocatori.size > 0}">
+				<td><strong>Posizione<strong></td>
+				<td><strong>Giocatore<strong></td>
+				<td><strong>Ruolo<strong></td>
+				<td><strong>Squadra<strong></td>
+				<td><strong>Numero Espulsioni<strong></td>
+			</tr>
 
-	<table>
-		<tr th:if="${elencoGiocatori.size > 0}">
-			<td><strong>Posizione<strong></td>
-			<td><strong>Giocatore<strong></td>
-			<td><strong>Ruolo<strong></td>
-			<td><strong>Squadra<strong></td>
-			<td><strong>Numero Espulsioni<strong></td>
-		</tr>
-		
-		<tr th:unless="${elencoGiocatori.size > 0}">
-			<strong><span>NESSUN GIOCATORE DA MOSTRARE</span></strong>
-		</tr>
+			<tr th:each="g, iStat: ${elencoGiocatori}">
+				<td th:text="${iStat.count}" />
 
-		<tr th:each="g, iStat: ${elencoGiocatori}">
-			<td th:text="${iStat.count}" />
+				<td>
+					<a th:href="@{'/user/giocatore/' + ${g.id}}" th:text="${g.nome} + ' ' + ${g.cognome}" />
+				</td>
 
-			<td>
-				<a th:href="@{'/user/giocatore/' + ${g.id}}" th:text="${g.nome} + ' ' + ${g.cognome}" />
-			</td>
+				<td th:text="${g.ruolo}" />
 
-			<td th:text="${g.ruolo}" />
-
-			<td th:unless="${g.squadra==null}">
-				<a th:href="@{'/user/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
-			</td>
-			<td th:if="${g.squadra==null}">
-				DA SPECIFICARE
-			</td>
-			<td th:text="${g.espulsioniTotali}" />
-		</tr>
-	</table>
+				<td th:unless="${g.squadra==null}">
+					<a th:href="@{'/user/squadra/' + ${g.squadra.id}}" th:text="${g.squadra.nome}" />
+				</td>
+				<td th:if="${g.squadra==null}">
+					DA SPECIFICARE
+				</td>
+				<td th:text="${g.espulsioniTotali}" />
+			</tr>
+		</table>
+	</div>
 
 
 	<div id="riferimenti">
-	<div class="link">
-		<a th:href="@{/user/classifiche}">Torna al Menù delle Classifiche</a>
-	</div>
+		<div class="link">
+			<a th:href="@{/user/classifiche}">Torna al Menù delle Classifiche</a>
+		</div>
 
-	<div class="link">
-		<a th:href="@{/default}">Torna alla Home</a>
-	</div>
+		<div class="link">
+			<a th:href="@{/default}">Torna alla Home</a>
+		</div>
 
-	<div id="link">
-		<a th:href="@{/logout}">Logout</a>
-	</div>
+		<div id="link">
+			<a th:href="@{/logout}">Logout</a>
+		</div>
 	</div>
 
 	<footer>
 		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762, </div>
+		<div>Riccardo De Cesaris - Matricola: 547762</div>
 		<div>Filippo Vannutelli - Matricola: 550745</div>
 		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
 	</footer>
