@@ -41,8 +41,6 @@
 				<span th:if="*{giocatore.squadra}">
 					<a th:href="@{'/admin/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
 				</span>
-
-				<span th:unless="*{giocatore.squadra}">DA SPECIFICARE</span>
 			</div>
 		</div>
 	</div>
