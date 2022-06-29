@@ -10,45 +10,47 @@
 <body>
 	<div>
 		<h1>Elenco prestazioni:</h1>
-		<table>
-			<tr>
-				<td><strong>Partita: </strong></td>
-				<td><strong>Giocata contro: </strong></td>
-			</tr>
-			
-			<tr th:each="prestazione : ${elencoPrestazioni}">
-				<td>
-					<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
-						th:text="${prestazione.dataInserita}" />
-				</td>
-				<td>
-					<a th:href="@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}"
-						th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
-				</td>
-				<td>
-					<div class="button">
-						<a class="button" th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
-					</div>
-				</td>
-				<td>
-					<div class="button">
-						<a class="button" href="modificaPrestazioneForm.html"
-							th:href="@{'/admin/modifyPrestazione' + '/' + ${prestazione.id}}"
-							th:text="Modifica">Modifica</a>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
+		<div id="container">
+			<table>
+				<tr>
+					<td><strong>Partita: </strong></td>
+					<td><strong>Giocata contro: </strong></td>
+				</tr>
 
-	<div>
-		<div>
+				<tr th:each="prestazione : ${elencoPrestazioni}">
+					<td>
+						<a th:href="@{'/admin/prestazione' + '/' + ${prestazione.id}}"
+							th:text="${prestazione.dataInserita}" />
+					</td>
+					<td>
+						<a th:href="@{'/admin/squadra/' + ${prestazione.squadraAvversaria.id}}"
+							th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
+					</td>
+					<td class="button">
+						<div class="button">
+							<a class="button"
+								th:href="@{'/admin/toRimuoviPrestazione/' + ${prestazione.id}}">Rimuovi</a>
+						</div>
+					</td>
+					<td class="button">
+						<div class="button">
+							<a class="button" href="modificaPrestazioneForm.html"
+								th:href="@{'/admin/modifyPrestazione' + '/' + ${prestazione.id}}"
+								th:text="Modifica">Modifica</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="riferimenti">
+		<div class="link">
 			<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
 		</div>
-		<div>
+		<div class="link">
 			<a href="/default">Torna alla home amministratore</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>

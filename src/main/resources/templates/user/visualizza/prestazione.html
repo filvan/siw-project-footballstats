@@ -10,8 +10,10 @@
 <body>
 
 	<h1>Dettagli Prestazione</h1>
-
-	<div>
+	<div id="image">
+		<img src="/images/Prestazione.png" />
+	</div>
+	<div id="datiPartita">
 		<table>
 			<tr>
 				<td>Data: </td>
@@ -62,12 +64,13 @@
 	</div>
 	   
 	<div>
-
-		<div>
-			<a th:href="@{/default}">Torna alla home amministratore</a>
-		</div>
-		<div>
-			<a href="/">Torna alla pagina iniziale</a>
+		<div id="riferimenti">
+			<div class="link">
+				<a th:href="@{/default}">Torna alla home utente</a>
+			</div>
+			<div id="link">
+				<a href="/">Torna alla pagina iniziale</a>
+			</div>
 		</div>
 	</div>
 

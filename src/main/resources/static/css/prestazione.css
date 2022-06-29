@@ -87,7 +87,7 @@ a:hover {
 	flex-direction: column;
 }
 
-#datiGiocatori {
+#datiPartita {
 	display: flex;
 	justify-content: center;
 }
