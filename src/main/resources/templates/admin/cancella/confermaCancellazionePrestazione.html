@@ -8,14 +8,21 @@
 </head>
 
 <body>
-	<div>
-		<h1>Cancella una prestazione</h1>
+	<h1>Cancella una prestazione</h1>
 
-		<div>
-			<strong>Confermi di voler cancellare questa Prestazione?</strong>
-			<a th:href="@{'/admin/rimozionePrestazione/' + ${prestazione.id}}" th:text="Conferma">Conferma</a>
-		</div>
-	</div>
+	<table>
+		<tr>
+			<td class="button">
+				<strong>Confermi di voler cancellare questa Prestazione ?</strong>
+			</td>
+			<td class="button">
+				<div class="button">
+					<a class="button" th:href="@{'/admin/rimozionePrestazione/' + ${prestazione.id}}"
+						th:text="Conferma">Conferma</a>
+				</div>
+			</td>
+		</tr>
+	</table>
 
 	<div id="riferimenti">
 

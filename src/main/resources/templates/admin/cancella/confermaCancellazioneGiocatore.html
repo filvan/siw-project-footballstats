@@ -18,12 +18,21 @@
 		<em th:text="${giocatore.nazionalita}">Prova</em>
 		<em th:text="${giocatore.dataNascita}">Prova</em>
 	</div>
-	<div>
-		<strong>Confermi di voler cancellare questo giocatore?</strong>
-		<a href="admin/giocatori.html" th:href="@{'/admin/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
-			th:text="Conferma">Conferma</a>
-	</div>
-	
+	<table>
+		<tr>
+			<td class="button">
+				<strong>Confermi di voler cancellare questo giocatore ?</strong>
+			</td>
+			<td class="button">
+				<div class="button">
+					<a class="button" href="admin/giocatori.html"
+						th:href="@{'/admin/confirmDeleteGiocatore'+ '/' + ${giocatore.id}}"
+						th:text="Conferma">Conferma</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 	<div id="riferimenti">
 		<div class="link">
 			<a th:href="@{/admin/giocatori}">Torna all'elenco dei Giocatori</a>

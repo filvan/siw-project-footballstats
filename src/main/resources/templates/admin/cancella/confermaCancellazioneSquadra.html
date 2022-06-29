@@ -8,18 +8,26 @@
 </head>
 
 <body>
-		<h1>Cancella una squadra</h1>
-		<div>
-			<strong th:text="${squadra.nome}">Borgorosso FC</strong>
-		</div>
-		<div>
-			<em th:text="${squadra.citta}">Prova</em>
-		</div>
-		<div>
-			<strong>Confermi di voler cancellare questa squadra?</strong>
-			<a href="admin/squadre.html" th:href="@{'/admin/confirmDeleteSquadra'+ '/' + ${squadra.id}}"
-				th:text="Conferma">Conferma</a>
-		</div>
+	<h1>Cancella una squadra</h1>
+	<div>
+		<strong th:text="${squadra.nome}">Borgorosso FC</strong>
+	</div>
+	<div>
+		<em th:text="${squadra.citta}">Prova</em>
+	</div>
+	<table>
+		<tr>
+			<td class="button">
+				<strong>Confermi di voler cancellare questa squadra ?</strong>
+			</td>
+			<td class="button">
+				<div class="button">
+					<a class="button" href="admin/squadre.html"
+						th:href="@{'/admin/confirmDeleteSquadra'+ '/' + ${squadra.id}}" th:text="Conferma">Conferma</a>
+				</div>
+			</td>
+		</tr>
+	</table>
 	<div id="riferimenti">
 		<div class="link">
 			<a th:href="@{/admin/squadre}">Torna all'elenco delle Squadre</a>

@@ -41,6 +41,7 @@ td {
 div.button a:hover {
 	color: black;
 	background-color: inherit;
+	text-decoration: inherit;
 }
 
 td.button {
