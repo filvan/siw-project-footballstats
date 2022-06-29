@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<h1>Inserisci una Nuova Prestazione</h1>
+	<h1>Inserisci una nuova Prestazione</h1>
 
 	<form th:action="@{'/admin/inserimentoPrestazione/' + ${giocatore.id}}" method="POST" th:object="${prestazione}">
 
@@ -79,10 +79,10 @@
 
 	<div id="riferimenti">
 		<div class="link">
-			<a th:href="@{/default}">Torna alla home amministratore</a>
+			<a th:href="@{/default}">Torna alla Home Amministratore</a>
 		</div>
 		<div id="link">
-			<a href="/">Torna alla pagina iniziale</a>
+			<a href="/">Logout</a>
 		</div>
 	</div>
 

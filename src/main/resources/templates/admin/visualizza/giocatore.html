@@ -97,19 +97,19 @@
 			<a th:href="@{'/admin/assegnaSquadra/' + ${giocatore.id}}">Assegna ad una Squadra</a>
 		</div>
 		<div class="link" th:unless="${giocatore.squadra == null}">
-			<a th:href="@{'/admin/inserisciPrestazione/' + ${giocatore.id}}">Inserisci una partita giocata</a>
+			<a th:href="@{'/admin/inserisciPrestazione/' + ${giocatore.id}}">Inserisci una Partita giocata</a>
 		</div>
 		<div class="link">
-			<a th:href="@{'/admin/prestazioni/' + ${giocatore.id}}">Visualizza le partite giocate</a>
+			<a th:href="@{'/admin/prestazioni/' + ${giocatore.id}}">Visualizza le Partite giocate</a>
 		</div>
 		<div class="link">
-			<a th:href="@{/admin/giocatori}">Torna all'elenco dei Giocatori</a>
+			<a th:href="@{/admin/giocatori}">Torna all'Elenco dei Giocatori</a>
 		</div>
 		<div class="link">
-			<a th:href="@{/default}">Torna alla home amministratore</a>
+			<a th:href="@{/default}">Torna alla Home Amministratore</a>
 		</div>
 		<div id="link">
-			<a href="/">Torna alla pagina iniziale</a>
+			<a href="/">Logout</a>
 		</div>
 	</div>
 

@@ -75,9 +75,18 @@ public class GiocatoreController {
 
 	@GetMapping("/admin/confirmDeleteGiocatore/{id}")
 	public String confirmDeleteGiocatoreById(@PathVariable("id") Long id, Model model) {
-		this.giocatoreService.deleteById(id);
-		List<Giocatore> giocatori = this.giocatoreService.findAll();
-		model.addAttribute("giocatori", giocatori);
+		Giocatore giocatore = this.giocatoreService.findById(id);
+		
+		List<User> utenti = this.userService.findAll();
+		for (User u: utenti) {
+			List<Giocatore> giocatoriPreferiti = u.getGiocatoriPreferiti();
+			if (giocatoriPreferiti.contains(giocatore))
+				giocatoriPreferiti.remove(giocatore);
+			this.userService.update(u);
+		}
+		
+		this.giocatoreService.delete(giocatore);
+		
 		return this.getAdminGiocatori(model);
 	}
 
