@@ -11,6 +11,11 @@
 	<div>
 		<h1>Elenco giocatori preferiti: </h1>
 		<table>
+			<tr th:if="${giocatoriPreferiti.size > 0}">
+				<td><strong>Nome e Cognome</strong></td>
+				<td><strong>Ruolo</strong></td>
+				<td><strong>Squadra</strong></td>
+			</tr>
 			<tr th:each="giocatore : ${giocatoriPreferiti}">
 				<td>
 					<a href="giocatore.html" th:href="@{'/user/giocatore' + '/' + ${giocatore.id}}"
@@ -25,17 +30,19 @@
 					<a th:href="@{'/user/squadra/' + ${giocatore.squadra.id}}" th:text="${giocatore.squadra.nome}" />
 				</td>
 
-				<td>
-					<a th:href="@{'/user/rimuoviGiocatorePreferito/' + ${giocatore.id}}">Rimuovi</a>
+				<td class="button">
+					<div class="button">
+						<a class="button" th:href="@{'/user/rimuoviGiocatorePreferito/' + ${giocatore.id}}">Rimuovi</a>
+					</div>
 				</td>
 			</tr>
 		</table>
 	</div>
-	<div>
-		<div>
+	<div id="riferimenti">
+		<div class="link">
 			<a href="/default">Torna alla home utente</a>
 		</div>
-		<div>
+		<div id="link">
 			<a href="/">Torna alla pagina iniziale</a>
 		</div>
 	</div>
