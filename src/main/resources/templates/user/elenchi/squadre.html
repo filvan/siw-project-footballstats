@@ -9,8 +9,11 @@
 
 <body>
 	<div>
-		<h1>Elenco squadre:</h1>
+		<h1>Elenco Squadre</h1>
 		<table>
+			<tr th:if="${squadre.size > 0}">
+				<td><strong>Nome</strong></td>
+			</tr>
 			<tr th:each="squadra : ${squadre}">
 				<td>
 					<a href="squadra.html" th:href="@{'/user/squadra' + '/' + ${squadra.id}}"
@@ -21,13 +24,13 @@
 	</div>
 	<div id="riferimenti">
 		<div class="link">
-			<a href="/default">Torna alla home utente</a>
+			<a href="/default">Torna alla Home</a>
 		</div>
 		<div id="link">
-			<a href="/">Torna alla pagina iniziale</a>
+			<a href="/">Logout</a>
 		</div>
 	</div>
-	
+
 	<footer>
 		<div>Realizzato da: </div>
 		<div>Riccardo De Cesaris - Matricola: 547762</div>
