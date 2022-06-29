@@ -15,15 +15,13 @@
 			<img src="/images/Squadra in formazione.png" />
 		</div>
 		<div class="dati">
-
 			<div>
 				<strong th:text="*{squadra.nome}">Nome</strong>
 			</div>
 
 			<div>
 				<em th:text="*{squadra.citta}">Prova</em>
-			</div>
-			   
+			</div> 
 		</div>
 
 		Elenco dei Giocatori in Rosa:
@@ -53,7 +51,6 @@
 							<a class="button" th:href="@{'/admin/rimuoviGiocatore/' + ${giocatore.id}}">Rimuovi</a>
 						</div>
 					</td>
-
 
 				</tr>
 

@@ -16,6 +16,13 @@ table {
 	margin-bottom: 28px;
 }
 
+td {
+	border-bottom: solid 1px black;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 #riferimenti {
 	margin-top: -12px;
 }
@@ -35,6 +42,16 @@ div.link {
 	align-items: center;
 }
 
+.item {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+
+img {
+	width: 50%;
+}
+
 a {
 	text-decoration: none;
 }
@@ -47,4 +64,9 @@ a:hover {
 	color: #0000FF;
 	background-color: #DEB887;
 	text-decoration: underline;
+}
+
+#datiStagione {
+	display: flex;
+	justify-content: center;
 }

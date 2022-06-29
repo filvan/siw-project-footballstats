@@ -13,40 +13,40 @@
 	<div id="container">
 		<div class="item">
 			<h2>Primo Giocatore</h2>
-
-			<div>
+			<div id="image">
+				<img src="/images/Figurina Calciatore.png" />
+			</div>
+			<div class="dati">
 				<div>
-					<span>Nome: </span><span th:text="*{giocatore1.nome}">Nome</span>
+					<span th:text="*{giocatore1.nome}">Nome</span>
 				</div>
 
 				<div>
-					<span>Cognome: </span><span th:text="*{giocatore1.cognome}">Cognome</span>
+					<strong th:text="*{giocatore1.cognome}">Cognome</strong>
 				</div>
 
 				<div>
-					<span>Data di Nascita: </span><span th:text="*{giocatore1.dataNascita}">Ruolo</span>
+					<span th:text="*{giocatore1.dataNascita}">Ruolo</span>
 				</div>
 
 				<div>
-					<span>Nazionalità: </span><span th:text="*{giocatore1.nazionalita}">Nazionalita</span>
+					<span th:text="*{giocatore1.nazionalita}">Nazionalita</span>
 				</div>
 
 				<div>
-					<span>Ruolo: </span><span th:text="*{giocatore1.ruolo}">Ruolo</span>
+					<span th:text="*{giocatore1.ruolo}">Ruolo</span>
 				</div>
 
 				<div>
-					<span>Squadra: </span>
 					<span th:if="*{giocatore1.squadra}">
 						<a th:href="@{'/user/squadra/' + ${giocatore1.squadra.id}}"
 							th:text="${giocatore1.squadra.nome}" />
 					</span>
-
-					<span th:unless="*{giocatore1.squadra}">DA SPECIFICARE</span>
 				</div>
-
-				<div>
-					<p>Dati sulla Stagione: </p>
+			</div>
+			<p><strong>Dati sulla Stagione</strong></p>
+			<div id="datiStagione">
+				<div class="dati">
 					<table>
 						<tr>
 							<td>Presenze Totali: </td>
@@ -84,46 +84,45 @@
 						</tr>
 
 					</table>
-				</div>
-				   
+				</div> 
 			</div>
 		</div>
 		<div class="item">
 			<h2>Secondo Giocatore</h2>
-
-			<div>
+			<div id="image">
+				<img src="/images/Figurina Calciatore 2.png" />
+			</div>
+			<div class="dati">
 				<div>
-					<span>Nome: </span><span th:text="*{giocatore2.nome}">Nome</span>
+					<span th:text="*{giocatore2.nome}">Nome</span>
 				</div>
 
 				<div>
-					<span>Cognome: </span><span th:text="*{giocatore2.cognome}">Cognome</span>
+					<strong th:text="*{giocatore2.cognome}">Cognome</strong>
 				</div>
 
 				<div>
-					<span>Data di Nascita: </span><span th:text="*{giocatore2.dataNascita}">Ruolo</span>
+					<span th:text="*{giocatore2.dataNascita}">Ruolo</span>
 				</div>
 
 				<div>
-					<span>Nazionalità: </span><span th:text="*{giocatore2.nazionalita}">Nazionalita</span>
+					<span th:text="*{giocatore2.nazionalita}">Nazionalita</span>
 				</div>
 
 				<div>
-					<span>Ruolo: </span><span th:text="*{giocatore2.ruolo}">Ruolo</span>
+					<span th:text="*{giocatore2.ruolo}">Ruolo</span>
 				</div>
 
 				<div>
-					<span>Squadra: </span>
 					<span th:if="*{giocatore2.squadra}">
 						<a th:href="@{'/user/squadra/' + ${giocatore2.squadra.id}}"
 							th:text="${giocatore2.squadra.nome}" />
 					</span>
-
-					<span th:unless="*{giocatore2.squadra}">DA SPECIFICARE</span>
 				</div>
-
-				<div>
-					<p>Dati sulla Stagione: </p>
+			</div>
+			<p><strong>Dati sulla Stagione</strong></p>
+			<div id="datiStagione">
+				<div class="dati">
 					<table>
 						<tr>
 							<td>Presenze Totali: </td>
@@ -162,12 +161,11 @@
 
 					</table>
 				</div>
-				   
 			</div>
 		</div>
 	</div>
+	</div>
 	<div id="riferimenti">
-
 		<div class="link">
 			<a th:href="@{/user/toConfrontaGiocatori}">Esegui un nuovo Confronto</a>
 		</div>
