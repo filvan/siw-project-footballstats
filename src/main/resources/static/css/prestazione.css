@@ -2,11 +2,21 @@ body {
 	color: #27408B;
 }
 
+h1 {
+	text-align: center;
+	border-bottom: solid 3px #27408B;
+	padding-bottom: 18px;
+}
+
 footer {
-	margin-top: 20%;
+	margin-top: 27%;
 	background-color: #27408B;
 	color: white;
 	text-align: center;
+}
+
+img {
+	width: 9.5%;
 }
 
 div.button {
@@ -37,6 +47,18 @@ a.button {
     text-decoration: inherit;
 }
 
+td.button {
+	border-bottom: none;
+	padding-bottom: 2px;
+}
+
+td {
+	border-bottom: solid 1px black;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 a {
 	text-decoration: none;
 }
@@ -46,6 +68,45 @@ a:link, a:visited, a:active {
 }
 
 a:hover {
-	color: black;
+	color: #0000FF;
 	background-color: #DEB887;
+	text-decoration: underline;
+}
+
+#image {
+	text-align: center;
+}
+
+#container {
+	margin-bottom: 20px;
+}
+
+#datiSquadra {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+
+#datiGiocatori {
+	display: flex;
+	justify-content: center;
+}
+
+#riferimenti {
+	margin-top: 5px;
+}
+
+div.link {
+	margin-bottom: 3px;
+}
+
+#link {
+	margin-top: 15px;
+}
+
+td.elementoForm {
+	border-bottom: none;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 0px;
 }
