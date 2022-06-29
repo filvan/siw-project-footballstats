@@ -10,45 +10,46 @@
 <body>
 	<div>
 		<h1>Elenco prestazioni:</h1>
-		<table>
-			<tr>
-				<td><strong>Partita: </strong></td>
-				<td><strong>Giocata contro: </strong></td>
-			</tr>
-			
-			<tr th:each="prestazione : ${elencoPrestazioni}">
-				<td>
-					<a th:href="@{'/user/prestazione' + '/' + ${prestazione.id}}"
-						th:text="${prestazione.dataInserita}" />
-				</td>
-				
-				<td>
-					<a th:href="@{'/user/squadra/' + ${prestazione.squadraAvversaria.id}}"
-						th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
-				</td>
+		<div id="container">
+			<table>
+				<tr>
+					<td><strong>Partita: </strong></td>
+					<td><strong>Giocata contro: </strong></td>
+				</tr>
 
-			</tr>
-		</table>
-	</div>
+				<tr th:each="prestazione : ${elencoPrestazioni}">
+					<td>
+						<a th:href="@{'/user/prestazione' + '/' + ${prestazione.id}}"
+							th:text="${prestazione.dataInserita}" />
+					</td>
 
-	<div>
-		<div>
-			<a th:href="@{'/user/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
+					<td>
+						<a th:href="@{'/user/squadra/' + ${prestazione.squadraAvversaria.id}}"
+							th:text="${prestazione.squadraAvversaria.nome}">Prestazione</a>
+					</td>
+
+				</tr>
+			</table>
 		</div>
-		<div>
-			<a href="/default">Torna alla home utente</a>
+
+		<div id="riferimenti">
+			<div class="link">
+				<a th:href="@{'/user/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
+			</div>
+			<div class="link">
+				<a href="/default">Torna alla home utente</a>
+			</div>
+			<div id="link">
+				<a href="/">Torna alla pagina iniziale</a>
+			</div>
 		</div>
-		<div>
-			<a href="/">Torna alla pagina iniziale</a>
-		</div>
-	</div>
-	
-	<footer>
-		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762</div>
-		<div>Filippo Vannutelli - Matricola: 550745</div>
-		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
-	</footer>
+
+		<footer>
+			<div>Realizzato da: </div>
+			<div>Riccardo De Cesaris - Matricola: 547762</div>
+			<div>Filippo Vannutelli - Matricola: 550745</div>
+			<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+		</footer>
 </body>
 
 </html>

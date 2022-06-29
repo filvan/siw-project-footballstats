@@ -8,7 +8,6 @@
 </head>
 
 <body>
-	<div>
 		<h1>Elenco prestazioni:</h1>
 		<div id="container">
 			<table>
@@ -42,25 +41,25 @@
 				</tr>
 			</table>
 		</div>
-	</div>
-	<div id="riferimenti">
-		<div class="link">
-			<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
-		</div>
-		<div class="link">
-			<a href="/default">Torna alla home amministratore</a>
-		</div>
-		<div id="link">
-			<a href="/">Torna alla pagina iniziale</a>
-		</div>
-	</div>
 
-	<footer>
-		<div>Realizzato da: </div>
-		<div>Riccardo De Cesaris - Matricola: 547762</div>
-		<div>Filippo Vannutelli - Matricola: 550745</div>
-		<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
-	</footer>
+		<div id="riferimenti">
+			<div class="link">
+				<a th:href="@{'/admin/giocatore/' + ${giocatore.id}}">Torna alla pagina del Giocatore</a>
+			</div>
+			<div class="link">
+				<a href="/default">Torna alla home amministratore</a>
+			</div>
+			<div id="link">
+				<a href="/">Torna alla pagina iniziale</a>
+			</div>
+		</div>
+
+		<footer>
+			<div>Realizzato da: </div>
+			<div>Riccardo De Cesaris - Matricola: 547762</div>
+			<div>Filippo Vannutelli - Matricola: 550745</div>
+			<div>Corso di Sistemi Informativi su Web, a.a. 2021-2022</div>
+		</footer>
 
 </body>
 

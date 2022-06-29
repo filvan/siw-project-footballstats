@@ -18,63 +18,72 @@
 
 		<table>
 			<tr>
-				<td>Data (formato: gg-mm-aaaa): </td>
-				<td><input type="text" th:field="*{dataInserita}" /></td>
-				<td th:if="${#fields.hasErrors('dataInserita')}" th:errors="*{dataInserita}" th:style="'color:red'">
+				<td class="elementoForm">Data (formato: gg-mm-aaaa): </td>
+				<td class="elementoForm"><input type="text" th:field="*{dataInserita}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('dataInserita')}" th:errors="*{dataInserita}"
+					th:style="'color:red'">
 				</td>
 			</tr>
 			<tr>
-				<td>Squadra avversaria: </td>
-				<td><select name="squadraAvversaria">
+				<td class="elementoForm">Squadra avversaria: </td>
+				<td class="elementoForm"><select name="squadraAvversaria">
 						<option disabled=true>--Elenco delle Squadre--</option>
 						<option th:each="s : ${squadreAvversarie}" th:text="${s.nome}" th:value="${s.id}" />
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>Minuti giocati: </td>
-				<td><input type="text" th:field="*{minutiGiocati}" /></td>
-				<td th:if="${#fields.hasErrors('minutiGiocati')}" th:errors="*{minutiGiocati}" th:style="'color:red'">
+				<td class="elementoForm">Minuti giocati: </td>
+				<td class="elementoForm"><input type="text" th:field="*{minutiGiocati}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('minutiGiocati')}" th:errors="*{minutiGiocati}"
+					th:style="'color:red'">
 				</td>
 			</tr>
 			<tr>
-				<td>Gol segnati: </td>
-				<td><input type="text" th:field="*{golSegnati}" /></td>
-				<td th:if="${#fields.hasErrors('golSegnati')}" th:errors="*{golSegnati}" th:style="'color:red'"></td>
+				<td class="elementoForm">Gol segnati: </td>
+				<td class="elementoForm"><input type="text" th:field="*{golSegnati}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('golSegnati')}" th:errors="*{golSegnati}"
+					th:style="'color:red'"></td>
 			</tr>
 			<tr>
-				<td>Assist: </td>
-				<td><input type="text" th:field="*{assist}" /></td>
-				<td th:if="${#fields.hasErrors('assist')}" th:errors="*{assist}" th:style="'color:red'"></td>
+				<td class="elementoForm">Assist: </td>
+				<td class="elementoForm"><input type="text" th:field="*{assist}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('assist')}" th:errors="*{assist}"
+					th:style="'color:red'"></td>
 			</tr>
 			<tr>
-				<td>Porta inviolata: </td>
-				<td><input type="text" th:field="*{portaInviolata}" /></td>
-				<td th:if="${#fields.hasErrors('portaInviolata')}" th:errors="*{portaInviolata}" th:style="'color:red'">
+				<td class="elementoForm">Porta inviolata: </td>
+				<td class="elementoForm"><input type="text" th:field="*{portaInviolata}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('portaInviolata')}" th:errors="*{portaInviolata}"
+					th:style="'color:red'">
 				</td>
 			</tr>
 			<tr>
-				<td>Ammonizioni: </td>
-				<td><input type="text" th:field="*{ammonizioni}" /></td>
-				<td th:if="${#fields.hasErrors('ammonizioni')}" th:errors="*{ammonizioni}" th:style="'color:red'"></td>
+				<td class="elementoForm">Ammonizioni: </td>
+				<td class="elementoForm"><input type="text" th:field="*{ammonizioni}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('ammonizioni')}" th:errors="*{ammonizioni}"
+					th:style="'color:red'"></td>
 			</tr>
 			<tr>
-				<td>Espulsione: </td>
-				<td><input type="text" th:field="*{espulsione}" /></td>
-				<td th:if="${#fields.hasErrors('espulsione')}" th:errors="*{espulsione}" th:style="'color:red'"></td>
+				<td class="elementoForm">Espulsione: </td>
+				<td class="elementoForm"><input type="text" th:field="*{espulsione}" /></td>
+				<td class="elementoForm" th:if="${#fields.hasErrors('espulsione')}" th:errors="*{espulsione}"
+					th:style="'color:red'"></td>
 			</tr>
 
 			<tr>
-				<td><button type="submit">Inserisci</button>
+				<td class="elementoForm"><button type="submit">Inserisci</button>
 			</tr>
 		</table>
 	</form>
 
-	<div>
-		<a th:href="@{/default}">Torna alla home amministratore</a>
-	</div>
-	<div>
-		<a href="/">Torna alla pagina iniziale</a>
+	<div id="riferimenti">
+		<div class="link">
+			<a th:href="@{/default}">Torna alla home amministratore</a>
+		</div>
+		<div id="link">
+			<a href="/">Torna alla pagina iniziale</a>
+		</div>
 	</div>
 
 	<footer>
