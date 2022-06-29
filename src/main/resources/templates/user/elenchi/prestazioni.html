@@ -12,7 +12,7 @@
 		<h1>Elenco Prestazioni</h1>
 		<div id="container">
 			<table>
-				<tr>
+				<tr th:if="${elencoPrestazioni.size > 0}">
 					<td><strong>Partita: </strong></td>
 					<td><strong>Giocata contro: </strong></td>
 				</tr>
